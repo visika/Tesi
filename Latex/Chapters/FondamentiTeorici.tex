@@ -1,0 +1,738 @@
+%************************************************
+\chapter{Fondamenti teorici}\label{ch:teoria}
+%************************************************
+
+\emph{
+    Si noti che tutti i concetti introdotti nelle sezioni 2.1 e 2.2 possono essere trovati in 
+    qualunque libro di testo di base sull'informazione quantistica e quindi non ci saranno 
+    riferimenti individuali ad essi. Entrambe queste sezioni sono principalmente basate sul libro 
+    di testo di Noson e Mannucci\cite{noson}.
+}
+
+\section{Bit quantistici}
+
+\subsection{Sistemi a singolo qubit}
+
+I computer classici manipolano i bit, mentre l'unità più fondamentale di un computer quantistico 
+è chiamata \emph{quantum bit}, spesso abbreviato come \emph{qubit}. 
+Invece che 0 e 1, gli stati dei qubit sono denotati $\ket{0}$ e $\ket{1}$ per ragioni che verranno 
+evidenziate successivamente. 
+
+Un buon esempio di un'implementazione fisica di un qubit è il singolo elettrone di un atomo di 
+idrogeno abbozzato in figura. % metti riferimento a figura
+Solitamente l'elettrone si trova % è trovato
+nel suo stato fondamentale, che può essere definito come lo stato $\ket{0}$ del qubit. 
+Usando un impulso laser, l'elettrone può essere eccitato verso il guscio di valenza successivo più 
+energetico, che può essere definito come lo stato $\ket{1}$  del qubit. Dopo del tempo $t$ 
+l'elettrone decadrà per decoerenza verso il suo stato fondamentale $\ket{0}$; questo tempo è 
+chiamato \emph{tempo di decoerenza longitudinale} o \emph{di smorzamento dell'ampiezza} ed è 
+un parametro importante per misurare la vita dei qubit. % Fonte Chuang, 2003
+
+% Figura ***********************************
+
+Un bit classico non probabilistico può assumere solo uno dei suoi due possibili valori alla volta. 
+% Qui si potrebbe mettere una nota sui bit probabilistici
+Al contrario, i qubit obbediscono alle leggi della meccanica quantistica, il che dà luogo 
+all'importante proprietà che, oltre ad essere in un definito stato $\ket{0}$ o $\ket{1}$, 
+possono anche essere in una sovrapposizione di due stati. Matematicamente ciò è espresso 
+attraverso la combinazione lineare degli stati $\ket{0}$ e $\ket{1}$
+\begin{equation} \label{eq:2.1}
+    \ket{\psi} = \alpha \ket{0} + \beta \ket{1}, \quad \alpha, \beta \in \mathbb{C},
+\end{equation}
+dove $\alpha$ e $\beta$ sono coefficienti complessi e ci si riferisce spesso a loro come ampiezze. 
+Qualsiasi ampiezza $\eta$ può essere ulteriormente suddivisa in un fattore di fase complesso 
+$e^{i\varphi}$ ed un numero reale non negativo $\xi$ cosicché
+\begin{equation}
+    \eta = e^{i\varphi} \xi.
+\end{equation}
+Nella prima equazione, $\ket{0}$ è la rappresentazione nella notazione di Dirac del fatto che il 
+qubit sia nello stato 0 e può essere rappresentato come un elemento di uno spazio vettoriale 
+complesso bidimensionale $H_2$, % metti il font giusto ad H
+detto spazio di Hilbert. Inizialmente definito da Dirac, % metti fonte 1939
+l'oggetto 
+\begin{equation}
+    \ket{\varphi},
+\end{equation}
+è chiamato \emph{ket} e il suo coniugato hermitiano 
+\begin{equation}
+    \ket{\varphi}^\dagger = \bra{\varphi}
+\end{equation}
+è chiamato \emph{bra}. Il coniugato hermitiano, denotato con una daga ($\dagger$), di p.e. un 
+vettore colonna $c$ bidimensionale a valori complessi $c_1$ e $c_2$, 
+\begin{equation}
+    c = 
+    \begin{pmatrix}
+        c_1\\c_2
+    \end{pmatrix},
+\end{equation}
+è ottenuto prendendo il complesso coniugato di ciascun valore e trasponendo il vettore risultante: 
+\begin{equation}
+    c^\dagger = 
+    \begin{pmatrix}
+        c_1\\c_2
+    \end{pmatrix}^\dagger
+    = 
+    \begin{pmatrix}
+        c_1^* & c_2^*
+    \end{pmatrix},
+\end{equation}
+dove i complessi coniugati sono indicati con un asterisco in apice ($*$).
+Il coniugato hermitiano è definito sia per vettori che per matrici quadrate. 
+Il prodotto interno tra un bra e un ket è chiamato \emph{bra-ket} ed è scritto 
+\begin{equation}
+    \braket{\varphi|\varphi}.
+\end{equation}
+Si noti che tutte le sezioni seguenti faranno uso intensivo della notazione bra-ket. 
+Gli stati quantistici $\ket{0}$ e $\ket{1}$ sono chiamati la base computazionale e 
+costituiscono una base ortonormale di $H_2$. Quando un qubit è espresso in termini 
+dei due stati $\ket{0}$ e $\ket{1}$, si dice che sia nella sua \emph{base normale}. 
+Per motivi di chiarezza, $\ket{0}$ e $\ket{1}$ possono essere rappresentati con i vettori 
+bidimensionali 
+\begin{equation} \label{eq:2.8}
+    \ket{0} \cong \begin{pmatrix}
+        1\\0
+    \end{pmatrix}
+    \text{e} \ket{1} \cong \begin{pmatrix}
+        0\\1
+    \end{pmatrix}.
+\end{equation}
+Si noti che un ket e la sua rappresentazione vettoriale non sono lo stesso oggetto, 
+dato che, per essere ben definito, un vettore ha bisogno della specificazione di una base, 
+laddove un ket non lo richiede. Questa tesi farà uso del simbolo $\cong$ quando si cambia tra 
+i due diversi modi di rappresentare un ket. Sostituendo i vettori dell'Eq. \ref{eq:2.8} 
+nell'Eq. \ref{eq:2.1} si ottiene la rappresentazione vettoriale di $\ket{\psi}$
+\begin{equation} \label{eq:2.9}
+    \psi \cong \alpha \begin{pmatrix}
+        1\\0
+    \end{pmatrix} + \beta \begin{pmatrix}
+        0\\1
+    \end{pmatrix} = \begin{pmatrix}
+        \alpha \\ \beta
+    \end{pmatrix}.
+\end{equation}
+
+Sebbene un qubit possa essere in una sovrapposizione di stati $\ket{0}$ e $\ket{1}$, quando 
+misurato assumerà un valore preciso tra $\ket{0}$, con probabilità 
+\begin{equation}
+    P(\ket{0}) = |\alpha|^2,
+\end{equation}
+e $\ket{1}$, con probabilità 
+\begin{equation}
+    P(\ket{1}) = |\beta|^2.
+\end{equation}
+Il fatto che la probabilità di misurare un particolare stato è uguale al quadrato del modulo 
+della rispettiva ampiezza fu postulato per la prima volta da Born % Fonte 1954
+e, dunque, è chiamata regola di Born. Visto che la probabilità totale di misurare un qualunque 
+valore deve essere unitaria, deve soddisfarsi la condizione di normalizzazione 
+\begin{equation}
+    |\alpha|^2 + |\beta|^2 = 1.
+\end{equation}
+
+Se prendiamo uno stato in cui si ha, per esempio, $\alpha = \frac{1}{\sqrt{2}}$ e 
+$\beta = \frac{i}{\sqrt{2}}$, abbiamo che il qubit è in una sovrapposizione quantistica, 
+cosa impossibile da ottenere con un computer classico. Legato a questa caratteristica 
+c'è un altro importante parametro della vita di un qubit: il \emph{tempo di coerenza 
+trasversale} o \emph{di smorzamento della fase}. 
+Esso è misurato preparando la sovrapposizione uniforme $\frac{\ket{0} + \ket{1}}{\sqrt{2}}$: 
+per via dell'inevitabile interazione con l'ambiente, dopo del tempo $t$ il comportamento 
+quantistico sarà perso e lo stato sarà ben determinato tra $\ket{0}$ e $\ket{1}$. % Fonte Chuang 2003
+Il processo di perdita del comportamento quantistico è chiamato decoerenza. 
+Nei casi in cui $\alpha = 1$ o $\beta = 1$ il qubit non è propriamente in una sovrapposizione ma 
+in uno stato definito, $\ket{0}$ o $\ket{1}$ rispettivamente. 
+
+Perciò, un qubit è intrinsecamente probabilistico ma quando viene misurato collassa in un 
+singolo bit classico (0 o 1). 
+% Da qualche parte si può inserire un riferimento alla probabilità negativa riferita sul Noson
+Ne segue che una misura distrugge l'informazione sulla sovrapposizione del qubit (ovvero i valori 
+di $\alpha$ e $\beta$). Questo costituisce una delle principali difficoltà nel progettare 
+algoritmi quantistici, dato che solo una limitata quantità di informazioni può essere ottenuta 
+riguardo gli stati finali dei qubit nel computer quantistico. 
+
+Usando coordinate sferiche polari, un singolo qubit può essere visualizzato sulla cosiddetta sfera 
+di Bloch, parametrizzando $\alpha$ e $\beta$ dell'Eq. \ref{eq:2.1} come segue: 
+\begin{equation}
+    \ket{\psi} = \cos\frac{\theta}{2}\ket{0} + e^{i\varphi}\sin\frac{\theta}{2}\ket{1}.
+\end{equation}
+La sfera di Bloch ha raggio 1 ed è, dunque, una sfera unitaria. 
+Lo stato $\ket{0}$ del qubit è definito in modo che si trovi lungo il semiasse z positivo e lo 
+stato $\ket{1}$ è definito in modo che si trovi lungo il semiasse z negativo, come indicato in 
+Figura. % inserisci riferimento
+A questo punto è importante notare che questi due stati sono mutuamente ortogonali in $H_2$, 
+sebbene non lo siano sulla sfera di Bloch. 
+
+Gli stati del qubit sull'equatore della sfera, come gli assi coordinati x e y, rappresentano 
+sovrapposizioni uniformi dove $\ket{0}$ e $\ket{1}$ hanno entrambi probabilità di misura pari a 
+0,5. L'asse x, ad esempio, rappresenta la sovrapposizione uniforme $\ket{q} = \frac{1}{\sqrt{2}}
+\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$. Come illustrato in Figura, % inserisci riferimento
+qualunque stato bidimensionale arbitrario $\ket{\psi}$ può essere decomposto nei suoi angoli 
+polari $\theta$ e $\varphi$ e visualizzato come un vettore sulla sfera di Bloch (dopo essere 
+stato normalizzato, se necessario). Tale oggetto è chiamato vettore di Bloch dello stato 
+$\ket{\psi}$ del qubit. La sfera di Bloch sarà lo strumento principale di visualizzazione per le 
+manipolazioni di qubit in questa tesi. 
+
+%%% Figura
+
+% Didascalia della figura
+
+Similmente alle porte logiche in un computer classico, un \ac{CQ} manipola qubit per mezzo di porte 
+logiche quantistiche, le quali saranno introdotte in dettaglio nella sezione 2.2. In genere, 
+una porta logica quantistica arbitraria $U$ che agisca su uno stato di singolo qubit è una 
+trasformazione unitaria che può essere rappresentata con una matrice 2x2
+\begin{equation} \label{eq:2.14}
+    U \cong 
+    \begin{pmatrix}
+        a & b \\ c & d
+    \end{pmatrix},
+\end{equation}
+la cui azione su $\ket{\psi}$ è definita come 
+\begin{equation}
+    U\ket{\psi} \cong \begin{pmatrix}
+        a&b\\c&d
+    \end{pmatrix}\begin{pmatrix}
+        \alpha\\\beta
+    \end{pmatrix} = \begin{pmatrix}
+        a\alpha + b\beta \\ c\alpha + d\beta
+    \end{pmatrix}.
+\end{equation}
+La matrice $U$ deve essere unitaria, il che comporta che il suo determinante deve essere unitario: 
+\begin{equation}
+    |\det(U)|=1,
+\end{equation}
+e il suo coniugato hermitiano $U^\dagger$ deve essere uguale alla sua inversa: 
+\begin{equation}
+    UU^\dagger = U^\dagger U = \mathbb{1} = UU^{-1} = U^{-1}U.
+\end{equation}
+Tutte le porte logiche quantistiche devono essere unitarie poiché in questo modo si conserva 
+la condizione di normalizzazione dello stato del qubit su cui agiscono. L'insieme di tutte 
+le matrici complesse unitarie bidimensionali con determinante uguale ad uno è chiamato gruppo 
+unitario speciale ($SU(2)$) e tutte le porte logiche quantistiche a singolo qubit sono dunque 
+elementi di $SU(2)$. Inoltre, un insieme di porte $G$ costituito da $m$ porte quantistiche 
+$g_1, g_2, \ldots, g_m$ è chiamato \emph{insieme di porte quantistiche universale} allorquando 
+è un sottoinsieme denso di $SU(2)$ come definito nel riquadro seguente.
+
+Definizione: sottoinsieme denso di $SU(2)$
+
+L'insieme di porte $G$ è un sottoinsieme denso di $SU(2)$ quanto, data una qualunque porta 
+quantistica $W\in SU(2)$ e una precisione arbitraria $\varepsilon > 0$, esiste un prodotto 
+$J$ di porte appartenenti a $G$ che è una $\varepsilon$-approssimazione di $W$ 
+(Dawson, Nielsen, 2005). 
+
+\subsection{Sistemi a qubit multipli}
+
+Un computer classico coun un bit di memoria non è particolarmente utile e, allo stesso modo, 
+un \ac{CQ} con un qubit è piuttosto inutile. Per essere in grado di effettuare computazioni 
+grandi e complicate è necessario combinare diversi qubit singoli per creare un grande \ac{CQ}. 
+Quando ci si muove da un sistema a singolo qubit ad uno a molti qubit c'è bisogno di un 
+nuovo strumento matematico, il cosiddetto prodotto tensoriale (simbolo $\otimes$). 
+Il prodotto tensore di due qubit si scrive 
+\begin{equation} \label{eq:2.18}
+    \ket{\psi_1}\otimes\ket{\psi_2} = \ket{\psi_1}\ket{\psi_2} = \ket{\psi_1\psi_2},
+\end{equation}
+dove nelle ultime due espressioni si è omesso il simbolo $\otimes$; queste due sono 
+una stenografia per il prodotto tensore tra due qubit. 
+
+Un \emph{registro quantistico} di dimensione $j$ è una maniera alternativa di riferirsi 
+al prodotto tensore di $j$ qubit. Per esempio, lo stato nell'Eq. \ref{eq:2.18} è un 
+registro quantistico composto da due qubit. Negli algoritmi di \ac{MLQ}, grandi stati 
+quantistici sono solitamente suddivisi in vari registri quantistici che soddisfano vari 
+obiettivi, p.e. memorizzare etichette di dati o di classi. Si consideri, ad esempio, uno 
+stato quantistico $\ket{\Phi}$ che sia suddiviso tra due diversi registri quantistici, 
+un registro dati (d) con $n$ qubit e un registro classe (c) con due qubit. Lo stato $\ket{\Phi}$ 
+si scrive allora 
+\begin{equation} \label{eq:2.19}
+    \ket{\Phi} = \ket{d;c} = \ket{d_1 \ldots d_n; c_1, c_2},
+\end{equation}
+dove i punti e virgola sono usati per separare i registri quantistici. 
+
+Nella rappresentazione vettoriale, il prodotto tensore di due ket $\ket{0}$ è definito come 
+\begin{equation} \label{eq:2.20}
+    \ket{00} = \ket{0} \otimes \ket{0} \cong 
+    \begin{pmatrix}
+        1\\0
+    \end{pmatrix} \otimes 
+    \begin{pmatrix}
+        1\\0
+    \end{pmatrix} = 
+    \begin{pmatrix}
+        1*\begin{pmatrix}
+            1\\0
+        \end{pmatrix} \\ 0 * 
+        \begin{pmatrix}
+            1\\0
+        \end{pmatrix}
+    \end{pmatrix} = 
+    \begin{pmatrix}
+        1\\0\\0\\0
+    \end{pmatrix}.
+\end{equation}
+L'ultima espressione nell'Eq. \ref{eq:2.20} mostra che lo stato a due qubit $\ket{00}$ non è 
+più bidimensionale ma quadridimensionale. Dunque, vive in uno spazio di Hilbert quadridimensionale 
+$\mathcal{H}_4$. Una porta quantistica che agisca su molti qubit può allora non avere le stesse 
+dimensioni di una porta a singolo qubit (Eq. \ref{eq:2.14}), il che richiede un nuovo formalismo 
+per le porte per sistemi a qubit multipli. 
+
+Si provi ad applicare un'arbitraria porta a singolo qubit U (Eq. \ref{eq:2.14}) 
+al primo qubit nello stato a due qubit $\ket{00}$. Il secondo qubit dello stato 
+$\ket{00}$ dovrebbe rimanere immutato, che, in altre parole, significa applicare 
+la matrice identità $\mathbb{1}$ 2x2 su di esso. Per effettuare queste operazioni, 
+si definisce il prodotto tensore delle due porte a singolo qubit come 
+\begin{equation}
+    U\otimes\mathbb{1}\cong
+    \begin{pmatrix}
+        a&b\\c&d
+    \end{pmatrix}
+    \otimes
+    \begin{pmatrix}
+        1&0\\0&1
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a*
+        \begin{pmatrix}
+            1&0\\0&1
+        \end{pmatrix}
+        &b*
+        \begin{pmatrix}
+            1&0\\0&1
+        \end{pmatrix}
+        \\c*
+        \begin{pmatrix}
+            1&0\\0&1
+        \end{pmatrix}
+        &d*
+        \begin{pmatrix}
+            1&0\\0&1
+        \end{pmatrix}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a&0&b&0\\
+        0&a&0&b\\
+        c&0&d&0\\
+        0&c&0&d
+    \end{pmatrix}.
+\end{equation} % vedi come andare a capo nelle equazioni
+Dunque, il risultato del prodotto tensore $U\otimes\mathbb{1}$ può essere 
+rappresentato come una matrice unitaria 4x4 che può ora essere usata per 
+trasformare il vettore 4x1 che rappresenta lo stato $\ket{00}$ nell'Eq. \ref{eq:2.20}: 
+\begin{equation} \label{eq:2.22}
+    U\otimes\mathbb{1}\ket{00}\cong
+    \begin{pmatrix}
+        a&0&b&0\\
+        0&a&0&b\\
+        c&0&d&0\\
+        0&c&0&d
+    \end{pmatrix}
+    \begin{pmatrix}
+        1\\0\\0\\0
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        a\\0\\c\\0
+    \end{pmatrix}
+    .
+\end{equation}
+Si può anche effettuare prima le operazioni di singolo qubit sui rispettivi 
+qubit, seguite dal prodotto tensore dei due risultanti vettori: 
+\begin{equation} \label{eq:2.23}
+    (U\otimes\mathbb{1})(\ket{0}\otimes\ket{0}) = 
+    U\ket{0}\otimes\mathbb{1}\ket{0} \cong 
+    \begin{pmatrix}
+        a&b\\c&d
+    \end{pmatrix}
+    \begin{pmatrix}
+        1\\0
+    \end{pmatrix}
+    \otimes\Id
+    \begin{pmatrix}
+        1\\0
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        a\\c
+    \end{pmatrix}
+    \otimes
+    \begin{pmatrix}
+        1\\0
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        a\\0\\c\\0
+    \end{pmatrix}
+    .
+\end{equation}
+Questo formalismo può essere esteso a qualunque numero di qubit, e l'uso 
+del prodotto tensore porta ad un aumento esponenziale della dimensionalità 
+dello spazio di Hilbert. Così, $n$ qubit vivono in uno spazio di Hilbert 
+$2^n$-dimensionale ($\mathcal{H}_2^{\otimes n}$) e possono immagazzinare 
+il contenuto di $2^n$ bit classici. Per fare un esempio, solo 33 qubit 
+possono contenere l'equivalente di $2^33 = 8589934592$ bit % verificare
+(= 1 gigabyte), il che porta chiaramente con sè il potenziale per le 
+enormi accelerazioni nella potenza di calcolo, come verrà mostrato più avanti. 
+
+Quando si considerano sistemi a molti qubit, si incontreranno stati quantistici 
+che possono o meno essere fattorizzati. Per esempio, si provi a riscrivere 
+l'ultima espressione dell'Eq. \ref{eq:2.23} come 
+\begin{equation} \label{eq:2.24}
+    \begin{pmatrix}
+        a\\0\\c\\0
+    \end{pmatrix}
+    = a 
+    \begin{pmatrix}
+        1\\0\\0\\0
+    \end{pmatrix}
+    + 0 
+    \begin{pmatrix}
+        0\\1\\0\\0
+    \end{pmatrix}
+    + c 
+    \begin{pmatrix}
+        0\\0\\1\\0
+    \end{pmatrix}
+    + 0 
+    \begin{pmatrix}
+        0\\0\\0\\1
+    \end{pmatrix}
+    \cong a \ket{00} + c \ket{10}, 
+\end{equation}
+che può essere fattorizzato nel prodotto tensore 
+\begin{equation} \label{eq:2.25}
+    a \ket{00} + c \ket{10} = (a \ket{0} + c \ket{1}) \otimes \ket{0}.
+\end{equation}
+Al contrario, si consideri uno dei quattro famosi stati di Bell: 
+\begin{equation} \label{eq:2.26}
+    \ket{\psi^+} = \frac{\ket{01}+\ket{10}}{\sqrt{2}}.
+\end{equation}
+È semplice verificare che lo stato a due qubit $\ket{\psi^+}$ non può essere 
+fattorizzato in un prodotto tensore di due stati di singolo qubit. Ora si 
+immagini che a due persone, Allegra e Bernardo, vengano dati due elettroni 
+preparati nello stato quantistico $\ket{\psi^+}$. Allegra tiene il primo 
+elettrone nel laboratorio e Bernardo porta il secondo elettrone a casa sua. 
+Dopo del tempo $t$, Allegra diventa curiosa di misurare se il suo elettrone 
+è nello stato $\ket{0}$ o $\ket{1}$ ed effettua una misura lungo la base 
+normale. Applicando la regola di Born allo stato quantistico $\ket{\psi^+}$, 
+Allegra sa che misurerà il suo elettrone in uno tra gli stati $\ket{0}$ e 
+$\ket{1}$ con uguali probabilità 0,5. Si noti che, sebbene il vettore di stato 
+$\ket{\psi^+}$ sia conosciuto con esattezza, il risultato della misura è 
+ancora incerto. Misurando il suo elettrone lo trova essere nel suo stato 
+$\ket{1}$. A partire dall'Eq. \ref{eq:2.26}, sapendo che la misura fa 
+collassare una sovrapposizione, lo stato post misura (PM) % definire acronimo?
+$\ket{\psi^+}_{PM}$ è 
+\begin{equation} \label{eq:2.27}
+    \ket{\psi^+}_{PM} = \ket{1_A 0_B}, 
+\end{equation}
+dove i pedici indicano quale elettrone appartiene ad Allegra (A) e quale a 
+Bernardo (B). Osservando questa espressione, Allegra sa che l'elettrone di 
+Bernardo deve trovarsi nello stato $\ket{0}$ senza aver misurato il secondo 
+elettrone! A casa sua, Bernardo misura il suo elettrone un secondo dopo che 
+Allegra ha effettuato la sua misura e trova che infatti è nello stato $\ket{0}$. 
+Si noti che il secondo elettrone non era per niente vicino ad Allegra ma è stata 
+lo stesso in grado di determinare lo stato del secondo elettrone solo misurando 
+il suo. Dopo aver ripetuto questo esperimento un migliaio di volte, Allegra e 
+Bernardo trovano perfette correlazioni nei loro risultati: ogni volta che Allegra 
+misurava il suo elettrone nello stato $\ket{0}$, Bernardo trovava il suo nello 
+stato $\ket{1}$ e viceversa. 
+
+Le correlazioni non locali tra i risultati di misura di qubit sono una peculiare 
+proprietà quantistica degli stati quantistici non fattorizzabili ed è chiamata 
+\emph{entanglement quantistico} (entanglement significa groviglio, garbuglio 
+in inglese). 
+% Il Vocabolario Garzanti Hazon di Inglese, Garzanti Linguistica, 2010
+% Significa anche coinvolgimento (sentimentale) e forse è per questo che ci sono 
+% tante storie romantiche basate sull'entanglement. 
+È una parte integrante della calcolo quantistico e la sezione 2.2.2 darà un 
+esempio concreto di come creare uno stato in entanglement in un \ac{CQ}. 
+
+\section{Porte logiche quantistiche}
+
+Fino a questo punto, la maggior parte dei concetti introdotti viene dal campo 
+della teoria quantistica pura. Ad ogni modo, questa sezione segna la fondamentale 
+transizione dal campo della teoria quantistica a quello dell'\emph{elaborazione 
+dell'informazione quantistica} (quantum information processing). Un computer 
+classico elabora l'informazione ed effettua calcoli manipolando sistematicamente 
+bit attraverso l'applicazione di porte logiche come le porte NOT o XOR. 
+Analogamente, un computer quantistico elabora l'informazione ed effettua 
+\emph{calcoli quantistici} manipolando qubit usando \emph{porte logiche 
+quantistiche}, spesso chiamate semplicemente \emph{porte quantistiche}. 
+Solitamente, una sequenza di tali porte quantistiche è richiesta per effettuare 
+un certo compito o per risolvere un particolare problema su un computer 
+quantistico. Tale sequenza di porte quantistiche è chiamata \emph{algoritmo 
+quantistico}. 
+
+Ci sono molti modi diversi di realizzare un \ac{CQ}, per esempio usando ioni 
+intrappolati, fotoni o giunzioni Josephson superconduttive. % Fonti
+A seconda del substrato scelto, possono essere implementati diversi insiemi di 
+porte logiche quantistiche e per eseguire un algoritmo quantistico questo deve 
+essere mappato sull'hardware quantistico disponibile. Dunque, gli algoritmi 
+quantistici hanno bisogno di essere tradotti (compilati) in una serie di porte 
+consistenti solo di porte quantistiche dall'insieme universale di porte 
+disponibile. Ci si riferisce a questo procedimento con \emph{compilazione 
+quantistica}. Le sottosezioni seguenti introdurranno alcune porte logiche 
+quantistiche principali a singolo qubit e multipli qubit che saranno usate 
+estensivamente nelle sezioni successive di questa tesi. 
+
+\subsection{Porte a singolo qubit}
+
+Le porte logiche quantistiche che agiscono su un sigolo qubit possono essere 
+rappresentate come matrici unitarie 2x2 (vedi Eq. \ref{eq:2.14}) le cui azioni 
+su un qubit possono essere visualizzate come rotazioni della sfera di Bloch. 
+Come una porta quantistica a singolo qubit agisca su un qubit, le sue 
+proprietà e rappresentazione matriciale sranno illustrate usando l'esempio 
+dell'equivalente quantistico della porta logica NOT classica: la cosiddetta 
+porta X. La porta X può essere rappresentata dalla matrice unitaria 2x2 
+\begin{equation} \label{eq:2.28}
+    X \cong 
+    \begin{pmatrix}
+        0&1\\1&0
+    \end{pmatrix}
+    .
+\end{equation}
+L'azione della porta X sullo stato di qubit arbitrario $\ket{\psi}$ 
+(Eq. \ref{eq:2.9}) può essere analizzata usando la matrice della porta e la 
+rappresentazione vettoriale del qubit. Applicando della semplice algebra lineare 
+si ottiene 
+\begin{equation} \label{eq:2.29}
+    X \ket{\psi} = X (\alpha \ket{0} + \beta \ket{1}) \cong 
+    \begin{pmatrix}
+        0&1\\1&0
+    \end{pmatrix}
+    \begin{pmatrix}
+        \alpha \\ \beta
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        \beta \\ \alpha
+    \end{pmatrix}
+    \cong \beta \ket{0} + \alpha \ket{1}.
+\end{equation}
+
+Così, applicando la porta X allo stato di qubit $\ket{\psi}$ si scambiano le 
+ampiezze degli stati $\ket{0}$ e $\ket{1}$. Più nello specifico, l'applicazione 
+di X allo stato $\ket{0}$ risulta nello stato $\ket{1}$: 
+\begin{equation} \label{eq:2.30}
+    X \ket{0} \cong 
+    \begin{pmatrix}
+        0&1\\1&0
+    \end{pmatrix}
+    \begin{pmatrix}
+        1\\0
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0\\1
+    \end{pmatrix}
+    \cong \ket{1}.
+\end{equation}
+Nei termini dell'esempio con l'elettrone di valenza di un atomo di idrogeno 
+mostrato in Fig. 2.1, una porta X può essere implementata eccitando l'elettrone 
+dallo stato fondamentale $\ket{0}$ verso il guscio di valenza successivo più 
+energetico dell'elettrone, definito come stato $\ket{1}$, usando un impulso 
+laser controllato. 
+
+Lo stato $\ket{0}$ è recuperato quando si applica di nuovo X allo stato $\ket{1}$: 
+\begin{equation} \label{eq:2.31}
+    X \ket{1} \cong 
+    \begin{pmatrix}
+        0&1\\1&0
+    \end{pmatrix}
+    \begin{pmatrix}
+        0\\1
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        1\\0
+    \end{pmatrix}
+    \cong \ket{0}.
+\end{equation}
+Sulla sfera di Bloch, la porta X corrisponde ad una rotazione antioraria di $\pi$ 
+attorno all'asse x, come mostrato in Fig. 2.3.
+
+% Figura ***********************
+
+Dalle Eq. \ref{eq:2.29}, \ref{eq:2.30} e \ref{eq:2.31} segue che X è la propria 
+inversa così come il proprio coniugato hermitiano: 
+\begin{equation} \label{eq:2.32}
+    XX = XX^\dagger = \mathbb{1},
+\end{equation}
+\begin{equation} \label{eq:2.33}
+    X = X^{-1} = X^\dagger.
+\end{equation}
+Basandosi sul libro di testo di Nielsen e Chuang (2010), % inserisci fonte
+l'azione, la rappresentazione del circuito e della matrice e la visualizzazione 
+sulla sfera di Bloch per alcune delle più importanti porte logiche quantistiche 
+a singolo qubit sono riassunte nella tabella 2.1.
+
+% tabella ***************************************
+
+\subsection{Porte a qubit multipli}
+
+% Tabella **********************
+
+Le porte logiche quantistiche a qubit multipli agiscono su almeno due qubit 
+allo stesso tempo. Similmente alle porte a singolo qubit, una porta quantistica 
+a $n$ qubit può essere rappresentata come una matrice unitaria $2^n\times2^n$. 
+Dato che sono coinvolti molteplici qubit, la sfera di Bloch non può più essere 
+usata per visualizzarne l'azione. La porta quantistica NOT controllata a due qubit 
+sarà usata per dimostrare le proprietà, la rappresentazione matriciale e l'azione 
+di una porta quantistica a due qubit. Questo può poi essere facilmente 
+generalizzato a porte quantistiche a $n$ qubit. 
+
+La porta NOT controllata o CNOT è data dalla seguente matrice $4\times4$: 
+\begin{equation} \label{eq:2.34}
+    \text{CNOT} \cong 
+    \begin{pmatrix}
+        \mathbb{1} & 0 \\ 0 & X
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1&0&0&0\\
+        0&1&0&0\\
+        0&0&0&1\\
+        0&0&1&0
+    \end{pmatrix}
+    .
+\end{equation}
+La porta CNOT accetta due qubit, uno di controllo e uno bersaglio, come input. 
+Se e solo se il qubit di controllo è nello stato $\ket{1}$, la porta quantistica 
+NOT (X) è applicata al qubit bersaglio. Nelle equazioni, la CNOT sarà sempre 
+seguita da parentesi contenenti il qubit di controllo (c) seguito dal qubit 
+bersaglio (b): % oppure usare t come lettera
+CNOT(c,b). La relazione di input-output, chiamata tabella di verità, per la porta 
+CNOT è data nella tabella 2.2. 
+
+Per dimostrare l'utilità della porta CNOT si immagini di iniziare con due 
+qubit non in entanglement, entrambi nello stato $\ket{0}$: 
+\begin{equation} \label{eq:2.35}
+    \ket{\varphi_0} = \ket{0} \otimes \ket{0} = \ket{00}.
+\end{equation}
+Applicando la porta H sul primo qubit si ottiene il seguente stato (ancora non 
+in entanglement): 
+\begin{equation} \label{eq:2.36}
+    \ket{\varphi_1} = (H \otimes \mathbb{1}) \ket{\varphi_0} = 
+    (H \otimes \mathbb{1}) \ket{00} = \frac{1}{\sqrt{2}} \ket{00} + 
+    \frac{1}{\sqrt{2}} \ket{10}.
+\end{equation}
+Ora si immagini di applicare la porta CNOT allo stato $\ket{\varphi_1}$, in cui 
+il qubit di controllo è quello di sinistra e il qubit bersaglio è quello di 
+destra: 
+\begin{equation} \label{eq:2.37}
+    \text{CNOT}(0,1)(\frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{10}) = 
+    \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} (\mathbb{1} \otimes 
+    X) \ket{10} = \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{11}.
+\end{equation}
+L'ultima espressione nell'Eq. \ref{eq:2.37} è uno dei famosi stati di Bell, 
+i quali sono un insieme di quattro stati quantistici in massimo entanglement. 
+Un altro stato di Bell è stato usato nell'esempio di entanglement nella sezione 
+2.1.2. Dunque, questo esempio mostra come la porta CNOT è cruciale per la 
+generazione di stati in entanglement, poiché applica la porta X ad un qubit 
+bersaglio a seconda dello stato di un secondo qubit di controllo. 
+
+Le tre porte quantistiche a qubit multipli più importanti CNOT, Toffoli e nCNOT 
+sono caratterizzate nella tabella 2.3. 
+
+% tabella *************************
+
+\section{Machine learning classico}
+
+Il \acf{ML}, una sottodisciplina dell'intelligenza artificiale, prova a dare la 
+capacità ai computer di imparare dai dati senza che un umano programmi 
+esplicitamente le sue azioni. Può essere suddiviso nei tre maggiori campi di 
+supervisionato, non supervisionato e apprendimento per rinforzo (Schuld, 
+Sinaskiy, Petruccione, 2015). Solo il machine learning supervisionato sarà 
+introdotto poiché questa tesi di ricerca si focalizza esclusivamente su 
+algoritmi di machine learning supervisionato. 
+
+L'idea principale del machine learning supervisionato è di addestrare un 
+algoritmo su un insieme di dati \emph{etichettati} contenente, per esempio, 
+immagini di frutti con i corrispondenti nomi cosicché possa essere usato per 
+etichettare nuove immagini che non fanno parte dell'insieme dati di addestramento. 
+Dato che i campioni nell'insieme dati di addestramento sono etichettati, 
+il processo è detto essere supervisionato. 
+
+Più formalmente, nel machine learning supervisionato si è di fronte a paia di 
+variabili di input (x) e di output (o) e si suppone che l'algoritmo di machine 
+learning impari la funzione $f$ che mappa gli input sui relativi output: 
+\begin{equation} \label{eq:2.38}
+    f(x) = o.
+\end{equation}
+Così, l'algoritmo dovrebbe approssimare la funzione di mappatura $f$ a tal punto 
+che può predire l'output $o$ per nuovi dati di input sconosciuti $\tilde{x}$ 
+(C. M. Bishop, 2006). La seguente sezione introdurrà un algoritmo ben noto nel 
+campo del \ac{ML} supervisionato: l'algoritmo k-nearest neighbours classico. 
+
+\subsection{L'algoritmo k-nearest neighbours}
+
+Per comprendere la versione quantistica dell'algoritmo di k-nearest neighbours 
+(KNN) pesato sulla distanza proposto da Schuld (2014) che verrà usato 
+successivamente è richiesta una conoscenza pregressa della versione classica 
+dell'algoritmo descritta da Cunningham e Delany (2007) che verrà 
+introdotta in questa sottosezione. 
+
+Si immagini di lavorare per una compagnia che gestisce un motore di ricerca e 
+e che venga assegnato il compito di classificare immagini ignote di frutti come 
+mele o banane. Per addestrare l'algoritmo di classificazione, vengono fornite 
+cinque differenti immagini di mele e cinque differenti immagini di banane. 
+Questo verrà chiamato l'\emph{insieme dati di apprendimento} (training data set) 
+$D_T$. Le immagini in $D_T$ potrebbero essere prese da angolazioni diverse, in 
+condizioni di luce varie ed includere mele e banane di colori diversi. 
+
+La maggior parte delle volte, usare la rappresentazione completa dei pixel di 
+ogni immagine per la classificazione non porta a risultati ottimali. Dunque, il 
+passo successivo è di selezionare un certo numero di caratteristiche (features) 
+estratte dalle immagini nell'insime di apprendimento che possono essere usate per 
+differenziare le mele dalle banane. Tali caratteristiche possono essere il codice 
+del colore più frequente tra i pixel, dato che mele e banane hanno spettri di 
+colore diversi. Usare una misura della curvatura dell'oggetto principale 
+nell'immagine è un'altra possibilità, dato che una mela è quasi sferica mentre 
+una banana assomiglia più ad una linea curva. 
+
+Selezionando ed estraendo caratteristiche, la dimensionalità dell'insieme dati 
+di apprendimento è drasticamente ridotta da qualche migliaio di pixel ad una 
+manciata di caratteristiche. Le $m$ caratteristiche estratte dalla $j$-esima 
+immagine sono conservate nel $vettore caratteristica$ $m$-dimensionale 
+$\vec{v}_j$. Matematicamente, l'insieme dati di apprendimento $D_T$ consiste di 
+dieci vettori caratteristica $\vec{v}_0, \vec{v}_1, \ldots, \vec{v}_9$, ognuno 
+assegnato alla classe $A$ (mela) o alla classe $B$ (banana). I vettori di 
+apprendimento sono visualizzati come cerchi chiari e scuri in figura. 
+
+% Metti figura ****************************
+
+Data una nuova immagine di una mela o una banana, prima si estraggono le stesse 
+$m$ caratteristiche da essa e si conservano nel vettore d'input $\vec{x}$. Dei 
+tanti algoritmi, si sceglie di usare l'algoritmo \ac{KNN}, dato che è un 
+classificatore non parametrico, cioè non fa assunzioni pregresse sulla classe 
+della nuova immagine. Dato un nuovo vettore d'input $\vec{x}$ non classificato 
+(stella nella figura), % inserisci riferimento a figura
+l'algoritmo considera i $k$ elementi più vicini tra quelli dell'insieme dati 
+di apprendimento (usando una misura di distanza predefinita) e classifica 
+$\vec{x}$, basandosi su un voto a maggioranza, come $A$ o $B$. Così, $k$ è un 
+numero intero positivo, solitamente scelto piccolo ed il suo valore determina 
+il risultato della classificazione. Praticamente, nel caso $k=3$ in figura, 
+% aggiungi riferimento a figura ***************
+il vettore $\vec{x}$ sarà classificato come appartenente alla classe $B$ (scuro) 
+ma nel caso $k=6$ sarà etichettato nella classe $A$ (chiaro). 
+
+% figura classe a classe b ******************
+
+Nel caso $k=10$, $\vec{x}$ sarà semplicemente assegnato alla classe con più 
+membri. In questo caso, ai vettori di addestramento dovrebbe assegnarsi dei pesi 
+dipendenti dalla distanza (come $\frac{1}{\text{distanza}}$) per aumentare 
+l'influenza dei vettori più vicini al vettore d'input rispetto a quelli più 
+lontani. 
+
+\subsection{Complessità algoritmica: notazione O-grande}
+
+Nei campi dell'informatica e della quantum information, la cosiddetta 
+\emph{notazione O-grande}, inizialmente descritta da Bachmann (1894), 
+% inserisci fonte *****************************
+è spesso usata per descrivere come l'esecuzione di un algoritmo dipende 
+da variabili come l'accuratezza desiderata, il numero di vettori d'input o la 
+loro dimensione. Per questo, essa è un modo di quantificare la \emph{complessità 
+in termini di tempo dell'algoritmo} di un algoritmo quantistico. Nelle sezioni 
+successive di questa tesi, la notazione O-grande sarà usata come uno strumento 
+per quantificare possibili accelerazioni quantistiche negli algoritmi \ac{KNN} di 
+machine learning quantistico. 
+
+% scatola definizione di big-O **************
+
+% continuare ********************
