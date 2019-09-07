@@ -1,0 +1,77 @@
+%*******************************************************
+% Table of Contents
+%*******************************************************
+\pagestyle{scrheadings}
+%\phantomsection
+\pdfbookmark[1]{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{2} % <-- 2 includes up to subsections in the ToC
+\setcounter{secnumdepth}{3} % <-- 3 numbers up to subsubsections
+\manualmark
+\markboth{\spacedlowsmallcaps{\contentsname}}{\spacedlowsmallcaps{\contentsname}}
+\tableofcontents
+\automark[section]{chapter}
+\renewcommand{\chaptermark}[1]{\markboth{\spacedlowsmallcaps{#1}}{\spacedlowsmallcaps{#1}}}
+\renewcommand{\sectionmark}[1]{\markright{\textsc{\thesection}\enspace\spacedlowsmallcaps{#1}}}
+%*******************************************************
+% List of Figures and of the Tables
+%*******************************************************
+\clearpage
+% \pagestyle{empty} % Uncomment this line if your lists should not have any headlines with section name and page number
+\begingroup
+    \let\clearpage\relax
+    \let\cleardoublepage\relax
+    %*******************************************************
+    % List of Figures
+    %*******************************************************
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\listfigurename}
+    \pdfbookmark[1]{\listfigurename}{lof}
+    \listoffigures
+
+    \vspace{8ex}
+
+    %*******************************************************
+    % List of Tables
+    %*******************************************************
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\listtablename}
+    \pdfbookmark[1]{\listtablename}{lot}
+    \listoftables
+
+    \vspace{8ex}
+    % \newpage
+
+    %*******************************************************
+    % List of Listings
+    %*******************************************************
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\lstlistlistingname}
+    %https://tex.stackexchange.com/questions/64839/how-to-change-listing-caption
+    \renewcommand{\lstlistingname}{Algoritmo}% Listing -> Algoritmo
+    \renewcommand{\lstlistlistingname}{Elenco degli algoritmi}% List of Listings -> List of Algorithms
+    \pdfbookmark[1]{\lstlistlistingname}{lol}
+    \lstlistoflistings
+
+    \vspace{8ex}
+
+    %*******************************************************
+    % Acronyms
+    %*******************************************************
+    %\phantomsection
+    \pdfbookmark[1]{Acronimi}{Acronimi}
+    \markboth{\spacedlowsmallcaps{Acronimi}}{\spacedlowsmallcaps{Acronimi}}
+    \chapter*{Acronimi}
+    \begin{acronym}[UMLX]
+        \acro{DRY}{Don't Repeat Yourself}
+        \acro{ML}{machine learning}
+        \acro{CQ}{computer quantistico}
+        \acro{QC}{quantum computer}
+        \acro{MLQ}{machine learning quantistico}
+        \acro{QML}{quantum machine learning}
+        \acro{QRAM}{quantum random access memory}
+        \acro{KNN}{k-nearest neighbours}
+        \acro{FF-QRAM}{Flip-flop QRAM}
+        \acro{QDB}{Quantum database}
+    \end{acronym}
+
+\endgroup

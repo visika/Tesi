@@ -70,7 +70,7 @@
 \include{FrontBackmatter/DirtyTitlepage}
 \include{FrontBackmatter/Titlepage}
 \include{FrontBackmatter/Titleback}
-\cleardoublepage\include{FrontBackmatter/Dedication}
+% \cleardoublepage\include{FrontBackmatter/Dedication}
 %\cleardoublepage\include{FrontBackmatter/Foreword}
 \cleardoublepage\include{FrontBackmatter/Abstract}
 %\cleardoublepage\include{FrontBackmatter/Publications}
@@ -85,15 +85,19 @@
 %\setcounter{page}{90}
 % use \cleardoublepage here to avoid problems with pdfbookmark
 \cleardoublepage
-\part{Avvicinamento}\label{pt:presentazione}
+\ctparttext{Introduzione al campo del quantum computing e del quantum 
+machine learning, presentazione della teoria di base e degli strumenti usati.}
+\part{Teoria}\label{pt:presentazione}
 \include{Chapters/Introduzione}
 \include{Chapters/FondamentiTeorici}
 \include{Chapters/Strumenti}
 \cleardoublepage
-\ctparttext{Testo sotto la seconda parte}
-\part{Implentazione}\label{pt:implementazione}
-\include{Chapters/QML}
-\include{Chapters/Chapter02}
+\ctparttext{Implementazione dell'algoritmo k-nearest neighbour e della tecnica 
+di costruzione della QRAM; simulazione ed esecuzione su hardware quantistico dei 
+circuiti progettati; analisi dei risultati ottenuti.}
+\part{Pratica}\label{pt:implementazione}
+\include{Chapters/Implementazione}
+\include{Chapters/Risultati}
 \include{Chapters/LavoriCorrelati}
 %\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
 \include{Chapters/Chapter03}

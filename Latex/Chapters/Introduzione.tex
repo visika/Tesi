@@ -19,130 +19,203 @@
 
 %****************************************
 
-L'abilità di riconoscere facce familiari, di comprendere il linguaggio parlato e di 
-distinguere tra tipi di piante viene naturale agli esseri umani, sebbene
-% sebbene, benché, quantunque, anche se
-questi processi di riconoscimento di modelli e di classificazione siano intrinsecamente 
-complessi. Il \ac{ML}, una sottodisciplina dell'intelligenza artificiale, 
-si occupa dello sviluppo di algoritmi che eseguono questo tipo di compiti, permettendo 
-in questo modo % così
-ai computer di trovare e riconoscere modelli nei dati e di classificare input 
-% dati da elaborare
-sconosciuti % ignoti
-basandosi sui % in base ai
-precedenti dati di addestramento. % allenamento, ammaestramento
-Tali algoritmi formano il nucleo di p.e. motori di riconoscimento del linguaggio % parola
-umano e di raccomandazione come quelli usati da Amazon. % Fonti
+Chiunque abbia un cellulare di nuova generazione è venuto in contatto con il 
+campo del machine learning, la disciplina che si pone l'obiettivo di rendere 
+i computer capaci di apprendere dall'esperienza. 
+Gli esseri umani sono strettamente legati al processo di apprendimento, a 
+partire dalla prima infanzia ed in maniera più o meno evidente durante 
+tutto il corso vitale. 
+Sebbene tale processo sembri automatico, in realtà è espressione di un 
+complesso sistema di feedback, che in fin dei conti è codificato dal 
+nostro codice genetico. 
+Il \ac{ML} (tradotto \emph{apprendimento automatico}) prevede la scrittura 
+del codice di programmazione che permetta 
+ai computer di effettuare qualcosa di analogo all'apprendimento. 
+\marginpar{Un esempio recente di uso del \ac{ML} è la funzione di gestione adattiva della batteria, 
+lanciata in Android 9, che usa il machine learning per predire quali applicazioni 
+l'utente userà nelle prossime ore e quali no, in modo da dedicare la carica solo per le 
+applicazioni più usate dal proprietario. \cite{android10}}
+Tali algoritmi sono il motore dei moderni assistenti vocali e dei sistemi 
+che ci suggeriscono nuovi prodotti da acquistare o video da guardare, ma anche 
+nel prevenire le frodi su carta di credito, per filtrare lo spam dalle nostre caselle 
+email, nell'individuare e diagnosticare malattie, e tanto ancora \cite{pml}. 
 
-Secondo l'IBM, approssimativamente % circa
-2,5 quintilioni ($10^{18}$) byte di dati sono creati ogni giorno. 
-Questo numero crescente implica che molte aree che hanno a che fare con i dati 
-avranno bisogno prima o poi di algoritmi avanzati che possano dare un senso % significato
-al contenuto dei dati, recuperare modelli e rivelare correlazioni. 
-In qualsiasi modo, il più % la maggior parte
-degli algoritmi di \ac{ML} implica l'esecuzione di operazioni computazionalmente dispendiose 
-e fare ciò su grandi insiemi di dati richiede % porta via, impiega
-inevitabilmente molto % un sacco di
-tempo. % Fonti
-Di conseguenza, % così, perciò
-diventa sempre più importante trovare metodi % modi, maniere
-efficienti di trattare % manipolare, avere a che fare con, gestire
-grandi dati. 
+% L'abilità di riconoscere facce familiari, di comprendere il linguaggio parlato e di 
+% distinguere tra tipi di piante viene naturale agli esseri umani, sebbene
+% % sebbene, benché, quantunque, anche se
+% questi processi di riconoscimento di modelli e di classificazione siano intrinsecamente 
+% complessi. Il \ac{ML}, una sottodisciplina dell'intelligenza artificiale, 
+% si occupa dello sviluppo di algoritmi che eseguono questo tipo di compiti, permettendo 
+% in questo modo % così
+% ai computer di trovare e riconoscere modelli nei dati e di classificare input 
+% % dati da elaborare
+% sconosciuti % ignoti
+% basandosi sui % in base ai
+% precedenti dati di addestramento. % allenamento, ammaestramento
+% Tali algoritmi formano il nucleo di p.e. motori di riconoscimento del linguaggio % parola
+% umano e di raccomandazione come quelli usati da Amazon. % Fonti
 
-Una soluzione promettente è l'uso della computazione quantistica, che è stata 
-oggetto di intensa ricerca nelle ultime decadi. Un \ac{CQ} usa 
-sistemi quantomeccanici e le loro proprietà uniche per manipolare e processare 
-l'informazione in modi impossibili per i computer classici. 
+Stando all'IBM \cite{ibm-big-data}, ogni giorno vengono creati circa $2,5\times10^{18}$ byte di dati: 
+questo numero in costante crescita mette chi ha a che fare con i dati di fronte 
+alla necessità di dotarsi di algoritmi avanzati che possando fare ordine in questo 
+oceano di informazioni. Per trovare modelli e correlazioni su insiemi molto grandi
+è necessario un numero di operazioni che richiede molto tempo ed 
+energia per essere portate a termine; trovare metodi efficienti per completare 
+questi compiti diventa necessario sotto molti punti di vista. 
+
+Diversi lavori hanno evidenziato il ruolo nodale rispetto a questo problema 
+che può avere l'uso della computazione quantistica, 
+oggetto di intensa ricerca teorica da vari decenni 
+e recentemente di sperimentazione da parte di studenti \cite{fingerhuth} e ricercatori \cite{schuld}. 
+
+Un \ac{CQ} (o \ac{QC}) usa le proprietà peculiari dei sistemi quantomeccanici per manipolare 
+ed elaborare l'informazione in modi inaccessibili ai normali computer classici. 
 Così come un computer classico manipola bit, un computer quantistico fa uso dei 
 cosiddetti bit quantistici (qubit). I bit e i qubit sono entrambi entità binarie, 
 il che significa che possono assumere solo i valori 0 o 1. Ad ogni modo, un bit 
-classico non probabilistico può assumere solo uno di questi valori alla volta, 
-laddove un qubit può anche trovarsi in una sovrapposizione lineare dei due stati. 
+classico non probabilistico\footnote{Per informazioni sui bit classici 
+probabilitici si faccia riferimento alla sezione 3.2 di \cite{mannucci}.} 
+può assumere solo uno di questi valori alla volta, 
+laddove un qubit può trovarsi in una sovrapposizione lineare dei due stati. 
+Il fatto di lavorare con una sovrapposizione di stati di un sistema, 
+invece che con uno stato definito alla volta, implica che si possono effettuare 
+determinate operazioni che coinvolgono più stati contemporaneamente. 
+% Questa possibilità è entusiasmante, ma di fronte a nuovi modi di 
+% agire, si rende necessario sviluppare nuovi algoritmi e strategie di sviluppo. 
 
-Questa proprietà dà luogo al parallelismo quantistico, il quale permette l'esecuzione 
-di determinate operazioni su vari stati quantistici allo stesso tempo. 
-Nonostante questo vantaggio, la difficoltà nella computazione quantistica risiede 
-nel recupero della soluzione computata, giacché la misura di un qubit lo fa 
-collassare in un singolo bit classico e in tal modo distrugge l'informazione riguardo 
-la sua precedente sovrapposizione. Diversi algoritmi quantistici sono stati proposti, 
-che forniscono accelerazioni esponenziali se confrontati con le loro controparti classiche, 
-con l'algoritmo di fattorizzazione in numeri primi di Shor tra i più famosi. % Fonti
-Così, la computazione quantistica ha il potenziale di migliorare la potenza computazionale, 
-accelerare l'elaborazione di grandi dati e possibilmente risolvere alcuni problemi che sono 
-praticamente irrisolvibili su computer classici, p.e. problemi di ottimizzazione 
-computazionalmente esaustivi come il ben noto problema del commesso viaggiatore con più 
-di 1000 città. % Fonti
+% "Stai pensando troppo classicamente"
 
-Tenendo in considerazione questi vantaggi, la combinazione di computazione quantistica e \ac{ML}
-classico nel nuovo campo del \ac{MLQ} sembra quasi naturale. Più nello specifico, si parla di 
-machine learning aumentato quantisticamente quando la computazione quantistica è usata per 
-migliorare algoritmi di \ac{ML} classico. Cionondimeno, entrambi i campi sono mutualisticamente 
-benefici l'un l'altro, poiché il \ac{ML} classico può anche essere usato per migliorare aspetti 
-della computazione quantistica. Per esempio, Las Heras, Alvarez-Rodriguez, Solano e Sanz % Fonti
-hanno mostrato che un algoritmo genetico classico può essere usato per ridurre l'errore sperimentale 
-nelle porte logiche quantistiche. Comunque, questa tesi si concentrerà solo nel campo del machine 
+Nonostante ciò, uno degli ostacoli principali di questo campo è rappresentato proprio dalla 
+caratteristica alla base della meccanica quantistica: quando si ha un qubit 
+in una sovrapposizione di stati, non possiamo conoscerne i dettagli intrinseci 
+in un determinato istante, a meno di effettuare una misura; se ci provassimo, 
+otterremmo un risultato ben definito, facendo collassare la funzione d'onda 
+che descrive il qubit, riducendolo in fin dei conti ad un bit con uno stato definito (esattamente 
+quello che misuriamo), e perdendo tutte le informazioni quantistiche 
+contenute nel qubit. 
+
+% Il tentativo negli ultimi anni è stato quello di costruire macchine 
+% che sfruttassero queste proprietà a proprio vantaggio, a patto di obbedire 
+% alle regole del gioco. Quando abbiamo un qubit in una sovrapposizione di 
+% stati, non possiamo conoscere in quale stato si trovi in un determinato istante; 
+% se ci provassimo, misurandolo, otterremmo un risultato ben definito, ma lo 
+% avremmo fatto collassare e distrutto tutte le informazioni quantistiche che 
+% conteneva. 
+
+Per avere un'idea di come un \ac{CQ} si rapporti con un computer ordinario, 
+si possono considerare diversi algoritmi quantistici, che forniscono 
+accelerazioni esponenziali se confrontati con le loro controparti classiche; 
+l'algoritmo di fattorizzazione in numeri primi di Shor è uno tra i più famosi \cite{shor}. 
+% La computazione quantistica ha il potenziale di migliorare la potenza computazionale, 
+% accelerare l'elaborazione di grandi dati e probabilmente risolvere alcuni problemi che sono 
+% praticamente irrisolvibili su computer classici, p.e. problemi di ottimizzazione 
+% computazionalmente dispendiosi come il ben noto problema del commesso viaggiatore con più 
+% di 1000 città. % Fonti
+
+% adesso è già avviata la combinazione tra ML e QC
+
+Alla luce di questi fatti, negli ultimi anni c'è stata particolare attenzione nei 
+riguardi del nuovo campo del \ac{MLQ} (o \ac{QML}), che mette insieme il \ac{ML} con il quantum 
+computing. 
+
+Più nello specifico, si parla di machine learning migliorato quantisticamente quando 
+la computazione quantistica è usata per migliorare algoritmi di \ac{ML} classico. 
+Cionondimeno, entrambi i campi sono benefici l'un l'altro, 
+poiché il \ac{ML} classico può anche essere usato per migliorare aspetti 
+della computazione quantistica \cite{PhysRevLett.116.230504}. 
+% Per esempio, Las Heras, Alvarez-Rodriguez, Solano e Sanz % Fonti
+% hanno mostrato che un algoritmo genetico classico può essere usato per ridurre 
+% l'errore sperimentale nelle porte logiche quantistiche. 
+Questa tesi si occuperà solo del campo del machine 
 learning aumentato quantisticamente. 
+
+% ***********************************************
 
 \section{Motivazione}
 
-Il \ac{ML} classico è un ambito molto concreto poiché può essere direttamente testato, 
-verificato e implementato su qualsiasi computer classico commerciale. 
-Fino ad ora, il \ac{MLQ} è stato per la gran parte di natura teorica, dato che le risorse 
-computazionali richieste sono solo parzialmente sviluppate. Per produrre soluzioni affidabili, 
-gli algoritmi di \ac{MLQ} spesso richiedono un numero enorme di qubit con correzione 
-degli errori e qualche sistema di memorizzazione di dati quantistici, per esempio la 
-\ac{QRAM} proposta da Giovannetti, Lloyd e Maccone. % Fonti
+Il \ac{QML} è un campo molto giovane e in fermento. Stiamo assistendo a qualcosa di 
+analogo a quella che era la nascita dei computer classici, ovvero lo sviluppo di un 
+numero sempre crescente di algoritmi, tecniche ed hardware di base in 
+un ambiente in cui le cose consolidate sono ben poche: il \ac{QML} è solo una 
+delle branche che sono state reputate promettenti per quanto riguarda i vantaggi 
+portati dai computer quantistici \cite{what-is-ibm-q}. \marginpar{I campi che si 
+prevede otterranno accelerazioni maggiori grazie al quantum computing sono il 
+machine learning, la simulazione di sistemi quantomeccanici, i problemi di 
+ottimizzazione e l'analisi finanziaria.}
+In ogni caso c'è necessità di inventare nuove strategie per risolvere anche i 
+problemi più semplici: per avere risultati affidabili spesso si richiede un 
+numero considerevole di qubit ed unità di memorizzazione che possano conservare 
+informazioni quantistiche, come la \ac{QRAM}. 
+Al giorno d'oggi il numero massimo di qubit a superconduzione, da quanto viene 
+riferito, è di 50 \cite{50qubit}. 
+
+Negli ultimi anni ci sono state varie implementazioni innovative di algoritmi di \ac{MLQ} \cite{quantum-advantage}: 
+seguendo i passi che hanno portato alla nascita del \ac{ML} nel XX secolo, 
+Tacchino et al. \cite{tacchino} hanno implementato un percettrone su hardware quantistico;
+Schuld et al. \cite{schuld} hanno invece implementato un algoritmo \ac{KNN}. 
+Questa tesi parte proprio da quest'ultimo articolo, analizzando le possibilità di 
+miglioramento in conseguenza delle novità nell'hardware e nelle tecniche di codifica dei dati. 
+
+% Li, Liu, Xu e Du hanno distinto con successo cifre scritte a mano usando un quantum support 
+% vector machine su un banco di prova a risonanza magnetica nucleare con quattro qubit. In più, 
+% Cai et al. sono stati i primi a dimostrare sperimentalmente il machine learning quantistico su 
+% un \ac{CQ} fotonico e hanno mostrato che la distanza tra due vettori e il loro prodotto 
+% interno possono effettivamente essere computati quantomeccanicamente. 
+% Infine, Ristè et al. hanno risolto un problema di learning parity con cinque qubit 
+% superconduttivi e hanno trovato che un vantaggio quantistico può già essere osservato 
+% in sistemi senza correzione degli errori. 
+
+% Considerando il distacco tra il numero di algoritmi di \ac{MLQ} e le poche realizzazioni 
+% sperimentali, considerando inoltre i recenti sviluppi nell'hardware quantistico, diventa 
+% importante scoprire come i problemi di \ac{MLQ} realizzati di \ac{CQ} di piccola dimensione 
+% scalino quando implementati su \ac{CQ} con maggiori risorse. 
+% Di qui, l'obiettivo di questa ricerca è il fornire implementazioni come prova di principio, 
+% simulazioni e risultati sperimentali di algoritmi di \ac{MLQ} selezionati a partire da 
+% insiemi di dati di grandezza da piccola a media, osservando come cambiano i requisiti ed 
+% i risultati passando da un caso all'altro. A questo scopo, l'algoritmo \acf{KNN}, uno tra i 
+% più semplici algoritmi di \ac{ML}, è stato scelto come buon esempio minimale per 
+% l'implementazione, la simulazione e la sperimentazione quantistica. 
+% Questo è un passo necessario nel tentativo di far passare il \ac{MLQ} da un ambito di 
+% ricerca quasi puramente teorico ad un campo più applicativo come è il \ac{ML} classico. 
+
+% Il \ac{ML} classico è un ambito molto concreto poiché può essere direttamente testato, 
+% verificato e implementato su qualsiasi computer classico commerciale. 
+% Fino ad ora, il \ac{MLQ} è stato per la gran parte di natura teorica, dato che le risorse 
+% computazionali richieste sono solo parzialmente sviluppate. Per produrre soluzioni affidabili, 
+% gli algoritmi di \ac{MLQ} spesso richiedono un numero enorme di qubit con correzione 
+% degli errori e qualche sistema di memorizzazione di dati quantistici, per esempio la 
+% \ac{QRAM} proposta da Giovannetti, Lloyd e Maccone. % Fonti
 % Io ho usato quella proposta da Petruccione, devo vedere se inserire il riferimento al posto 
 % di questo o introdurlo dopo nel discorso
-In ogni caso, al giorno d'oggi il massimo numero di qubit p.e. a superconduzione, da quanto 
-viene riferito, usati per il calcolo sono quattordici; 
+
+% Al giorno d'oggi il massimo numero di qubit p.e. a superconduzione, da quanto 
+% viene riferito, usati per il calcolo sono quattordici; 
 % si intende quelli a disposizione pubblica, poi il massimo al mondo bisogna verificarlo
-il D-Wave II quantum annealing device fornisce 1152 qubit ma può risolvere solo una ristretta 
-classe di problemi, e una \ac{QRAM} dedicata non è stata ancora sviluppata. % Fonti
+% il D-Wave II quantum annealing device fornisce 1152 qubit ma può risolvere solo una ristretta 
+% classe di problemi, e una \ac{QRAM} dedicata non è stata ancora sviluppata. % Fonti
 % Verificare che sia ancora così
-Inoltre, la correzione degli errori dei qubit è un campo di ricerca ancora attivo 
-e sebbene ci siano stati notevoli miglioramenti, % mettere nota a margine con dati del miglioramento
-la maggior parte dei \ac{CQ} preliminari descritti hanno a che fare con qubit senza correzione 
-d'errore, con vite brevi e sono, quindi, inadatti per grandi implementazioni di \ac{MLQ}. 
-
-Negli ultimi anni ci sono state varie implementazioni innovative di algoritmi di \ac{MLQ} che 
-aprono la strada a nuove possibilità di sperimentazione. 
-Tacchino\cite{tacchino} ha implementato un percettrone e Schuld\cite{schuld} ha implementato un 
-algoritmo \ac{KNN} su hardware quantistico. 
-Li, Liu, Xu e Du hanno distinto con successo cifre scritte a mano usando un quantum support 
-vector machine su un banco di prova a risonanza magnetica nucleare con quattro qubit. In più, 
-Cai et al. sono stati i primi a dimostrare sperimentalmente il machine learning quantistico su 
-un \ac{CQ} fotonico e hanno mostrato che la distanza tra due vettori e il loro prodotto 
-interno possono effettivamente essere computati quantomeccanicamente. 
-Infine, Ristè et al. hanno risolto un problema di learning parity con cinque qubit 
-superconduttivi e hanno trovato che un vantaggio quantistico può già essere osservato 
-in sistemi senza correzione degli errori. 
-
-Considerando il distacco tra il numero di algoritmi di \ac{MLQ} e le poche realizzazioni 
-sperimentali, considerando inoltre i recenti sviluppi nell'hardware quantistico, diventa 
-importante scoprire come i problemi di \ac{MLQ} realizzati di \ac{CQ} di piccola dimensione 
-scalino quando implementati su \ac{CQ} con maggiori risorse. 
-Di qui, l'obiettivo di questa ricerca è il fornire implementazioni come prova di principio, 
-simulazioni e risultati sperimentali di algoritmi di \ac{MLQ} selezionati a partire da 
-insiemi di dati di grandezza da piccola a media, osservando come cambiano i requisiti ed 
-i risultati passando da un caso all'altro. A questo scopo, l'algoritmo \acf{KNN}, uno tra i 
-più semplici algoritmi di \ac{ML}, è stato scelto come buon esempio minimale per 
-l'implementazione, la simulazione e la sperimentazione quantistica. 
-Questo è un passo necessario nel tentativo di far passare il \ac{MLQ} da un ambito di 
-ricerca quasi puramente teorico ad un campo più applicativo come è il \ac{ML} classico. 
+% Inoltre, la correzione degli errori dei qubit è un campo di ricerca ancora attivo 
+% e sebbene ci siano stati notevoli miglioramenti, % mettere nota a margine con dati del miglioramento
+% la maggior parte dei \ac{CQ} preliminari descritti hanno a che fare con qubit senza correzione 
+% d'errore, con vite brevi e sono, quindi, inadatti per grandi implementazioni di \ac{MLQ}. 
 
 \section{Domanda di ricerca}
 
-Alla luce della natura teorica dell'attuale ricerca nel \ac{MLQ} 
-e del piccolo numero di realizzazioni sperimentali, questa ricerca si dedicherà 
-alla seguente domanda: 
+% Alla luce della natura teorica dell'attuale ricerca nel \ac{MLQ} 
+% e del piccolo numero di realizzazioni sperimentali, questa ricerca si dedicherà 
+% alla seguente domanda: 
+Prendendo come punto di partenza gli algoritmi proposti nell'ambito di ricerca del \ac{QML} 
+questa tesi proverà a rispondere alla seguente domanda:
 \begin{quote}
-    quali sono le opportunità di implementazione pratica e l'efficienza di un algoritmo 
-    k-nearest neighbours di machine learning quantistico su computer quantistici di piccola 
-    e media scala attualmente disponibili?
+    quali sono le prestazioni di un algoritmo k-nearest neighbours di quantum 
+    machine learning implementato su hadware quantistico di piccola e media dimensione 
+    attualmente disponibili e come scala all'aumentare delle risorse?
+    % quali sono le opportunità di implementazione pratica e l'efficienza di un algoritmo 
+    % k-nearest neighbours di machine learning quantistico su computer quantistici di piccola 
+    % e media scala attualmente disponibili?
 \end{quote}
 I capitoli seguenti introdurranno le basi teoriche necessarie e gli strumenti usati 
-per rispondere a questa domanda di ricerca. 
+per rispondere a questa domanda. 
 
 %*****************************************
 %*****************************************

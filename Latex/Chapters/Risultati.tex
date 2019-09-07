@@ -178,6 +178,16 @@ Il passo successivo è eseguire questi stessi circuiti quantistici su un vero co
 È usata scelta la macchina a 14 qubit ibmq\_16\_melbourne per ottenere le seguenti misure per il vettore d'input 
 setosa. 
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{gfx/misura_setosa_sperimentale}
+    \caption{Esecuzione su hardware reale (setosa)}
+    \label{fig:sperimentale_setosa}
+\end{figure}
+
+Gli inevitabili fenomeni di rumore rendono i risultati meno piccati ma comunque 
+distinguibili in questo caso. 
+
 Si noti che fino ad ora non è stato fatto uso delle tecniche di costruzione \ac{QRAM} 
 introdotte nella sezione \ref{sec:ff-qram}. 
 
@@ -206,15 +216,74 @@ dei vettori di training.
 
 \subsection{Aumento delle numero di caratteristiche}
 
-
+\marginpar{La maggior parte dei vettori versicolor 
+e virginica non vengono classificati correttamente, qui abbiamo selezionato un caso in cui la 
+classificazione è corretta fin dal caso più semplice.}
+Per verificare il miglioramento apportato da un aumento del numero di caratteristiche 
+considerate, si prende in esame la classificazione del vettore d'input 54 (versicolor), 
+con i vettori di training numero 51 (versicolor) e 146 (virginica) del data set. 
+Il vettore d'input viene classificato correttamente durante la simulazione 
+con probabilità vicina al 51.4\%. 
+Effettuando la stessa misura, ma tenendo conto di tutte le quattro feature, arriviamo ad 
+una probabilità di classificazione corretta del 58.3\% nel migliore dei casi. Questo è un 
+segno che l'implementazione ha un margine di miglioramento apprezzabile. 
 
 \subsection{Aumento del numero di vettori d'apprendimento}
 
-Prima di poter implementare più di due classi, si mostra necessario essere capaci di 
+Per poter implementare più di due classi, è necessario essere capaci di 
 memorizzare almeno tre vettori di apprendimento, per poi associare ad ognuno di essi la 
 rispettiva classe. 
+L'aggiunta di vettori di training, riprendendo in esame il confronto tra classi 
+versicolor e virginica, non ha effetti ben prevedibili, almeno per piccoli 
+insiemi. Aggiungendo altri due vettori d'apprendimento si possono migliorare o 
+peggiorare i risultati, a seconda della disposizione dei vettori nello spazio delle 
+caratteristiche; si rende necessario un criterio di selezione dei vettori più 
+significativi per ottenere un classificatore il più efficace possibile, 
+non potendo inserire tutti i vettori del data set, 
+e tantomeno potendo scegliere a caso i vettori finché non si 
+riscontra il risultato aspettato (il presupposto di un algoritmo maturo è che 
+una volta ultimato non debba aver bisogno di aggiustamenti significativi da 
+parte dell'operatore umano). Oltretutto una scelta manuale degli specifici vettori 
+di training potrebbe andare bene per i vettori d'input su cui si sta concentrando 
+in un dato momento, ma non si può conoscere l'efficacia rispetto a eventuali 
+nuovi vettori sconosciuti. 
 
 \subsection{Implementazione multiclasse}
+
+L'aggiunta della capacità di riconoscere tutte le tre classi in una sola esecuzione 
+non è di natura differente dall'aggiungere qubit per avere maggiori vettori 
+di addestramento. Passiamo dall'avere un solo qubit classe, che ha associato il 
+proprio stato  
+$\ket{0}$ alla prima classe e lo stato $\ket{1}$ alla seconda, ad avere due qubit 
+ed associare lo stato $\ket{00}$ alla prima classe, lo stato $\ket{01}$ alla 
+seconda classe e lo stato $\ket{10}$ alla terza classe. Lo stato $\ket{11}$ resta 
+inutilizzato. 
+
+Nel processo di costruzione della \ac{QRAM} contenente lo stato iniziale, 
+oltre che ai qubit indice, i vettori di addestramento saranno in entanglement 
+anche con i due qubit classe, nella maniera appropriata per ogni vettore. 
+
+\section{Esecuzione finale}
+
+Per studiare l'efficienza dell'algoritmo a diversi stadi di miglioramento, 
+si divide il data set in un insieme dedicato all'addestramento ed un insieme 
+di vettori da classificare. Al fine di avere risultati statisticamente 
+rilevanti, per ogni esecuzione i vettori di training ed il vettore d'input 
+sono scelti casualmente a partire dal data set completo. 
+Si contano le classificazioni di successo 
+rispetto al totale dei tentativi, al variare dei parametri come il numero 
+di features o il numero di vettori di training usati. 
+
+Provando ad effettuare una classificazione a tre classi con 32 vettori di 
+training otteniamo i seguenti esiti: 
+\begin{itemize}
+    \item i vettori della classe setosa sono correttamente classificati 10 volte su 10;
+    \item i vettori della classe versicolor sono correttamente classificati 5 volte su 10;
+    \item i vettori della classe virginica sono correttamente clasificati 9 volte su 10.
+\end{itemize}
+I risultati vengono necessariamente da simulazioni, in quanto sono necessari 
+19 qubit in queste condizioni. 
+
 
 
 % \section{Simulazione}
