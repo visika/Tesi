@@ -2,10 +2,14 @@
 \chapter{Risultati e discussione}\label{ch:risultati}
 %************************************************
 
+% ***********************************************
+% [ ] Mettere i grafici con le tre classi
+% ***********************************************
+
 Qui discuteremo i risultati. 
 
 Per l'implementazione dell'algoritmo è stato scelto il ben noto 
-Iris Data Set. Come evidenziato da Schuld\cite{schuld}, 
+Iris data set. Come evidenziato da Schuld\cite{schuld}, 
 l'insieme dati si è dovuto standardizzare e 
 normalizzare. Dopo di ciò, il primo passo è stato di 
 ripetere l'esperienza dell'articolo per comprenderne 
@@ -91,15 +95,6 @@ Seguendo le istruzioni si costruisce il seguente circuito quantistico.
 % la figura del circuito si potrebbe mettere di traverso lungo tutta la pagina
 % https://tex.stackexchange.com/a/57531/140965
 %********************************
-
-\begin{figure}[ht]
-        \begin{adjustbox}{addcode={\begin{minipage}{\width}}{\caption{
-            Il circuito quantistico. 
-            }\end{minipage}},rotate=90,center}
-            \includegraphics[scale=0.5]{gfx/base_circuit}
-        \end{adjustbox}
-    \label{fig:circuitoquantistico}
-\end{figure}
 
 Si noti che questo è espresso usando solo le porte quantistiche presenti 
 nell'insieme universale di base messo a disposizione dall'IBM QX. Possiamo infatti notare 
@@ -263,7 +258,7 @@ Nel processo di costruzione della \ac{QRAM} contenente lo stato iniziale,
 oltre che ai qubit indice, i vettori di addestramento saranno in entanglement 
 anche con i due qubit classe, nella maniera appropriata per ogni vettore. 
 
-\section{Esecuzione finale}
+\section{Esecuzione completa}
 
 Per studiare l'efficienza dell'algoritmo a diversi stadi di miglioramento, 
 si divide il data set in un insieme dedicato all'addestramento ed un insieme 
@@ -282,12 +277,4 @@ training otteniamo i seguenti esiti:
     \item i vettori della classe virginica sono correttamente clasificati 9 volte su 10.
 \end{itemize}
 I risultati vengono necessariamente da simulazioni, in quanto sono necessari 
-19 qubit in queste condizioni. 
-
-
-
-% \section{Simulazione}
-
-% \section{Esecuzione}
-
-% \section{Simulazione con il massimo delle risorse}
+19 qubit sotto queste condizioni. 

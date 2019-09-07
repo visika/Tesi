@@ -2,121 +2,128 @@
 \chapter{Implementazione}\label{ch:implementazione}
 %************************************************
 
-Il quantum-enhanced machine learning (QEML) prova a rispondere alla domanda 
-se le proprietà quantomeccaniche come il parallelismo quantistico e 
-l'interferenza e i concetti di informazione quantistica possano essere usati 
-per migliorare gli algoritmi di machine learning classico. Il QEML è un campo 
-di ricerca relativamente nuovo, dimostrato dal fatto che il termine 
-\emph{quantum machine learning} è stato coniato solo nel 2013 in un manoscritto 
-di Lloyd, Mohseni e Rebentrost (2013). % inserire fonte *******************
-Dal 1995 in poi, molti algoritmi di QEML sono stati pubblicati, come riassunto 
-nel recente articolo di revisione di Biamonte et al. (2016). % inserire fonte **
-Per ottenere accelerazioni quantistiche, molti algoritmi di QEML usano procedure
-quantistiche ben note, come l'algoritmo di ricerca di Grover, la trasformata di 
-Fourier quantistica o la quantum phase estimation come sottoprocessi per compiti
-di machine learning più grandi. % inserire fonti **********************
-
-Il machine learning classico prende dati classici in entrata ed impara da essi 
-usando algoritmi classici eseguiti su computer classici: Aïmeur % aggiungi fonti
-si riferiscono a questo come C/C (dati classici con algoritmi classici). 
-Si entra nel campo del \ac{MLQ} generico quando uno tra dati quantistici e 
-algoritmi quantistici è combinato con il machine learning. Ebbene, Aïmeur 
-% aggiungi fonti *************************************
-dividono il campo del machine learning quantistico in tre diversi sottocampi: 
-\begin{itemize}
-    \item C/Q: dati classici con algoritmi quantistici;
-    \item Q/C: dati quantistici con algoritmi classici;
-    \item Q/Q: dati quantistici con algoritmi quantistici.
-\end{itemize}
-Così, i dati quantistici includono qualsiasi dato descrivente un sistema 
-quantomeccanico come p.e. l'hamiltoniana o il vettore d'onda di un sistema 
-quantistico.
-
-Il sottocampo Q/C elabora dati quantistici con algoritmi di machine learning 
-classico. Per esempio, Carrasquilla e Melko (2016) % aggiungi fonti *******
-hanno usato il pacchetto di deep learning TensorFlow di Google per identificare 
-transizioni di fase in sistemi quantistici. Il sottocampo Q/Q è l'unione di 
-C/Q e Q/C e ha a che fare con l'elaborazione di dati quantistici attraverso 
-l'uso di algoritmi quantistici p.e. imparare come è fatta l'hamiltoniana di un 
-sistema quantistico unsando algoritmi di machine learning quantistico. Questo 
-lavoro di tesi è immerso nel sottocampo C/Q, anche chiamato QEML, che mira a 
-sviluppare algoritmi quantistici per compiti di machine learning che coinvolgono 
-dati classici. 
-
-Le sezioni seguenti introdurranno alcuni dei concetti fondamentali dal campo 
-del QEML. Più nello specifico, la sezione 4.2 % rivedere ********************
-presenta la versione quantistica dell'algoritmo k-nn classico, la cui simulazione
-ed esecuzione quantistica saranno discussi nel capitolo 5. 
-% Quindi il capitlo 5 discuterà i risultati
-In ogni caso, dato che un algoritmo quantistico è una sequenza di porte 
-quantistiche, può solo manipolare bit quantistici e non classici. 
-Dunque, la prossima sezione descriverà prima come dei dati classici possano 
-essere trasferiti in degli stati quantistici, in modo da permettere 
-l'elaborazione quantistica. 
-
 \section{Preparazione di uno stato quantistico}
 
-La preparazione di uno stato quantistico è il procedimento in cui si prepara 
-uno stato quantistico che rappresenta accuratamente un vettore contenente 
-dati classici (normalizzati). Per applicare qualsiasi algoritmo di machine 
-learning quantistico a dati classici, la preparazione dello stato quantistico 
-deve sempre essere eseguita prima. Perciò, bisogna diventare familiari 
-con le nozioni di preparazione degli stati quantistici prima di procedere nelle 
-sezioni avanzate di questa tesi. Ci sono due modi fondamentalmente diversi 
-di codificare dei dati classici in stati quantistici ma in questa tesi ne verrà 
-usato solo uno. Il primo modo consiste nel codificare lo stato dei bit classici 
-che appartengono ai nostri dati direttamente negli stati dei singoli qubit: 
-al bit 0 viene fatto corrispondere un qubit nello stato $\ket{0}$ ed al bit 1 
-un qubit nello stato $\ket{1}$. Una ricetta per effettuare una tale operazione 
-è descritta da Trugenberger (2001). % inserisci fonte ******************
-Una maniera più raffinata di rappresentare un vettore classico come uno stato 
-quantistico, che è quella che verrà adottata, sfrutta le $2^n$ ampiezze di un 
-sistema di $n$ qubit. In questo modo un vettore $k$-dimensionale può essere 
-codificato usando solo $\log_2(k)$ qubit, poiché abbiamo visto che il numero 
-di ampiezze disponibili cresce esponenzialmente con il numero dei qubit. 
-Questo tipo di memorizzazione dei dati apre le porte ad una compressione 
-esponenziale dei dati classici. 
-
-Se si ha un vettore classico e lo si vuole codificare nelle ampiezze si può fare 
-la seguente operazione 
-\begin{equation}
-    \begin{pmatrix}
-        0.6\\0.4
-    \end{pmatrix}
-    \arrowvert
-    \ket{n} = \sqrt{0.6}\ket{0} + \sqrt{0.4}\ket{1}.
-\end{equation}
-
-Per preparare lo stato si è usata la tecnica FF-QRAM proposta da Petruccione \cite{petruccione}. 
-
-Più genericamente, se abbiamo un insieme di M dati classici rappresentati come 
-% $D = \{ (\vec{d}^{(l)}), b_l \} | 0 \leq l < M}$, dove $\vec{d}^{(l)}$ rappresenta 
-n bit di informazione, ovvero l'indirizzo del registro, a cui è associato il dato 
-$b_l$ (che può essere un valore binario o reale), possiamo costruire uno stato 
-quantistico che soddisfi la seguente relazione: 
-\begin{equation} \label{eq:qdb}
-    % \ket{\psi}_{QDB} = \sum_{l=0}^{M-1}b_l\ket{\vec{d}^{(l)}}
-\end{equation}
-QDB è quantum database. 
-% Stiamo dicendo che conserviamo ogni valore $b_l$ in una ampiezza dei qubit a disposizione. 
+Per analizzare dei dati classici attraverso un computer quantistico 
+abbiamo bisogno di codificare in qualche modo le informazioni. 
+Per fare questo, costruiamo degli stati quantistici 
+ad hoc che rappresentino i vettori dati in maniera coerente. 
+La procedura usata in questa tesi segue la tecnica di costruzione FF-QRAM 
+(Flip-flop QRAM) proposta da Park, Petruccione e Rhee \cite{petruccione}. 
 
 \subsection{Flip-flop QRAM} \label{sec:ff-qram}
 
-La \ac{FF-QRAM} è usata per generare un \ac{QDB} come segue. Si consideri un 
-computer quantistico con uno stato con indirizzi di memoria (bus) per ($n+m$) qubit per codificare 
-una grande banca dati di classi. Lo stato dei quibit per ciascun bus può essere 
-arbitrario, e definisce quali stati della base computazionale $\ket{j}_B$ 
-sono accessibili con ampiezza di probabilità $\psi_j$. 
-% vedi bene differenza tra bus e register
-Un'operazione QRAM sui qubit bus sovrappone un insieme di dati classici 
-$D$ come 
+La \ac{FF-QRAM} è usata per generare un \ac{QDB} inizializzato in maniera arbitraria. 
+Nell'illustrare l'algoritmo di cotruzione verranno usati due registri quantistici: 
+il primo, denotato genericamente $\ket{j}$, o con il pedice $B$, indica quale bus 
+di memoria viene usato per il passaggio in corso, mentre il secondo, denotato 
+$\ket{b_l}_R$, con il pedice $R$, sarà il registro che contiene i 
+valori codificati del vettore dati. 
+I vettori $\ket{j}_B$ vengono anche detti appartenere alla base computazionale. 
+Lo stato finale dei qubit può essere 
+arbitrario e l'ampiezza di probabilità $\psi_j$ con cui è accessibile ciascuno stato 
+$\ket{j}_B$ della base computazionale codifica i valori classici di partenza. 
+
+L'operazione QRAM sui qubit bus e registro sovrappone un insieme di dati classici $D$ come 
 \begin{equation}
-    \text{QRAM}(D)\sum_j \psi_j \ket{j}_B \ket{0}R \equiv 
-    \sum_l \psi_l \ket{\vec{d}^l}_B \ket{b_l}_R,
+    \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
+    \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
 \end{equation}
-dove il pedice $B$ indica i qubit per il bus, ovvero l'inidizzo di memorie, 
-ed il pedice $R$ indica i qubit per il registro, ed i qubit registro 
-possono includere le ampiezze di probabilità per codificare i dati classici. 
+
+% Il quantum-enhanced machine learning (QEML) prova a rispondere alla domanda 
+% se le proprietà quantomeccaniche come il parallelismo quantistico, 
+% l'interferenza e i concetti di informazione quantistica possano essere usati 
+% per migliorare gli algoritmi di machine learning classico. Il QEML è un campo 
+% di ricerca relativamente nuovo, dimostrato dal fatto che il termine 
+% \emph{quantum machine learning} è stato coniato solo nel 2013 in un manoscritto 
+% di Lloyd, Mohseni e Rebentrost (2013). % inserire fonte *******************
+% Dal 1995 in poi, molti algoritmi di QEML sono stati pubblicati, come riassunto 
+% nel recente articolo di revisione di Biamonte et al. (2016). % inserire fonte **
+% Per ottenere accelerazioni quantistiche, molti algoritmi di QEML usano procedure
+% quantistiche ben note, come l'algoritmo di ricerca di Grover, la trasformata di 
+% Fourier quantistica o la quantum phase estimation come sottoprocessi per compiti
+% di machine learning più grandi. % inserire fonti **********************
+
+% Il machine learning classico prende dati classici in entrata ed impara da essi 
+% usando algoritmi classici eseguiti su computer classici: Aïmeur % aggiungi fonti
+% si riferiscono a questo come C/C (dati classici con algoritmi classici). 
+% Si entra nel campo del \ac{MLQ} generico quando uno tra dati quantistici e 
+% algoritmi quantistici è combinato con il machine learning. Ebbene, Aïmeur 
+% % aggiungi fonti *************************************
+% dividono il campo del machine learning quantistico in tre diversi sottocampi: 
+% \begin{itemize}
+%     \item C/Q: dati classici con algoritmi quantistici;
+%     \item Q/C: dati quantistici con algoritmi classici;
+%     \item Q/Q: dati quantistici con algoritmi quantistici.
+% \end{itemize}
+% Così, i dati quantistici includono qualsiasi dato descrivente un sistema 
+% quantomeccanico come p.e. l'hamiltoniana o il vettore d'onda di un sistema 
+% quantistico.
+
+% Il sottocampo Q/C elabora dati quantistici con algoritmi di machine learning 
+% classico. Per esempio, Carrasquilla e Melko (2016) % aggiungi fonti *******
+% hanno usato il pacchetto di deep learning TensorFlow di Google per identificare 
+% transizioni di fase in sistemi quantistici. Il sottocampo Q/Q è l'unione di 
+% C/Q e Q/C e ha a che fare con l'elaborazione di dati quantistici attraverso 
+% l'uso di algoritmi quantistici p.e. imparare come è fatta l'hamiltoniana di un 
+% sistema quantistico unsando algoritmi di machine learning quantistico. Questo 
+% lavoro di tesi è immerso nel sottocampo C/Q, anche chiamato QEML, che mira a 
+% sviluppare algoritmi quantistici per compiti di machine learning che coinvolgono 
+% dati classici. 
+
+% Le sezioni seguenti introdurranno alcuni dei concetti fondamentali dal campo 
+% del QEML. Più nello specifico, la sezione 4.2 % rivedere ********************
+% presenta la versione quantistica dell'algoritmo k-nn classico, la cui simulazione
+% ed esecuzione quantistica saranno discussi nel capitolo 5. 
+% % Quindi il capitlo 5 discuterà i risultati
+% In ogni caso, dato che un algoritmo quantistico è una sequenza di porte 
+% quantistiche, può solo manipolare bit quantistici e non classici. 
+% Dunque, la prossima sezione descriverà prima come dei dati classici possano 
+% essere trasferiti in degli stati quantistici, in modo da permettere 
+% l'elaborazione quantistica. 
+
+% La preparazione di uno stato quantistico è il procedimento in cui si prepara 
+% uno stato quantistico che rappresenta accuratamente un vettore contenente 
+% dati classici (normalizzati). Per applicare qualsiasi algoritmo di machine 
+% learning quantistico a dati classici, la preparazione dello stato quantistico 
+% deve sempre essere eseguita prima. Perciò, bisogna diventare familiari 
+% con le nozioni di preparazione degli stati quantistici prima di procedere nelle 
+% sezioni avanzate di questa tesi. Ci sono due modi fondamentalmente diversi 
+% di codificare dei dati classici in stati quantistici ma in questa tesi ne verrà 
+% usato solo uno. Il primo modo consiste nel codificare lo stato dei bit classici 
+% che appartengono ai nostri dati direttamente negli stati dei singoli qubit: 
+% al bit 0 viene fatto corrispondere un qubit nello stato $\ket{0}$ ed al bit 1 
+% un qubit nello stato $\ket{1}$. Una ricetta per effettuare una tale operazione 
+% è descritta da Trugenberger (2001). % inserisci fonte ******************
+% Una maniera più raffinata di rappresentare un vettore classico come uno stato 
+% quantistico, che è quella che verrà adottata, sfrutta le $2^n$ ampiezze di un 
+% sistema di $n$ qubit. In questo modo un vettore $k$-dimensionale può essere 
+% codificato usando solo $\log_2(k)$ qubit, poiché abbiamo visto che il numero 
+% di ampiezze disponibili cresce esponenzialmente con il numero dei qubit. 
+% Questo tipo di memorizzazione dei dati apre le porte ad una compressione 
+% esponenziale dei dati classici. 
+
+% Se si ha un vettore classico e lo si vuole codificare nelle ampiezze si può fare 
+% la seguente operazione 
+% \begin{equation}
+%     \begin{pmatrix}
+%         0.6\\0.4
+%     \end{pmatrix}
+%     \arrowvert
+%     \ket{n} = \sqrt{0.6}\ket{0} + \sqrt{0.4}\ket{1}.
+% \end{equation}
+
+% Se abbiamo un insieme di M dati classici rappresentati come 
+% % $D = \{ (\vec{d}^{(l)}), b_l \} | 0 \leq l < M}$, dove $\vec{d}^{(l)}$ rappresenta 
+% n bit di informazione, ovvero l'indirizzo del registro, a cui è associato il dato 
+% $b_l$ (che può essere un valore binario o reale), possiamo costruire uno stato 
+% quantistico che soddisfi la seguente relazione: 
+% \begin{equation} \label{eq:qdb}
+%     % \ket{\psi}_{QDB} = \sum_{l=0}^{M-1}b_l\ket{\vec{d}^{(l)}}
+% \end{equation}
+% QDB è quantum database. 
+% Stiamo dicendo che conserviamo ogni valore $b_l$ in una ampiezza dei qubit a disposizione. 
+
 La \ac{FF-QRAM} è implementata sistematicamente con elementi comuni dei circuiti 
 quantistici, che includono la porta di Pauli X controllata classicamente, $\overline{c}X$, 
 e la porta di rotazione controllata da $n$ qubit, $C^n R_p (\theta)$. 
