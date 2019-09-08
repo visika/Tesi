@@ -2,12 +2,12 @@
 \chapter{Fondamenti teorici}\label{ch:teoria}
 %************************************************
 
-\emph{
-    Si noti che tutti i concetti introdotti nelle sezioni 2.1 e 2.2 possono essere trovati in 
-    qualunque libro di testo di base sull'informazione quantistica e quindi non ci saranno 
-    riferimenti individuali ad essi. Entrambe queste sezioni sono principalmente basate sul libro 
-    di testo di Noson e Mannucci\cite{noson}.
-}
+% \emph{
+%     Si noti che tutti i concetti introdotti nelle sezioni 2.1 e 2.2 possono essere trovati in 
+%     qualunque libro di testo di base sull'informazione quantistica e quindi non ci saranno 
+%     riferimenti individuali ad essi. Entrambe queste sezioni sono principalmente basate sul libro 
+%     di testo di Noson e Mannucci\cite{noson}.
+% }
 
 \section{Bit quantistici}
 
@@ -277,15 +277,16 @@ $\ket{00}$ dovrebbe rimanere immutato, che, in altre parole, significa applicare
 la matrice identità $\mathbb{1}$ 2x2 su di esso. Per effettuare queste operazioni, 
 si definisce il prodotto tensore delle due porte a singolo qubit come 
 \begin{equation}
-    U\otimes\mathbb{1}\cong
+    \begin{split}
+    &U\otimes\mathbb{1}\cong
     \begin{pmatrix}
         a&b\\c&d
     \end{pmatrix}
     \otimes
     \begin{pmatrix}
         1&0\\0&1
-    \end{pmatrix}
-    =
+    \end{pmatrix} = \\
+    &=
     \begin{pmatrix}
         a*
         \begin{pmatrix}
@@ -311,6 +312,7 @@ si definisce il prodotto tensore delle due porte a singolo qubit come
         c&0&d&0\\
         0&c&0&d
     \end{pmatrix}.
+    \end{split}
 \end{equation} % vedi come andare a capo nelle equazioni
 Dunque, il risultato del prodotto tensore $U\otimes\mathbb{1}$ può essere 
 rappresentato come una matrice unitaria 4x4 che può ora essere usata per 
@@ -335,8 +337,10 @@ trasformare il vettore 4x1 che rappresenta lo stato $\ket{00}$ nell'Eq. \ref{eq:
 Si può anche effettuare prima le operazioni di singolo qubit sui rispettivi 
 qubit, seguite dal prodotto tensore dei due risultanti vettori: 
 \begin{equation} \label{eq:2.23}
-    (U\otimes\mathbb{1})(\ket{0}\otimes\ket{0}) = 
-    U\ket{0}\otimes\mathbb{1}\ket{0} \cong 
+    \begin{split}
+    &(U\otimes\mathbb{1})(\ket{0}\otimes\ket{0}) = 
+    U\ket{0}\otimes\mathbb{1}\ket{0} \cong \\
+    &\cong
     \begin{pmatrix}
         a&b\\c&d
     \end{pmatrix}
@@ -360,6 +364,7 @@ qubit, seguite dal prodotto tensore dei due risultanti vettori:
         a\\0\\c\\0
     \end{pmatrix}
     .
+    \end{split}
 \end{equation}
 Questo formalismo può essere esteso a qualunque numero di qubit, e l'uso 
 del prodotto tensore porta ad un aumento esponenziale della dimensionalità 
@@ -616,9 +621,11 @@ Ora si immagini di applicare la porta CNOT allo stato $\ket{\varphi_1}$, in cui
 il qubit di controllo è quello di sinistra e il qubit bersaglio è quello di 
 destra: 
 \begin{equation} \label{eq:2.37}
-    \text{CNOT}(0,1)(\frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{10}) = 
-    \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} (\mathbb{1} \otimes 
+    \begin{split}
+    &\text{CNOT}(0,1)(\frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{10}) = \\
+    & = \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} (\mathbb{1} \otimes 
     X) \ket{10} = \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{11}.
+    \end{split}
 \end{equation}
 L'ultima espressione nell'Eq. \ref{eq:2.37} è uno dei famosi stati di Bell, 
 i quali sono un insieme di quattro stati quantistici in massimo entanglement. 
@@ -628,9 +635,34 @@ generazione di stati in entanglement, poiché applica la porta X ad un qubit
 bersaglio a seconda dello stato di un secondo qubit di controllo. 
 
 Le tre porte quantistiche a qubit multipli più importanti CNOT, Toffoli e nCNOT 
-sono caratterizzate nella tabella 2.3. 
+sono caratterizzate nella tabella \ref{table:porte}. 
 
-% tabella *************************
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c c c}
+        Nome & Matrice & Simbolo \\ 
+        \hline
+        CNOT & $\begin{pmatrix}
+            \mathbb{1} & 0 \\ 
+            0 & X
+        \end{pmatrix}$ & \includegraphics[width=2cm]{gfx/CNOT_gate}\\ 
+        Toffoli & $\begin{pmatrix}
+            \mathbb{1}_6 & 0 \\
+            0 & X
+        \end{pmatrix}$ & \includegraphics[width=2cm]{gfx/Toffoli_gate}\\ 
+        nCNOT & $\begin{pmatrix}
+            \mathbb{1}_{2^n-2} & 0 \\
+            0 & X
+        \end{pmatrix}$ & \\ 
+        H & $\frac{1}{\sqrt{2}}\begin{pmatrix}
+            1 & 1 \\
+            1 & -1
+        \end{pmatrix}$ & \includegraphics[width=2cm]{gfx/150px-Hadamard_gate} \\ 
+        \hline
+    \end{tabular}
+    \caption{Porte logiche quantistiche}
+    \label{table:porte}
+\end{table}
 
 \section{Machine learning classico}
 
