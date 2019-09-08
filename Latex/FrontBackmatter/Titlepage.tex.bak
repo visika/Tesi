@@ -1,0 +1,70 @@
+%*******************************************************
+% Titlepage
+%*******************************************************
+\begin{titlepage}
+    %\pdfbookmark[1]{\myTitle}{titlepage}
+    % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
+    \begin{addmargin}[-1cm]{-3cm}
+    \begin{center}
+        \large
+
+        \hfill
+
+        \vfill
+
+        \Large{
+            \textbf{\myUni}
+        }
+         \\ \bigskip
+
+        \myFaculty \\ \medskip
+
+        \myDepartment \\ \bigskip
+
+        \includegraphics[width=0.25\textwidth]{gfx/logo-federico-II-blu.png} \\ \medskip
+
+        \myDegree \\ \medskip
+
+        \begingroup
+            \color{CTtitle}\spacedallcaps{\myTitle} \\ \bigskip
+        \endgroup
+    \end{center}
+    \par 
+    \noindent
+        \begin{minipage}[t]{0.47\textwidth}
+            Relatori:\\
+            \myProf
+        \end{minipage}
+
+        \hfill
+
+        \begin{minipage}[t]{0.47\textwidth}\raggedleft
+            Mariano Mollo\\
+            Matr. N85000880
+        \end{minipage}
+    \begin{center}
+        \medskip
+
+        Anno Accademico 2019/2020
+
+        % \spacedlowsmallcaps{\myName}
+
+        \vfill
+
+        % \mySubtitle \\ \medskip
+        % \myDegree \\
+        % \myDepartment \\
+        %\myFaculty \\
+        % \myUni \\ \bigskip
+
+        \myTime%\ -- \myVersion
+        \\ \bigskip \bigskip \bigskip \bigskip \bigskip \bigskip \bigskip \bigskip
+
+        % Relatore \\ \smallskip
+        % \myProf
+
+        \vfill
+
+    \end{center}
+  \end{addmargin}
+\end{titlepage}
