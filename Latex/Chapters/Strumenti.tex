@@ -9,7 +9,7 @@ sviluppo e di simulazione messi a disposizione dall'IBM. Questi permettono
 di progettare, simulare ed eseguire su dei quantum computer reali gli 
 algoritmi scritti. Il linguaggio di programmazione, sia per l'analisi 
 dei dati che per la prototipazione del circuito, è Python; grazie al 
-lavoro della comunità open source questo linguaggio si è imposto 
+lavoro della comunità open source questo linguaggio si è evoluto 
 come strumento omnicomprensivo per una varietà sempre crescente di 
 lavori di ricerca scientifica. 
 
@@ -31,3 +31,47 @@ di comunità come una piattaforma di domande e risposte e soprattutto
 un sistema per creare i propri algoritmi. Si può accedere agli ordini di 
 esecuzione inviati tramite Qiskit e recuperarne i risultati in un 
 secondo momento. 
+
+\section{Esempio di algoritmo}
+
+Come rapido esempio dell'uso di Qiskit si propone il codice che riproduce 
+l'algoritmo \ac{QKNN} presentato nella sezione \ref{sec:qknn}.
+
+\begin{lstlisting}[float=h!,language=Python,frame=tb,caption={Algoritmo per il QKNN},label=lst:qknn]
+    import qiskit.aqua.circuits.gates.controlled_ry_gates
+
+    a = QuantumRegister(1,'a')
+    m = QuantumRegister(1,'m')
+    i = QuantumRegister(1,'i')
+    c = QuantumRegister(1,'c')
+    b = ClassicalRegister(2, 'bit')
+    circuit = QuantumCircuit(a,m,i,c,b)
+
+    circuit.h(a)
+    circuit.h(m)
+
+    circuit.cry(x0,a[0],i[0])
+    circuit.x(a) # swap entanglement with ancilla to 0
+
+    circuit.mcry(t0,a[:]+m[:],i[0],None)
+    circuit.x(m) # swap entanglement with m index to 0
+
+    circuit.mcry(t1,a[:]+m[:],i[0],None)
+
+    circuit.cx(m,c) # entangle class 1 with m index 1
+
+    circuit.h(a)
+    circuit.measure(a,b[0])
+    circuit.measure(c,b[1])
+
+    # circuit.draw(output='mpl')
+    \end{lstlisting}
+
+    I valori x0, t0, t1 corrispondono agli angoli di rotazione per il vettore d'input e 
+    per i due vettori di training rispettivamente. 
+    La porta mcry non si trovava nelle funzioni di base di Qiskit ma è stata importata 
+    separatamente attraverso il comando in cima. 
+    Il disegno del circuito è presente in appendice nella figura A.1: si può notare 
+    come le porte di rotazione controllata siano in realtà realizzate con una sequenza 
+    di porte di base più o meno complicata. Tale processo è gestito automaticamente 
+    da Qiskit. 

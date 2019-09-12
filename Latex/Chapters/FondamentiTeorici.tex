@@ -1,5 +1,5 @@
 %************************************************
-\chapter{Teoria di base}\label{ch:teoria}
+\chapter{Quantum computing e machine learning}\label{ch:teoria}
 %************************************************
 
 % \emph{
@@ -9,20 +9,31 @@
 %     di testo di Noson e Mannucci\cite{noson}.
 % }
 
+Nella sezione \ref{sec:quantum_computing} si discuteranno i concetti fondamentali su 
+cui si base il funzionamento di un quantum computer. 
 L'unità di base di un computer classico è il bit e l'unità di base di 
 un computer quantistico è una generalizzazione del concetto di bit, 
-chiamato qubit, che sarà discusso in sezione \ref{sec:qubit}. 
+chiamato qubit, che sarà discussa in sezione \ref{sec:qubit}. 
 Nella sezione \ref{sec:porte_quantistiche} si presentano le porte 
-logiche quantistiche, che manipolano i qubit. 
+logiche quantistiche, che permettono di manipolare i qubit. 
+Infine, in sezione \ref{sec:decoerenza} si discuterà di uno dei nuovi problemi con 
+cui si deve avere a che fare quando si lavora con oggetti quantomeccanici, ovvero 
+la decoerenza. 
 
-\section{Bit e qubit} \label{sec:qubit}
+Successivamente, in sezione \ref{sec:machine_learning}, verrà introdotta brevemente 
+la branca del machine learning, spiegando il funzionamento dell'algoritmo k-nearest neighbours, 
+per poi discuterne la versione quantistica in sezione \ref{sec:qml}. 
 
-Un bit è un'unità di informazione che descrive un sistema classico 
-bidimensionale. 
+\section{Quantum computing} \label{sec:quantum_computing}
 
-I due possibili stati sono generalmente scritti come 
+\subsection{Bit e qubit} \label{sec:qubit}
+
+\begin{definition}
+    Un bit è un'unità di informazione che descrive un sistema classico 
+    bidimensionale. 
+\end{definition}
+I due possibili stati di un bit sono generalmente scritti come 
 0 e 1, o meglio, nel nostro caso $\ket{0}$ e $\ket{1}$. 
-
 Usando una notazione matriciale, possiamo rappresentare questi due 
 stati come 
 \begin{equation}
@@ -41,12 +52,13 @@ stati come
 \end{equation}
 dove i numeri a margine delle matrici indicano a quale stato si 
 riferisce un determinato elemento di base. Poiché queste due 
-rappresentazioni sono ortogonali, abbiamo il buon vecchio bit che 
-può trovarsi in un determinato stato tra $\ket{0}$ e $\ket{1}$. 
+rappresentazioni sono ortogonali, abbiamo che il bit che 
+può trovarsi in uno stato tra $\ket{0}$ e $\ket{1}$. 
 
-Un bit quantistico o qubit è un'unità di informazione che descrive 
-un sistema quantistico bidimensionale. 
-
+\begin{definition}
+    Un bit quantistico o qubit è un'unità di informazione che descrive 
+    un sistema quantistico bidimensionale. 
+\end{definition}
 Si rappresenterà il qubit come una matrice $2\times1$ a valori complessi 
 \begin{equation}
     \begin{matrix}
@@ -62,9 +74,9 @@ qubit, questo sarà trovato nello stato $\ket{0}$. $|c_1|^2$ va interpretata com
 la probabilità che dopo una misura del qubit, questo sarà trovato nello stato 
 $\ket{1}$. Allorquando si misura lo stato di un qubit, questo diventa automaticamente 
 un bit. Quindi non "vedremo" mai un qubit generico. Nonostante ciò, essi esistono 
-e sono i protagonisti di questa avventura. 
+e sono i protagonisti di questo lavoro. 
 
-I bit $\ket{0}$ e $\ket{1}$ formano la base canonica di $\mathbb{C}^2$, quindi 
+Gli stati $\ket{0}$ e $\ket{1}$ formano la base canonica di $\mathbb{C}^2$, quindi 
 ogni qubit può essere scritto come 
 \begin{equation} \label{eq:2.3}
     \begin{pmatrix}
@@ -92,7 +104,7 @@ L'importante è che ci siano effetti abbastanza rilevanti di indeterminazione
 e di sovrapposizione per rappresentare un qubit. 
 
 Usando coordinate sferiche polari, un singolo qubit può essere visualizzato sulla cosiddetta sfera 
-di Bloch (vedi figura \ref{fig:bloch}), parametrizzando $c_0$ e $c_1$ dell'Eq. \ref{eq:2.3} come segue: 
+di Bloch (vedi figura \ref{fig:bloch}), parametrizzando $c_0$ e $c_1$ dell'eq. \ref{eq:2.3} come segue: 
 \begin{equation}
     \ket{\psi} = \cos\frac{\theta}{2}\ket{0} + e^{i\varphi}\sin\frac{\theta}{2}\ket{1}.
 \end{equation}
@@ -104,9 +116,9 @@ stato $\ket{1}$ è definito in modo che si trovi lungo il semiasse z negativo.
 È interessante notare che questi due stati sono mutuamente ortogonali in $H_2$, 
 sebbene non lo siano sulla sfera di Bloch. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{gfx/Bloch_sphere}
+    \includegraphics[width=.8\linewidth]{gfx/Bloch_sphere}
     \caption{La sfera di Bloch}
     \label{fig:bloch}
 \end{figure}
@@ -119,12 +131,11 @@ sovrapposizioni uniformi dove $\ket{0}$ e $\ket{1}$ hanno entrambi probabilità 
 Qualunque stato bidimensionale arbitrario $\ket{\psi}$ può essere decomposto nei suoi angoli 
 polari $\theta$ e $\varphi$ e visualizzato come un vettore sulla sfera di Bloch (dopo essere 
 stato normalizzato, se necessario). Tale oggetto è chiamato vettore di Bloch dello stato 
-$\ket{\psi}$ del qubit. La sfera di Bloch sarà lo strumento principale di visualizzazione per le 
-manipolazioni di qubit in questa tesi. 
+$\ket{\psi}$ del qubit. 
 
-I computer con un solo bit non sono molto interessanti, e tantomeno i \ac{CQ} con 
+Ad ogni modo, i computer con un solo bit non sono molto utili, e tantomeno i \ac{CQ} con 
 un solo qubit. Se prendiamo un byte, ovvero otto bit, possiamo avere una generica 
-configurazione 10011101. La rappresentazione associata sarebbe 
+configurazione 10011101. La rappresentazione associata è 
 \begin{equation}
     \ket{1}\otimes\ket{0}\otimes\ket{0}\otimes\ket{1}\otimes\ket{1}\otimes\ket{1}\otimes\ket{0}\otimes\ket{1}.
 \end{equation}
@@ -161,28 +172,28 @@ La generalizzazione al mondo quantistico è uno stato in sovrapposizione
 dove $\sum_{i=0}^{255}|c_i|^2=1$. 
 Nei computer classici è necessario indicare lo stato di ogni bit in un byte. 
 Questo significa scrivere su otto bit. Nel caso quantistico, uno stato di otto 
-qubit è dato scrivendo 256 numeri complessi. Questa crescita esponenziale è 
-una delle ragioni per cui i ricercatori hanno manifestato interesse per la 
-nozione di quantum computing. 
+qubit è dato scrivendo 256 numeri complessi. Questa crescita esponenziale della 
+capacità di immagazzinamento dei dati è una delle ragioni per cui i ricercatori 
+hanno manifestato interesse per il concetto di quantum computing. 
 
-\section{Porte logiche quantistiche} \label{sec:porte_quantistiche}
+\subsection{Porte logiche quantistiche} \label{sec:porte_quantistiche}
 
-Una porta logica quantistica è un operatore che agisce sui qubit. Tali operatori 
-saranno rappresentati da matrici unitarie. 
-
+\begin{definition}
+    Una porta logica quantistica è un operatore che agisce sui qubit. Tali operatori 
+    saranno rappresentati da matrici unitarie. 
+\end{definition}
 Le porte logiche quantistiche che agiscono su un sigolo qubit possono essere 
 rappresentate come matrici unitarie $2 \times 2$ le cui azioni 
-su un qubit possono essere visualizzate come rotazioni della sfera di Bloch. 
+su un qubit possono essere visualizzate come rotazioni o inversioni 
+della sfera di Bloch. 
 
 Le porte logiche quantistiche a più qubit agiscono su almeno due qubit 
 allo stesso tempo. Similmente alle porte a singolo qubit, una porta quantistica 
 a $n$ qubit può essere rappresentata come una matrice unitaria $2^n\times2^n$. 
-Dato che sono coinvolti molteplici qubit, la sfera di Bloch non può più essere 
-usata per visualizzarne l'azione. 
 
 Tra le porte quantistiche più usate si possono trovare le porte Hadamard, 
 NOT, NOT controllata, Toffoli e Fredkin, visibili in figura \ref{fig:porte_1}. 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \myfloatalign
     \subfloat[H]{
         \includegraphics[width=.25\linewidth]{gfx/Hadamard_gate}
@@ -216,7 +227,6 @@ Molto importanti sono le tre matrici di Pauli:
         1&0 \\ 0&-1
     \end{pmatrix}.
 \end{equation}
-Si può notare che la porta $X$ non è altro che la porta NOT. 
 
 Altre importanti matrici usate spesso sono 
 \begin{equation}
@@ -228,11 +238,9 @@ Altre importanti matrici usate spesso sono
     \end{pmatrix}.
 \end{equation}
 
-Ogni matrice unitaria $2\times2$, ovvero un'operazione su un qubit, 
-può essere visualizzata come una rotazione o un'inversione della 
-sfera di Bloch. Le matrici $X$, $Y$ e $Z$ sono modi di girare la 
+Le matrici $X$, $Y$ e $Z$ sono modi di girare la 
 sfera di Bloch di $\pi$ attorno agli assi $x$, $y$ e $z$ rispettivamente. 
-Si ricordi che $X$ non è altro che la porta NOT, e porta $\ket{0}$ in $\ket{1}$ 
+Si noti che $X$ non è altro che la porta NOT, e trasforma $\ket{0}$ in $\ket{1}$ 
 e viceversa. Ma per di più porta tutto quello che si trova sopra l'equatore 
 sotto di esso. Le altre matrici di Pauli funzionano in maniera simile. 
 
@@ -242,7 +250,7 @@ In questo caso, dato un vettore tridimensionale $D=(D_x, D_y, D_z)$ di modulo 1,
 possiamo costruire una rotazione della sfera di Bloch attorno ad esso in questo 
 modo: 
 \begin{equation}
-    R_D(\theta)=\cos\frac{\theta}{2}I - i \sin \frac{\theta}{2} 
+    R_D(\theta)=\cos\frac{\theta}{2}\mathbb{1} - i \sin \frac{\theta}{2} 
     (D_x X + D_y Y + D_z Z). 
 \end{equation}
 
@@ -253,75 +261,293 @@ permette di avere una rappresentazione intuitivamente semplice.
 Tra le porte a più qubit che verranno usate in questa tesi ci sono le porte controllate: 
 queste hanno il loro effetto se tutti i qubit di controllo sono nello stato $\ket{1}$, 
 altrimenti lasciano i bersagli della loro azione immutati. 
-Si propone a titolo esemplificativo la porta Deutsch, ovvero una rotazione attorno ad un 
-asse $D$ di un qubit bersaglio, condizionata dallo stato di due qubit di controllo: 
+Si propone a titolo esemplificativo la porta Deutsch, ovvero una rotazione di fase applicata 
+a un qubit bersaglio, condizionata dallo stato di due qubit di controllo: 
 \begin{equation}
     D_{\theta} : \ket{a,b,c} \mapsto \begin{cases}
         i \cos(\theta)\ket{a,b,c} + \sin(\theta)\ket{a,b,1-c} \quad &\text{per}\, a=b=1, \\ 
         \ket{a,b,c} \quad &\text{altrimenti}.
     \end{cases}
 \end{equation}
-Nei capitoli successivi verrà implementata la porta $C^n R_y (\theta)$ con $n$ qubit 
-di controllo. 
+Nei capitoli successivi verrà implementata la porta $C^n R_y (\theta)$, che effettua una 
+rotazione di angolo $\theta$ attorno all'asse y, con $n$ qubit di controllo. 
+
+% *************************************************
+% Non si è detto cosa sia un insieme universale di porte
+% *************************************************
 
 Le due porte appena descritte non si trovano generalmente nel set universale di porte 
 del computer quantistico che si va ad utilizzare, ma devono 
 essere approssimate attraverso una successione di porte di base, che può essere più o 
 meno lunga. La ricerca di nuovi modi per implementare porte complesse in maniera 
 nativa \cite{PhysRevApplied.9.051001} è uno degli sforzi per contrastare il fenomeno della 
-decoerenza, uno degli ostacoli sostanziali più intriganti del calcolo quantistico. 
+decoerenza, uno degli ostacoli sostanziali nel calcolo quantistico. 
 
-La decoerenza è la perdita di purezza dello stato di un sistema quantistico come risultato 
-di interazione con l'ambiente. 
+\subsection{Decoerenza} \label{sec:decoerenza}
 
-Esistono due paramentri per descrivere quanto è stabile un sistema nei confronti della decoerenza: 
+\begin{definition}
+    La decoerenza è la perdita di purezza dello stato di un sistema quantistico come risultato 
+    di interazione con l'ambiente. 
+\end{definition}
+
+Esistono due paramentri per descrivere quanto è stabile un sistema nei confronti della decoerenza \cite{IBM_decoherence}: 
 \begin{itemize}
-    \item il tempo di decoerenza longitudinale, ovvero il decadimento degli stati più energetici verso quelli meno energetici
-    (si pensi ad un elettrone nello stato eccitato in un atomo);
-    \item il tempo di decoerenza trasversale, tempo in cui statisticamente uno stato di sovrapposizione decade in una configurazione 
-    ben definita. 
+    \item il tempo di decoerenza longitudinale, legato all'emissione energetica, 
+    ovvero il decadimento degli stati più energetici verso quelli meno energetici
+    (si pensi ad un elettrone nello stato eccitato che decade verso lo stato fondamentale in un atomo);
+    \item il tempo di decoerenza trasversale, legato al defasamento, tempo in cui 
+    statisticamente uno stato di sovrapposizione decade in una configurazione ben definita. 
 \end{itemize}
 
 
-\section{Machine learning}
+\section{Machine learning classico} \label{sec:machine_learning}
 
-Per comprendere la versione quantistica dell'algoritmo \ac{KNN}
-pesato sulla distanza proposto da Schuld (2014) che verrà usato 
-successivamente è richiesta una conoscenza della sua versione classica. 
+% ***************************************
+% Introduzione al machine learning
+% ***************************************
 
-Il \ac{KNN} non apprende come discriminare le classi dai vettori di 
-apprendimento, ma memorizza il data set di apprendimento tutto intero. 
-L'algoritmo in sé è piuttosto semplice e può essere riassunto con i 
-seguenti passaggi: 
+\begin{definition}
+    Il machine learning, una branca dell'\ac{IA}, è l'applicazione e lo studio  
+    di algoritmi che danno un significato ai dati. 
+\end{definition}
+
+Si può dividere la materia in tre tipi principali: l'apprendimento supervisionato, 
+l'apprendimento non supervisionato e l'apprendimento per rinforzo. 
+Qui si parlerà solo di apprendimento supervisionato. 
+
+L'obiettivo dell'apprendimento supervisionato è di imparare un modello da dati 
+etichettati che ci permetta di fare previsioni su dati futuri sconosciuti. 
+Con il termine supervisionato si intende l'esistenza di un insieme di campioni 
+dove i risultati aspettati (l'appartenenza ad una determinata classe, il 
+risultato di una funzione) sono già conosciuti. 
+
+La classificazione
+\marginpar{Un esempio di classificatore supervisionato è il filtro contro la posta 
+indesiderata, che si può addestrare con un insieme di email già classificate come 
+spam o non spam, in modo che esso riconosca in quale categoria vanno le nuove email 
+in arrivo.}
+è una sottocategoria del machine learning supervisionato il cui 
+scopo è di predire le etichette di classe che categorizzano delle nuove istanze, 
+basandosi su osservazioni passate. Tali classi sono valori discreti non ordinati 
+che possono rappresentare l'appartenenza ad un gruppo delle istanze. 
+
+\subsection{KNN} \label{sec:knn}
+
+Il \acf{KNN} è un algoritmo di machine learning supervisionato per la classificazione. 
+È chiamato lazy learner, in quanto non apprende una regola su come discriminare 
+le classi dei vettori, ma memorizza il data set di apprendimento tutto intero. 
+L'algoritmo in sé è piuttosto semplice e può essere riassunto nei seguenti passaggi: 
 \begin{itemize}
     \item scegli il numero $k$ e una metrica per la distanza; 
     \item trova i $k$ elementi più vicini al campione da classificare; 
     \item assegna l'etichetta di classe con un voto a maggioranza. 
 \end{itemize}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=.8\linewidth]{gfx/KnnClassification}
+    \caption{Rappresentazione dell'algoritmo \ac{KNN}}
+    \label{fig:knn}
+\end{figure}
+
 In base alla metrica scelta, l'algoritmo \ac{KNN} trova i $k$ campioni 
 nel data set di apprendimento che sono più vicini (simili) al punto 
 da classificare. La classe del nuovo punto è allora determinata da un 
-voto a maggioranza dei suoi $k$ vicini. Il vantaggio principale di 
+voto a maggioranza basato sulla classe a cui appartengono i suoi $k$ 
+vicini (vedi figura \ref{fig:knn}). 
+
+Il vantaggio principale di 
 questo approccio basato sulla memoria è che il classificatore si 
 adatta immediatamente man mano che aggiungiamo vettori di apprendimento. 
 Dall'altro lato, il difetto è che la complessità computazionale per 
 classificare nuovi campioni cresce al più linearmente con il numero di 
-vettori di apprendimento. Per di più, non possiamo ignorare con leggerezza 
+vettori di apprendimento. Per di più, non possiamo ignorare a priori 
 alcun vettore di training dato che non c'è un vero e proprio apprendimento. 
-Così, lo spazio di archiviazione può diventare un problema nodale se si 
-lavora con grandi data set. \cite{pml}
+Così, lo spazio di archiviazione e il numero di distanze da calcolare possono 
+diventare un problema nodale quando si lavora con grandi data set. \cite{pml}
 
-Si vede subito come le proprietà dei quantum computer di parallelizzazione 
-del calcolo e di immagazzinamento dei dati possano essere decisive in 
-problemi del genere di grandi dimensioni. 
+\section{Machine learning quantistico} \label{sec:qml}
 
+% ***************************************
+% Introduzione al quantum machine learning, vedi articolo di Biamonte e Lloyd
+% ***************************************
 
+% Quantum mechanics is well known to produce atypical patterns in data. Classical machine learning methods such as deep neural networks frequently have the feature that they can both recognize statistical patterns in data and produce data that possess the same statistical patterns: they recognize the patterns that they produce. This observation suggests the following hope. If small quantum information processors can produce statistical patterns that are computationally difficult for a classical computer to produce, then perhaps they can also recognize patterns that are equally difficult to recognize classically.
 
+Il machine learning quantistico è la materia che unisce machine learning e 
+meccanica quantistica. Bimonte et al. \cite{Biamonte2017} scrivono: 
+% For example, quantum computers can search an unsorted database with N entries in time proportional to √N—that is, O(√N)—where a classical computer given blackbox access to the same database takes time proportional to N: thus the quantum computer exhibits a square-root speedup over the classical computer. Similarly, quantum computers can perform Fourier transforms over N data points, invert sparse N × N matrices, and find their eigenvalues and eigenvectors in time proportional to a polynomial in log2N, where the best known algorithms for classical computers take time proportional to Nlog2N: thus the quantum computer exhibits an exponential speedup over the best classical computer algorithms.
+\begin{quote}
+    la meccanica quantistica segue notoriamente modelli atipici. 
+    I metodi di machine learning classico come le reti neurali profonde 
+    (deep neural network) frequentemente hanno la caratteristica di poter sia 
+    riconoscere modelli statistici sia produrre dati che ne possiedano gli 
+    stessi andamenti: riconoscono i motivi che producono. Questa osservazione 
+    porta alla seguente speranza. Se piccoli processori di informazioni 
+    quantistiche possono produrre motivi statistici che sono computazionalmente 
+    difficili da produrre per un computer classico, allora forse essi possono 
+    anche riconoscere motivi che sono ugualmente difficili da riconoscere 
+    classicamente. 
+    \marginpar{
+    Per esempio, i computer quantistici possono cercare in una banca dati non ordinata con 
+    $N$ voci in un tempo proporzionale a $\sqrt{N}$, ovvero $\mathcal{O}(\sqrt{N})$, mentre 
+    un computer classico con accesso a scatola nera alla stessa banca dati impiega un tempo 
+    proporzionale ad $N$: dunque il computer quantistico esibisce un'accelerazione 
+    che va come la radice quadrata rispetto al computer classico. 
+    }
+    La realizzazione di questa speranza dipende dal fatto che si possano trovare algoritmi 
+    quantistici efficienti per il machine learning. Un algoritmo quantistico è un insieme di 
+    istruzioni che risolvono un problema, come determinare se due grafici sono isomorfi, 
+    che possono essere eseguite su un computer quantistico. Il software del quantum machine 
+    learning fa uso degli algoritmi quantistici come parte di un'implementazione maggiore. 
+    Analizzando i passi prescritti dagli algoritmi quantistici, diventa chiaro che hanno il 
+    potenziale di superare in prestazioni gli algoritmi classici per problemi specifici (cioè, 
+    ridurre il numero di passi necessari). Questo potenziale è conosciuto come accelerazione 
+    quantistica \cite{Ronnow420}. 
+\end{quote}
+% The realization of this hope depends on whether efficient quantum algorithms can be found for machine learning. A quantum algorithm is a set of instructions solving a problem, such as determining whether two graphs are isomorphic, that can be performed on a quantum computer. Quantum machine learning software makes use of quantum algorithms as part of a larger implementation. By analysing the steps that quantum algorithms prescribe, it becomes clear that they have the potential to outperform classical algorithms for specific problems (that is, reduce the number of steps required). This potential is known as quantum speedup.
 
+Nel quantum machine learning il computer quantistico analizza dati classici, che sono 
+codificati come stati quantistici, oppure dati quantistici. Sempre afferente allo stesso 
+campo è l'uso di tecniche di machine learning classico per trovare modelli in dinamica 
+quantistica. Ci si limiterà al caso dell'uso di computer quantistici per analizzare dati 
+classici. 
 
+Nella sezione seguente si descriverà la versione quantistica dell'algoritmo \ac{KNN} visto 
+nella sezione \ref{sec:knn}, proposta ed implementata sul processore quantistico a 5 
+qubit dell'IBM da Schuld et al. \cite{10.1007/978-3-319-13560-1_17}, \cite{schuld}. 
 
+\subsection{QKNN} \label{sec:qknn}
 
+% ****************************************************
+% Desrizione dell'algoritmo di Schuld
+% ****************************************************
+
+L'idea alla base dell'algoritmo \ac{QKNN} è di usare il fenomeno di interferenza 
+quantistica per ottenere una misura della distanza con un calcolo in parallelo. 
+Dotandosi di una procedura efficiente per la preparazione dello stato, l'algoritmo 
+ottiene la riduzione logaritmica nelle dimensioni e nel numero di dati in input che 
+ci si aspetta usando una codifica quantistica dei dati 
+classici \cite{quantum_support_vector_machine}.
+Si considera l'attività di classificazione supervisionata di un motivo binario: 
+dato un data set $D=\{ (t^1,c^1),\ldots,(t^M,c^M) \}$ di input $t^m\in\mathbb{R}^N$ 
+con le rispettive etichette di classe $c^m\in \left\{ -1,1 \right\} $ per $m=1,\ldots,M$ 
+e un nuovo input $x\in\mathbb{R}^N$, si trovi l'etichetta $c\in\left\{ -1,1 \right\}$ che 
+corrisponde al nuovo input. 
+
+Il classificatore, implementato tramite un circuito di interferenza quantistica 
+ed una funzione di soglia, è dato da 
+\begin{equation}
+    c = \text{sgn} \left( \sum_{m=1}^M c^m \left[ 1 - \frac{1}{4M} | x - t^m |^2 \right] \right). 
+\end{equation}
+L'algoritmo che implementa il classificatore codifica le caratteristiche dell'input nelle 
+ampiezze di probabilità del sistema quantistico e le manipola attraverso porte 
+quantistiche; questa strategia è uno dei fattori ritenuti responsabili 
+dell'accelerazione quantistica. 
+Dato un vettore $x\in\mathbb{R}^N$ normalizzato con modulo unitario e $N=2^n$, 
+la codifica nelle ampiezze permette di descrivere lo stato con un registro di $n$ qubit 
+$\ket{\psi_x} = \sum_{i=0}^{N-1} x_i \ket{i}$, dove $\ket{i}$ è un registro indice che 
+segnala l'$i$-esima componente del vettore classico attraverso l'$i$-esimo elemento della 
+base computazionale. 
+
+% La parte sotto è un po' contorta
+
+% L'obiettivo è di classificare una registro di qubit in entrata basandosi 
+% su un numero più o meno grande di configurazioni di qubit di apprendimento. 
+% Ogni configurazione di apprendimento appartiene ad una certa classe, che è 
+% codificata in un registro quantistico di classe in entanglement con la rispettiva 
+% configurazione di apprendimento. L'idea principale è che l'algoritmo \ac{KNN} 
+% calcola la distanza tra il motivo in entrata ed ogni configurazione di 
+% apprendimento attraverso una serie di porte quantistiche. 
+% Successivamente, queste distanze sono invertite in modo che i vettori di 
+% apprendimento vicini a quello di input hanno l'inverso della distanza 
+% maggiore rispetto ai vettori di apprendimento più remoti. Queste distanze inverse 
+% sono poi scritte nelle corrispondenti ampiezze dello stato di classe. 
+% Si noti che il modulo quadro di un'ampiezza di un particolare stato di classe 
+% determina la probabilità di misurare quella classe. 
+% Quindi, la probabilità di misurare una data classe dipende adesso dall'inverso 
+% delle distanze tra i vettori di apprendimento della classe in esame ed il 
+% vettore d'input. L'inverso della distanza può essere visto come un peso 
+% dipendente dalla distanza, dato che aumenta la probabilità di misurare la 
+% classe con i vettori di apprendimento più vicini a quello d'input. 
+% I passaggi necessari per l'implementazione dell'algoritmo \ac{KNN} quantistico 
+% sono evidenziati in dettaglio qui di seguito. 
+
+Il primo passo dell'algoritmo consiste nel preparare una 
+\emph{sovrapposizione dell'insieme di apprendimento} che 
+ne contenga i dati codificati. 
+Usando un idoneo schema di preparazione dello stato (nella sezione \ref{sec:ff-qram} 
+se ne vedrà un esempio pratico), 
+il circuito di classificazione porta un sistema di $n$ 
+qubit nello stato 
+\begin{equation}
+    \ket{D} = \frac{1}{\sqrt{2MC}} \sum_{m=1}^M \ket{m} 
+    \left( \ket{0}\ket{\psi_x} + \ket{1}\ket{\psi_{t^m}} \right)
+    \ket{c^m}.
+\end{equation}
+Qui $\ket{m}$ è un registro indice che prende valori 
+$m=1,\ldots,M$ e che contrassegna l'$m$-esimo vettore 
+di apprendimento. 
+Il secondo registro è un singolo qubit ancilla, il cui 
+stato eccitato è in entanglement con il terzo registro 
+che codifica l'$m$-esimo stato di apprendimento 
+$\ket{\psi_{t^m}} = \sum_{i=0}^{N-1} t_i^m \ket{i}$, 
+mentre il suo stato fondamentale è in entanglement con 
+il terzo registro che codifica il vettore d'input 
+$\ket{\psi_x} = \sum_{i=0}^{N-1} x_i \ket{i}$. 
+Il quarto registro codifica la classe nell'ampiezza dei propri qubit. 
+Effettivamente, si crea una funzione d'onda che contiene 
+i vettori di apprendimento insieme ad $M$ copie del nuovo 
+input. La costante di normalizzazione $C$ dipende dal 
+processo di ottimizzazione dei dati; 
+assumeremo in seguito che i vettori di apprendimento siano 
+normalizzati e quindi $C=1$. 
+
+Dopo aver preparato lo stato iniziale, il circuito quantistico 
+consiste di sole tre operazioni. Prima, l'applicazione di 
+una porta Hadamard sull'ancilla fa interferire le copie 
+del vettore d'input con i vettori di apprendimento: 
+\begin{equation}
+    \frac{1}{2\sqrt{M}} \sum_{m=1}^M \ket{m}
+    \left( \ket{0}\ket{\psi_{x+t^m}} + \ket{1}  
+    \ket{\psi_{x-t^m}} \right) \ket{c^m},
+\end{equation}
+dove $\ket{\psi_{x \pm t^m}} = \ket{\psi_x} \pm \ket{\psi_{t^m}}$. 
+
+La seconda operazione è una misura condizionale che seleziona 
+il ramo con l'ancilla nello stato $\ket{0}$. Questa 
+postselezione ha successo con probabilità 
+$p_\text{acc} = \frac{1}{4M}\sum_m |x+t^m|^2$. 
+È più probabile che abbia successo se la distanza euclidea 
+al quadrato complessiva dell'insieme dati di apprendimento 
+rispetto al nuovo input è piccola. 
+% Mostreremo... ***************
+Se la misura condizionale ha successo, lo stato risultanta 
+è dato da 
+\begin{equation}
+    \frac{1}{2\sqrt{Mp_{\text{acc}}}} \sum_{m=1}^M \sum_{i=1}^N 
+    \ket{m} ( x_i + t_i^m ) \ket{i} \ket{c^m}.
+\end{equation}
+Le ampiezze pesano i qubit classe $\ket{c^m}$ con la 
+distanza dell'$m$-esimo vettore dati dal nuovo input. 
+In questo stato, la probabilità di misurare il qubit 
+classe nello stato $\ket{s}$ 
+\begin{equation}
+    p(\ket{c}=\ket{s}) = \frac{1}{4Mp_{\text{acc}}} 
+    \sum_{m|\ket{c}=\ket{s}} |x+t^m|^2,
+\end{equation}
+riflette la probabilità di predire la classe $s$ per il 
+nuovo input. 
+
+La scelta di vettori caratteristica normalizzati assicura che \\ 
+$\frac{1}{4Mp_{\text{acc}}}\sum_m |x+t^m|^2 = 
+1 - \frac{1}{4Mp_{\text{acc}}}\sum_m |x-t^m|^2$, e la scelta 
+della classe con maggior probabilità in questo modo 
+implementa il classificatore. 
+Questo significa che se il vettore d'input è molto 
+vicino ai vettori di training di una data classe, 
+quella classe uscirà come risultato più frequentemente 
+delle altre. 
 
 % Il \acf{ML}, una sottodisciplina dell'intelligenza artificiale, prova a dare la 
 % capacità ai computer di imparare dai dati senza che un umano programmi 

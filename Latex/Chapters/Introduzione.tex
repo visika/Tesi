@@ -115,8 +115,8 @@ l'algoritmo di fattorizzazione in numeri primi di Shor è uno tra i più famosi 
 % adesso è già avviata la combinazione tra ML e QC
 
 Alla luce di questi fatti, negli ultimi anni c'è stata particolare attenzione nei 
-riguardi del nuovo campo del \ac{MLQ} (o \ac{QML}), che mette insieme il \ac{ML} con il quantum 
-computing. 
+riguardi del nuovo campo del \ac{MLQ} (o \ac{QML}) \cite{Biamonte2017} , che mette insieme il 
+\ac{ML} con il quantum computing. 
 
 Più nello specifico, si parla di machine learning migliorato quantisticamente quando 
 la computazione quantistica è usata per migliorare algoritmi di \ac{ML} classico. 
@@ -152,9 +152,9 @@ riferito, è di 50 \cite{50qubit}.
 Negli ultimi anni ci sono state varie implementazioni innovative di algoritmi di \ac{MLQ} \cite{quantum-advantage}: 
 seguendo i passi che hanno portato alla nascita del \ac{ML} nel XX secolo, 
 Tacchino et al. \cite{tacchino} hanno implementato un percettrone su hardware quantistico;
-Schuld et al. \cite{schuld} hanno invece implementato un algoritmo \ac{KNN}. 
-Questa tesi parte proprio da quest'ultimo articolo, analizzando le possibilità di 
-miglioramento in conseguenza delle novità nell'hardware e nelle tecniche di codifica dei dati. 
+Schuld et al. \cite{schuld} hanno invece implementato l'algoritmo lazy learner \ac{KNN}. 
+Questa tesi parte proprio da quest'ultimo articolo, provando a riprodurne il lavoro e ad 
+implementarne una versione multiclasse. 
 
 % Li, Liu, Xu e Du hanno distinto con successo cifre scritte a mano usando un quantum support 
 % vector machine su un banco di prova a risonanza magnetica nucleare con quattro qubit. In più, 
@@ -207,9 +207,11 @@ miglioramento in conseguenza delle novità nell'hardware e nelle tecniche di cod
 Prendendo come punto di partenza gli algoritmi proposti nell'ambito di ricerca del \ac{QML} 
 questa tesi proverà a rispondere alla seguente domanda:
 \begin{quote}
-    quali sono le prestazioni di un algoritmo k-nearest neighbours di quantum 
-    machine learning implementato su hadware quantistico di piccola e media dimensione 
-    attualmente disponibili e come scala all'aumentare delle risorse?
+    è possibile implementare su un computer quantistico un algoritmo k-nearest neighbours 
+    multiclasse, in modo da migliorare le prestazioni ed il numero di problemi risolvibili?
+    % quali sono le prestazioni di un algoritmo k-nearest neighbours di quantum 
+    % machine learning implementato su hadware quantistico di piccola e media dimensione 
+    % attualmente disponibili e come scala all'aumentare delle risorse?
     % quali sono le opportunità di implementazione pratica e l'efficienza di un algoritmo 
     % k-nearest neighbours di machine learning quantistico su computer quantistici di piccola 
     % e media scala attualmente disponibili?

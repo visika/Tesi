@@ -7,55 +7,50 @@
 % ***********************************************
 
 Per l'implementazione dell'algoritmo è stato scelto il ben noto 
-data set Iris, consistente in una tabella di lunghezze e larghezze 
-del petalo e del sepalo collegate a tre specie di fiore Iris. 
+data set Iris, una tabella compilata con lunghezze e larghezze 
+del petalo e del sepalo di tre specie di fiore Iris: 
+setosa, versicolor e virginica.  
 Come evidenziato in Schuld et al. \cite{schuld}, 
 l'insieme dati si è dovuto standardizzare e 
 normalizzare prima dell'utilizzo. 
-Il passo successivo è stato ripetere l'esperienza dell'articolo 
-per comprenderne appieno il funzionamento e poterlo estendere. 
-Questa tesi parte dalla situazione base, in cui
-si usano due caratteristiche delle 
-quattro disponibili, due vettori di apprendimento 
-e si possono classificare solo due classi alla volta. 
-Questa versione esemplificativa è stata fatta girare con successo 
-sul processore quantistico a 5 qubit messo a disposizione dall'IBM.
-Di fronte alla disponibilità di un nuovo computer quantistico a 16 
-qubit\footnote{\url{https://developer.ibm.com/dwblog/2017/quantum-computing-16-qubit-processor/}, 
-Recuperato l'8 settembre 2019}, 
-ci si chiede quali sono le prossibilità di miglioramento delle 
-implementazioni pratiche. Si è lavorato sulle seguenti proprietà: 
-\begin{itemize}
-    \item aumentare il numero di classi riconosciute;
-    \item aumentare il numero di caratteristiche considerate;
-    \item aumentare il numero di vettori di training.
-\end{itemize}
-Per fare ciò, si è dovuto tenere in considerazione i compromessi 
-in termini di numero di qubit ed efficienza di classificazione: 
-infatti, per realizzare ognuno di questi punti c'è bisogno di impegnare 
-più qubit, non solo per una questione di memoria, ma anche per 
-la complessità delle operazioni da effettuare; un'esempio è dato 
-dalla porta $C^n R_y (\theta)$, usata nel procedimento di costruzione 
-della \ac{QRAM} (vedi sezione \ref{sec:ff-qram}), che necessita di un 
-qubit ancilla in più per ogni qubit di controllo aggiuntivo. 
 
-\section{Ottimizzazione dei dati}
+% *****************************************
+% Questa parte può andare dopo
+% *****************************************
+
+% Questa versione esemplificativa è stata fatta girare con successo 
+% sul processore quantistico a 5 qubit messo a disposizione dall'IBM.
+% Di fronte alla disponibilità di un nuovo computer quantistico a 16 
+% qubit\footnote{\url{https://developer.ibm.com/dwblog/2017/quantum-computing-16-qubit-processor/}, 
+% Recuperato l'8 settembre 2019}, 
+% ci si chiede quali sono le prossibilità di miglioramento delle 
+% implementazioni pratiche. Si è lavorato sulle seguenti proprietà: 
+
+% Per fare ciò, si è dovuto tenere in considerazione i compromessi 
+% in termini di numero di qubit ed efficienza di classificazione: 
+% infatti, per realizzare ognuno di questi punti c'è bisogno di impegnare 
+% più qubit, non solo per una questione di memoria, ma anche per 
+% la complessità delle operazioni da effettuare; un'esempio è dato 
+% dalla porta $C^n R_y (\theta)$, usata nel procedimento di costruzione 
+% della \ac{QRAM} (vedi sezione \ref{sec:ff-qram}), che necessita di un 
+% qubit ancilla in più per ogni qubit di controllo aggiuntivo. 
+
+\section{Preparazione dei dati}
 
 Il data set Iris completo si presenta nella forma mostrata in figura 
-\ref{fig:iris_grezzi}, dove sono indicate le prime due caratteristiche 
-sugli assi coordinati. 
+\ref{fig:iris_grezzi}, dove sono graficate due delle quattro caratteristiche 
+del data set sugli assi coordinati. 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{gfx/iris/irisfeatures}
+    \includegraphics[width=\linewidth]{gfx/iris/iris4features}
     \caption{Data set Iris non elaborato}
     \label{fig:iris_grezzi}
 \end{figure}
 
 La prima operazione sui dati è la standardizzazione, che trasla e scala 
 i punti in modo che abbiamo media nulla e deviazione standard unitaria. 
-Si possono notare gli effetti nella figura \ref{fig:iris_standard}, 
-osservando i nuovi valori sugli assi. 
+Si possono notare gli effetti nella figura \ref{fig:iris_standard}. 
 
 \begin{figure}[h!]
     \centering
@@ -64,82 +59,102 @@ osservando i nuovi valori sugli assi.
     \label{fig:iris_standard}
 \end{figure}
 
-La normalizzazione termina il processo preliminare di ottimizzazione 
+La normalizzazione termina il processo di preparazione 
 dei dati. Si può vedere l'effetto della normalizzazione su un data set 
-con due caratteristiche in figura \ref{fig:iris_normal}. 
+con due o quattro caratteristiche nel riquadro \ref{fig:iris_normal}. 
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\linewidth]{gfx/iris/irisnormalized}
+\begin{figure}[htb]
+    \myfloatalign
+    \subfloat[2 caratteristiche]
+    {\includegraphics[width=.45\linewidth]{gfx/iris/irisnormalized}} \quad
+    \subfloat[4 caratteristiche]
+    {\label{fig:4caratteristiche.normalizzate}%
+        \includegraphics[width=.45\linewidth]{gfx/iris/iris4normalized}} % \\
+    % \subfloat[Methodicamente o uno.]
+    % {\includegraphics[width=.45\linewidth]{gfx/example_3}} \quad
+    % \subfloat[Titulo debitas.]
+    % {\includegraphics[width=.45\linewidth]{gfx/example_4}}
     \caption{Data set Iris normalizzato}
     \label{fig:iris_normal}
 \end{figure}
 
-Avendo effettuato queste operazioni, si deve ora tradurre le coordinate 
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=\linewidth]{gfx/iris/irisnormalized}
+%     \caption{Data set Iris normalizzato}
+%     \label{fig:iris_normal}
+% \end{figure}
+
+Avendo effettuato queste operazioni, si traducono le coordinate 
 di ciascun vettore nello spazio delle caratteristiche in un angolo di rotazione 
-da applicare al qubit registro della \ac{QRAM}. 
+da applicare al qubit registro della \ac{QRAM}, come descritto nell'eq. \ref{eq:angolo.qram}. 
 
-Facendo riferimento all'eq. \ref{eq:qram.prob}, troviamo che lo stato costruito, 
-dopo la misura condizionale, è 
-\begin{equation}
-    \sum_{l=0}^{M-1} \psi_{\vec{d}^{(l)}}\ket{\vec{d}^{(l)}}\sin\theta^{(l)}\ket{1}_R. 
-\end{equation}
-La relazione esistente tra i valori $b_l$, ovvero le caratteristiche standardizzate e normalizzate, 
-e le ampiezze di probabilità nella \ac{QRAM} è 
-\begin{equation}
-    \theta^{(l)} = \arcsin b_l. 
-\end{equation}
+\section{Classificazione base}
 
-\section{Scrittura dell'algoritmo}
+% Considereremo validi per i nostri scopi solo le misure del qubit classe ottenute quando il 
+% qubit ancilla è trovato nello stato $\ket{0}$. 
+% Possiamo notare, tra le altre cose, che la porta $C^n R_y (\theta)$ è in 
+% realtà formata da una successione di più porte di base. Mentre nei primi tempi 
+% era necessario inserire manualmente i singoli elementi logici per eseguire una operazione 
+% complessa, nella realizzazione attuale si è sfruttato il lavoro della comunità 
+% open source di Qiskit, che ha messo a disposizione comandi veloci per aggiungere 
+% facilmente porte multi controllate. 
 
-Avendo acquisito le nozioni teoriche e i parametri iniziali, si prova 
-adesso a costruire il circuito quantistico attraverso le porte 
-dell'insieme universale di base, disponibili grazie all'interfaccia IBM 
-Q Experience ed al kit di sviluppo Qiskit. 
+Per dare un esempio di classificazione binaria tra le classi setosa e 
+versicolor si sono usate le prime due caratteristiche e si sono posti 
+a confronto il vettore 29 (setosa) e 57 (versicolor) in input con i 
+due vettori di training 34 (setosa) e 86 (versicolor). 
+La classe setosa è stata collegata allo stato $\ket{c=0}$, la classe 
+versicolor allo stato $\ket{c=1}$.
+I risultati ottenuti da una simulazione su computer portatile sono 
+visibili in figura \ref{fig:simulazione_circuito}. 
+Nella didascalia sono scritti i conteggi totali corrispondenti ad un determinato 
+esito di misura sui due qubit ancilla e classe. 
+La cifra sulla destra contiene la misura del qubit ancilla, quella sulla 
+sinistra del qubit classe. 
+L'istogramma riporta la normalizzazione unitaria dei risultati, che approssima 
+la distribuzione di probabilità per numeri grandi di esecuzioni dell'algoritmo. 
+Si userà preferibilmente un numero di esecuzioni (shot) pari al massimo permesso 
+dai computer quantistici dell'IBM, ovvero 8192. 
 
-Seguendo la figura A.1 in appendice, si 
-esamina il circuito quantistico di base: 
-\begin{enumerate}
-    \item i qubit ancilla ed indice vengono posti in sovrapposizione uniforme; 
-    \item il vettore d'input $x$ è posto in entanglement con lo stato fondamentale 
-    dell'ancilla;
-    \item il vettore di training $t^0$ è posto in entanglement con lo stato eccitato 
-    dell'ancilla e con lo stato fondamentale del qubit indice;
-    \item il vettore di training $t^1$ è posto in entanglement con lo stato eccitato 
-    dell'ancilla e del qubit indice;
-    \item il qubit classe è invertito condizionato dal fatto che il qubit indice sia $\ket{1}$; 
-    questo completa la preparazione iniziale dello stato; 
-    \item nell'ultimo passaggio la porta Hadamard fa interferire le copie di $x$ con i vettori 
-    d'apprendimento e l'ancilla è misurata, seguita da una misura del qubit classe. 
-\end{enumerate}
-Considereremo validi per i nostri scopi solo le misure del qubit classe ottenute quando il 
-qubit ancilla è trovato nello stato $\ket{0}$. 
-Possiamo notare, tra le altre cose, che la porta $C^n R_y (\theta)$ è in 
-realtà formata da una successione di più porte di base. Mentre nei primi tempi 
-era necessario inserire manualmente i singoli elementi logici per eseguire una operazione 
-complessa, nella realizzazione attuale si è sfruttato il lavoro della comunità 
-open source di Qiskit, che ha messo a disposizione comandi veloci per aggiungere 
-facilmente porte multi controllate. 
+% Per dare un esempio di risultato di classificazione usando solo le prime due caratteristiche 
+% del data set e gli elementi appartenenti alle classi setosa e versicolor. 
+% Si scelgono come vettori di training un elemento per ciascuna classe, nel nostro caso 
+% il vettore 34 ed il vettore 86 dal data set, rispettivamente setosa e versicolor. 
+% Si assegna alla classe setosa lo stato $\ket{0}$ del qubit classe ed alla classe 
+% versicolor lo stato $\ket{1}$. 
+% Si sottopongono poi a classificazione, in due esperimenti separati, due vettori sconosciuti: 
+% il vettore 29 (setosa) ed il vettore 57 (versicolor). 
 
-\subsection{Classificazione iniziale}
+% Il primo passo è simulare l'esperimento sul computer in uso, dato che il problema in esame
+% è facilmente eseguibile su un comune portatile. I risultati non filtrati per i due esperimenti 
+% sono visibili nel riquadro \ref{fig:simulazione_circuito}. Nella didascalia sono scritti i conteggi corrispondenti ad un 
+% determinato esito di misura sui due qubit ancilla e classe. La cifra sulla destra contiene la 
+% misura del qubit ancilla, quella sulla sinistra del qubit classe. Tali valori, normalizzati ad uno, 
+% sono rappresentati in un istogramma, che approssima la distribuzione di probabilità degli esiti di 
+% misura per grandi numeri di esecuzioni dell'algoritmo. Per questo motivo si userà preferibilmente 
+% un numero di esecuzioni pari al massimo permesso sui computer quantistici dell'IBM, ovvero 8192. 
 
-Si mostra un esempio di risultato di classificazione usando le prime due caratteristiche 
-del data set e gli elementi appartenenti alle classi setosa e versicolor. 
-Si scelgono come vettori di training un elemento per ciascuna classe, nel nostro caso 
-il vettore 34 ed il vettore 86 dal data set, rispettivamente setosa e versicolor. 
-Si assegna alla classe setosa lo stato $\ket{0}$ del qubit classe ed alla classe 
-versicolor lo stato $\ket{1}$. 
-Si sottopongono poi a classificazione, in due esperimenti separati, due vettori sconosciuti: 
-il vettore 29 (setosa) ed il vettore 57 (versicolor). 
+% \begin{figure}[h!]
+%     \myfloatalign
+%     \hspace{-1cm}
+%     \subfloat[Iris setosa]
+%     {\includegraphics[width=.75\linewidth]{gfx/misura_setosa}}
+%     \subfloat[Iris versicolor]
+%     {%\label{fig:example-b}%
+%         \includegraphics[width=.75\linewidth]{gfx/misura_versicolor}} % \\
+%     % \subfloat[Iris setosa]
+%     % {\includegraphics[width=.45\linewidth]{gfx/example_3}} \quad
+%     % \subfloat[Titulo debitas.]
+%     % {\includegraphics[width=.45\linewidth]{gfx/example_4}}
+%     \caption[Simulazione del circuito]%
+%     {Simulazione del circuito. \par \small 
+%     I conteggi totali sono: \\
+%     per setosa \{'00': 3843, '10': 2056, '01': 352, '11': 1941\}; \\
+%     per versicolor \{'00': 2749, '10': 3908, '01': 1414, '11': 121\}.}%
+%     \label{fig:simulazione_circuito}
+% \end{figure}
 
-Il primo passo è simulare l'esperimento sul computer in uso, dato che il problema in esame
-è facilmente eseguibile su un comune portatile. I risultati non filtrati per i due esperimenti 
-sono visibili nel riquadro \ref{fig:simulazione_circuito}. Nella didascalia sono scritti i conteggi corrispondenti ad un 
-determinato esito di misura sui due qubit ancilla e classe. La cifra sulla destra contiene la 
-misura del qubit ancilla, quella sulla sinistra del qubit classe. Tali valori, normalizzati ad uno, 
-sono rappresentati in un istogramma, che approssima la distribuzione di probabilità degli esiti di 
-misura per grandi numeri di esecuzioni dell'algoritmo. Per questo motivo si userà preferibilmente 
-un numero di esecuzioni pari al massimo permesso sui computer quantistici dell'IBM, ovvero 8192. 
 \begin{figure}[h!]
     \myfloatalign
     \subfloat[Iris setosa] {
@@ -157,11 +172,12 @@ un numero di esecuzioni pari al massimo permesso sui computer quantistici dell'I
     per versicolor \{'00': 2749, '10': 3908, '01': 1414, '11': 121\}.}
     \label{fig:simulazione_circuito}
 \end{figure}
+
 Selezionando i risultati laddove il bit di destra è 0, abbiamo praticamente effettuato 
 la misura condizionale necessaria al funzionamento dell'algoritmo. 
 Nel riquadro \ref{fig:simulazione_filtrati} sono presentati 
-i risultati filtrati in modo da considerare solo i risultati in cui il bit 
-ancilla è 0. 
+i risultati filtrati dove il bit ancilla è 0. 
+
 \begin{figure}[h!]
     \myfloatalign
     \subfloat[Iris setosa]{
@@ -179,81 +195,60 @@ ancilla è 0.
 Il passo successivo è eseguire questi stessi circuiti quantistici su un vero computer quantistico. 
 È stata scelta la macchina a 16 qubit ibmq\_16\_melbourne per ottenere le misure per il 
 vettore d'input setosa illustrate in figura \ref{fig:sperimentale_setosa}. 
+Gli inevitabili fenomeni di rumore rendono i risultati meno piccati ma comunque 
+distinguibili. 
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{gfx/misura_setosa_sperimentale}
     \caption{Esecuzione su hardware reale (setosa)}
     \label{fig:sperimentale_setosa}
 \end{figure}
-Gli inevitabili fenomeni di rumore rendono i risultati meno piccati ma comunque 
-distinguibili in questo caso. 
 
 Il discorso è diverso per il confronto tra le classi versicolor e 
-virginica: visto che gli elementi di queste due classi non sono linearmente separabili, 
-algoritmi come quello qui usato non sono efficaci nella loro distinzione. 
-Uno dei metodi per aggirare questo problema è l'uso di feature map \cite{schuld} nel processo 
-di ottimizzazione. Infatti le misure effettuate danno risultati erronei o 
+virginica: visto che gli elementi di queste due classi non sono linearmente 
+separabili, algoritmi come il \ac{KNN} non sono efficaci nella loro distinzione. 
+Infatti le misure effettuate danno risultati erronei o 
 ambigui nella maggioranza dei casi (probabilità del 50\% per entrambi i risultati). 
+Uno dei metodi per aggirare questo problema è l'uso di feature map 
+\cite{schuld} nel processo di ottimizzazione. 
 
-Ad ogni modo, si procederà nel realizzare i punti definiti all'inizio di 
-questo capitolo. Condizione necessaria per distinguere le tre classi con un 
-solo esperimento è che si possano memorizzare almeno tre vettori di training, 
-uno per ciascuna classe. 
+% Ad ogni modo, si procederà nel realizzare i punti definiti all'inizio di 
+% questo capitolo. Condizione necessaria per distinguere le tre classi con un 
+% solo esperimento è che si possano memorizzare almeno tre vettori di training, 
+% uno per ciascuna classe. 
 
-\subsection{Aumento del numero di vettori d'apprendimento}
+\section{Limiti di esecuzione}
 
-Il numero di stati posseduti da $n$ qubit, come abbiamo visto nella 
-sezione sui fondamenti teorici, è $2^n$. Nell'esperimento visto poco 
-prima, si è dedicato un solo qubit per segnare l'indice dei vettori di 
-apprendimento $\ket{m}$. Aggiungendo ulteriori qubit all'indice possiamo 
-immagazzinare successivamente 4, 8, 16, 32, 64, \ldots vettori di training. 
-Con 8 qubit per il registro $\ket{m}$ già siamo in grado di immagazzinare 
-tutti i vettori del data set Iris. Nel caso di grandi insiemi, tuttavia, 
-potrebbe essere appropriato ridurre il numero di vettori di training durante 
-il processo di ottimizzazione, adottando un criterio di selezione che includa 
-solo i vettori più significativi ai fini della classificazione. 
+Nell'esecuzione dell'algoritmo su hardware quantistico si è dovuto tenere 
+conto dei limiti in termini di numero di qubit. Il computer quantistico 
+disponibile tramite IBM Q Experience permette di usare al massimo 
+14 qubit superconduttivi. Considerando che, per ogni qubit di controllo aggiuntivo, 
+la porta $C^n R_y (\theta)$ richiede un ulteriore qubit ancilla, la spesa 
+in termini di risorse è di due qubit per ogni incremento tra numero di vettori 
+di training, di classi o di caratteristiche. Alcune configurazioni ottimali 
+per l'esecuzione con 14 qubit sono descritte in tabella \ref{table:conf.ottimali}. 
+Si ricorda che dato un registro di $n$ qubit, questo può conservare $N=2^n$ 
+valori nelle sue ampiezze di probabilità. 
 
-La spesa totale in termini di risorse coinvolge due qubit per ogni incremento 
-che facciamo: infatti, per mettere in entanglement un qubit in più del registro 
-$\ket{m}$ con il qubit registro della \ac{QRAM}, abbiamo bisogno di un qubit 
-ancilla aggiuntivo per l'operazione $C^n R_y (\theta)$; questi qubit ancilla non 
-sono rappresentati nei disegni dei circuiti per semplice convenienza visiva, ma 
-se ne può trovare traccia nei frammenti di codice scritti per questa tesi\footnote{Si veda 
-\url{https://github.com/visika/Tesi}}.
-
-\subsection{Implementazione multiclasse}
-
-L'aggiunta della capacità di riconoscere tutte le tre classi in una sola esecuzione 
-non è di natura differente dall'aggiungere qubit per avere maggiori vettori 
-di apprendimento. Passiamo dall'avere un solo qubit classe, che ha associato il 
-proprio stato $\ket{0}$ alla prima classe e lo stato $\ket{1}$ alla seconda, 
-ad avere due qubit classe ed associare lo stato $\ket{00}$ alla prima classe, 
-lo stato $\ket{01}$ alla seconda classe e lo stato $\ket{10}$ alla terza classe. 
-Lo stato $\ket{11}$ non è associato ad alcuna classe. 
-Nel processo di costruzione dello stato iniziale nella \ac{QRAM}, 
-oltre che ai qubit indice, i vettori di addestramento saranno in entanglement 
-anche con i relativi stati dei due qubit classe. Osservando la figura \ref{fig:qram_classi} 
-si vede che le porte $\overline{c}X$ sui qubit classe sono applicate solo all'inizio e 
-alla fine del processo di codifica di tutte le componenti di un vettore di training. 
-\begin{figure}[h!]
+\begin{table}[h!]
     \centering
-    \includegraphics[width=\linewidth]{gfx/qram_classi}
-    \caption[Circuito quantistico per preparare il \acs{QDB} per un quantum support vector machine]%
-    {Circuito quantistico per preparare il \acs{QDB} per un quantum support vector machine. \par \small 
-    Sono mostrate le porte per scrivere solo l'$i$-esimo vettore di apprendimento. Le porte ombreggiate 
-    in grigio sono aggiunte esclusivamente per illustrare il processo flip-flop, e non sono implementate 
-    in pratica.}
-    \label{fig:qram_classi}
-\end{figure}
-
-\subsection{Aumento del numero di caratteristiche}
+    \begin{tabular}{c c c}
+        i & m & c \\ 
+        \hline
+        2 & 2 & 2 \\ 
+        3 & 2 & 1 \\ 
+        2 & 3 & 1 \\ 
+        1 & 3 & 2
+    \end{tabular}
+    \caption{Alcune configurazioni per i qubit}
+    \label{table:conf.ottimali}
+\end{table}
 
 % *********************************************
 % Questa parte va aggiustata
 % *********************************************
 
-L'Iris data set possiede 4 caratteristiche. È poco dispendioso includerle tutte 
-dunque usando semplicemente 2 qubit $\ket{i}$ e 2 qubit come ancilla della \ac{QRAM}. 
 Per verificare il miglioramento apportato da un aumento del numero di caratteristiche 
 considerate, si prende in esame la classificazione del vettore d'input 54 (versicolor), 
 con i vettori di training numero 51 (versicolor) e 146 (virginica) del data set. 
@@ -276,17 +271,39 @@ rispetto al totale dei tentativi, al variare dei parametri come il numero
 di features o il numero di vettori di training usati. 
 
 Provando ad effettuare una classificazione a tre classi con 32 vettori di 
-training otteniamo i seguenti esiti: 
-\begin{itemize}
-    \item i vettori della classe setosa sono correttamente classificati 10 volte su 10;
-    \item i vettori della classe versicolor sono correttamente classificati 5 volte su 10;
-    \item i vettori della classe virginica sono correttamente clasificati 9 volte su 10.
-\end{itemize}
+training otteniamo gli esiti in tabella \ref{table:misure}. 
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c c c}
+        classe & esiti positivi \\ 
+        \hline
+        setosa & 100\% \\ 
+        versicolor & 50\% \\ 
+        virginica & 90\% 
+    \end{tabular}
+    \caption{Risultati di classificazione con 32 vettori di training}
+    \label{table:misure}
+\end{table}
+
+% \begin{itemize}
+%     \item i vettori della classe setosa sono correttamente classificati 10 volte su 10;
+%     \item i vettori della classe versicolor sono correttamente classificati 5 volte su 10;
+%     \item i vettori della classe virginica sono correttamente clasificati 9 volte su 10.
+% \end{itemize}
 I risultati vengono necessariamente da simulazioni, in quanto sono necessari 
 19 qubit sotto queste condizioni. 
 
 Volendo sfruttare appieno le potenzialità del simulatore presso l'IBM, 
 possiamo costruire un circuito che accetti $2^7 = 128$ vettori di training 
 presi a caso, e lasciare i restanti vettori per la classificazione. 
-Con l'uso di 23 qubit si arriva alla classificazione corretta della classe versicolor 
-8 volte su 10. 
+Con l'uso di 23 qubit si arriva alla classificazione corretta della classe versicolor, 
+senza uso di feature map, 8 volte su 10. 
+Un esempio di classificazione multiclasse può essere visto in figura \ref{fig:multiclasse}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{gfx/multiclass_virginica}
+    \caption{Classificazione di virginica multiclasse}
+    \label{fig:multiclasse}
+\end{figure}

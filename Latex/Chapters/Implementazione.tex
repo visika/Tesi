@@ -1,5 +1,5 @@
 %************************************************
-\chapter{Implementazione}\label{ch:implementazione}
+\chapter{Implementazione multiclasse}\label{ch:implementazione}
 %************************************************
 
 \section{Preparazione di uno stato quantistico}
@@ -27,7 +27,9 @@ Lo stato finale dei qubit può essere
 arbitrario e l'ampiezza di probabilità $\psi_j$ con cui è accessibile ciascuno stato 
 $\ket{j}_B$ della base computazionale codifica i valori classici di partenza. 
 
-L'operazione QRAM sui qubit bus e registro sovrappone un insieme di dati classici $D$ come 
+L'operazione QRAM sui qubit bus e registro sovrappone un insieme di dati classici 
+$D = \left\{ \left( \vec{d}^{(l)}, b_l \right) | 0 \leq l < M \right\}$, dove 
+$\vec{d}^{(l)}$ rappresenta $n$ bit di informazione e $b_l$ è il relativo attributo, come 
 \begin{equation} \label{eq:qram}
     \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
     \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
@@ -74,7 +76,7 @@ della base computazionale dei qubit bus cosicché $\ket{\vec{d}^{(l)}}$ diventa
 $\ket{1}^{\otimes n}$, ed il resto dei bit quantistici si invertono di conseguenza: 
 \begin{equation}
     \ket{\psi_1}_l = \psi_{\vec{d}^{(l)}}\ket{1}^{\otimes n} \ket{0}_R + 
-    \sum_{\ket{\overline{j \oplus \vec{d}^{(l)}} \neq \ket{1}^{\otimes n} }} \psi_j \ket{\overline{j \oplus \vec{d}^{(l)}}} 
+    \sum_{\ket{\overline{j \oplus \vec{d}^{(l)}}} \neq \ket{1}^{\otimes n} } \psi_j \ket{\overline{j \oplus \vec{d}^{(l)}}} 
     \ket{0}_R.
 \end{equation}
 La sovralinea nell'ultimo termine indica che l'inversione del bit avviene se il 
@@ -83,7 +85,7 @@ $C^n R_y(\theta^{(l)})$, denotata come $\theta^{(l)}$ nella figura, è applicata
 al qubit registro. Lo stato quantistico al passo 2 diventa 
 \begin{equation}
     \ket{\psi_2}_l = \psi_{\vec{d}^{(l)}} \ket{1}^{\otimes n} \ket{\theta^{(l)}}_R + 
-    \sum_{\ket{\overline{j \oplus \vec{d}^{(l)}} \neq \ket{1}^{\otimes n} }} \psi_j \ket{\overline{j \oplus \vec{d}^{(l)}}} 
+    \sum_{\ket{\overline{j \oplus \vec{d}^{(l)}}} \neq \ket{1}^{\otimes n} } \psi_j \ket{\overline{j \oplus \vec{d}^{(l)}}} 
     \ket{0}_R,
 \end{equation}
 dove $\ket{\theta}=\cos\theta\ket{0}+\sin\theta\ket{1}$. 
@@ -120,114 +122,144 @@ La probabilità di misurare $\ket{1}_R$ è
 Il costo per preparare uno stato con questo procedimento è di 
 $\mathcal{O}(n)$ qubit e $\mathcal{O}(Mn)$ operazioni quantistiche. 
 
-\section{QKNN}
+\section{Approccio multiclasse}
 
-L'algoritmo \ac{KNN} quantistico pesato sulla distanza evidenziato in questa sezione è stato 
-proposto da Schuld, Sinayskiy e Petruccione \cite{10.1007/978-3-319-13560-1_17} 
-e implementato da Schuld, Fingerhuth e Petruccione \citep{schuld} sul computer 
-quantistico a 5 qubit dell'IBM. 
-L'algoritmo viene qui introdotto, per poi discutere nel capitolo 
-successivo i risultati. 
-
-% La parte sotto è un po' contorta
-
-L'obiettivo è di classificare una registro di qubit in entrata basandosi 
-su un numero più o meno grande di configurazioni di qubit di apprendimento. 
-Ogni configurazione di apprendimento appartiene ad una certa classe, che è 
-codificata in un registro quantistico di classe in entanglement con la rispettiva 
-configurazione di apprendimento. L'idea principale è che l'algoritmo \ac{KNN} 
-calcola la distanza tra il motivo in entrata ed ogni configurazione di 
-apprendimento attraverso una serie di porte quantistiche. 
-Successivamente, queste distanze sono invertite in modo che i vettori di 
-apprendimento vicini a quello di input hanno l'inverso della distanza 
-maggiore rispetto ai vettori di apprendimento più remoti. Queste distanze inverse 
-sono poi scritte nelle corrispondenti ampiezze dello stato di classe. 
-Si noti che il modulo quadro di un'ampiezza di un particolare stato di classe 
-determina la probabilità di misurare quella classe. 
-Quindi, la probabilità di misurare una data classe dipende adesso dall'inverso 
-delle distanze tra i vettori di apprendimento della classe in esame ed il 
-vettore d'input. L'inverso della distanza può essere visto come un peso 
-dipendente dalla distanza, dato che aumenta la probabilità di misurare la 
-classe con i vettori di apprendimento più vicini a quello d'input. 
-I passaggi necessari per l'implementazione dell'algoritmo \ac{KNN} quantistico 
-sono evidenziati in dettaglio qui di seguito. 
-
-\subsection{Struttura dell'algoritmo}
-
-Il primo passo dell'algoritmo consiste nel preparare una 
-\emph{sovrapposizione dell'insieme di apprendimento} che 
-ne contenga i dati codificati. 
-Usando un idoneo schema di preparazione dello stato, 
-il circuito di classificazione porta un sistema di $n$ 
-qubit nello stato 
+L'algoritmo \ac{QKNN} presentato in sezione \ref{sec:qknn} è stato implementato 
+su un computer a 5 qubit, di cui solo 4 sono stati usati. La codifica usata prevedeva 
+che un vettore bidimensionale $x = (x_0,x_1)$ normalizzato fosse codificato nello stato del 
+qubit $\ket{i}$ come $\ket{psi_x} = x_0 \ket{0} + x_1 \ket{1}$ attraverso una rotazione 
+controllata dai qubit $\ket{a}$ e $\ket{m}$. Si faccia riferimento alla figura 
+\ref{fig:circuito_schuld}. Parametrizzando l'angolo di Bloch attraverso la relazione 
 \begin{equation}
-    \ket{D} = \frac{1}{\sqrt{2MC}} \sum_{m=1}^M \ket{m} 
-    \left( \ket{0}\ket{\psi_x} + \ket{1}\ket{\psi_{t^m}} \right)
-    \ket{c^m}.
+    x_0 = \cos(\theta), \quad x_1 = \sin(\theta),
 \end{equation}
-Qui $\ket{m}$ è un registro indice che prende valori 
-$m=1,\ldots,M$ e che contrassegna l'$m$-esimo vettore 
-di apprendimento. 
-Il secondo registro è un singolo qubit ancilla, il cui 
-stato eccitato è in entanglement con il terzo registro 
-che codifica l'$m$-esimo stato di apprendimento 
-$\ket{\psi_{t^m}} = \sum_{i=0}^{N-1} t_i^m \ket{i}$, 
-mentre il suo stato fondamentale è in entanglement con 
-il terzo registro che codifica il vettore d'input 
-$\ket{\psi_x} = \sum_{i=0}^{N-1} x_i \ket{i}$. 
-Il quarto registro codifica la classe nell'ampiezza dei propri qubit. 
-Effettivamente, si crea una funzione d'onda che contiene 
-i vettori di apprendimento insieme ad $M$ copie del nuovo 
-input. La costante di normalizzazione $C$ dipende dal 
-processo di ottimizzazione dei dati; 
-assumeremo in seguito che i vettori di apprendimento siano 
-normalizzati e quindi $C=1$. 
-
-Dopo aver preparato lo stato iniziale, il circuito quantistico 
-consiste di sole tre operazioni. Prima, l'applicazione di 
-una porta Hadamard sull'ancilla fa interferire le copie 
-del vettore d'input con i vettori di apprendimento: 
+otteniamo la relazione tra i vettori d'input e l'angolo $\theta$
 \begin{equation}
-    \frac{1}{2\sqrt{M}} \sum_{m=1}^M \ket{m}
-    \left( \ket{0}\ket{\psi_{x+t^m}} + \ket{1}  
-    \ket{\psi_{x-t^m}} \right) \ket{c^m},
+    \theta = \arctan\frac{x_1}{x_0}. 
 \end{equation}
-dove $\ket{\psi_{x \pm t^m}} = \ket{\psi_x} \pm \ket{\psi_{t^m}}$. 
 
-La seconda operazione è una misura condizionale che seleziona 
-il ramo con l'ancilla nello stato $\ket{0}$. Questa 
-postselezione ha successo con probabilità 
-$p_{acc} = \frac{1}{4M}\sum_m |x+t^m|^2$. 
-È più probabile che abbia successo se la distanza euclidea 
-al quadrato complessiva dell'insieme dati di apprendimento 
-rispetto al nuovo input è piccola. 
-% Mostreremo... ***************
-Se la misura condizionale ha successo, lo stato risultanta 
-è dato da 
-\begin{equation}
-    \frac{1}{2\sqrt{Mp_{\text{acc}}}} \sum_{m=1}^M \sum_{i=1}^N 
-    \ket{m} ( x_i + t_i^m ) \ket{i} \ket{c^m}.
-\end{equation}
-Le ampiezze pesano i qubit classe $\ket{c^m}$ con la 
-distanza dell'$m$-esimo vettore dati dal nuovo input. 
-In questo stato, la probabilità di misurare il qubit 
-classe nello stato $\ket{s}$ 
-\begin{equation}
-    p(\ket{c}=\ket{s}) = \frac{1}{4Mp_{\text{acc}}} 
-    \sum_{m|\ket{c}=\ket{s}} |x+t^m|^2,
-\end{equation}
-riflette la probabilità di predire la classe $s$ per il 
-nuovo input. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{gfx/schuld_circuito}
+    \caption{Il circuito quantistico base per il QKNN}
+    \label{fig:circuito_schuld}
+\end{figure}
 
-La scelta di vettori caratteristica normalizzati assicura che \\ 
-$\frac{1}{4Mp_{\text{acc}}}\sum_m |x+t^m|^2 = 
-1 - \frac{1}{4Mp_{\text{acc}}}\sum_m |x-t^m|^2$, e la scelta 
-della classe con maggior probabilità in questo modo 
-implementa il classificatore. 
-Questo significa che se il vettore d'input è molto 
-vicino ai vettori di training di una data classe, 
-quella classe uscirà come risultato più frequentemente 
-delle altre. 
+La relazione appena mostrata è una delle prime che verranno modificate per permettere 
+l'uso della \ac{QRAM}, quando si vorranno inserire vettori di dimensione maggiore di 2. 
+
+Infatti, facendo riferimento all'eq. \ref{eq:qram.prob}, troviamo che lo stato costruito 
+dopo la misura condizionale è 
+\begin{equation}
+    \sum_{l=0}^{M-1} \psi_{\vec{d}^{(l)}}\ket{\vec{d}^{(l)}}\sin\theta^{(l)}\ket{1}_R. 
+\end{equation}
+La relazione esistente tra i valori $b_l$, ovvero le componenti $x_i$, 
+e le ampiezze di probabilità nella \ac{QRAM} è allora
+\begin{equation} \label{eq:angolo.qram}
+    \theta = \arcsin x_i. 
+\end{equation}
+
+L'espansione delle capacità del circuito prevede dunque l'aumento dei qubit 
+dedicati a ciascun registro quantistico tra i seguenti: 
+\begin{itemize}
+    \item al registro $\ket{m}$ per aumentare i vettori di apprendimento; 
+    \item al registro $\ket{i}$ per aumentare la dimensionalità dei vettori; 
+    \item al registro $\ket{c}$ per aumentare il numero di classi riconosciute. 
+\end{itemize}
+Lo schema circuitale passa da quello mostrato in figura \ref{fig:circuito_schuld} a 
+quello più generico mostrato in figura \ref{fig:qram_classi}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{gfx/qram_classi}
+    \caption[Circuito quantistico per preparare il \acs{QDB} per un quantum support vector machine]%
+    {Circuito quantistico per preparare il \acs{QDB} per un quantum support vector machine. \par \small 
+    Sono mostrate le porte per scrivere solo l'$i$-esimo vettore di apprendimento. Le porte ombreggiate 
+    in grigio sono aggiunte esclusivamente per illustrare il processo flip-flop, e non sono implementate 
+    in pratica.}
+    \label{fig:qram_classi}
+\end{figure}
+
+La codifica del vettore d'input prevede che i qubit di controllo siano solo quelli mostrati 
+nella parte superiore della figura. Al contrario, quando si codificano i vettori di 
+apprendimento, li si pone in entanglement anche con i qubit indice $\ket{m}$ e 
+classe $\ket{c}$, applicando le opportune porte $\overline{c}X$ all'inizio ed alla 
+fine della loro codifica. 
+
+Adottando una configurazione di esempio con 2 qubit indice, 2 qubit caratteristica e 
+2 qubit classe si ottiene un classificatore capace di confrontare un vettore di 
+input con 4 vettori di apprendimento aventi 4 caratteristiche ed appartenenti a 4 classi. 
+Si riporta il codice relativo a tale realizzazione nel riquadro \ref{lst:multiclasse}. 
+
+\begin{lstlisting}[float=h!,language=Python,frame=tb,caption={Algoritmo per il QKNN multiclasse},label=lst:multiclasse]
+    a = QuantumRegister(1,'a') # knn ancilla
+    m = QuantumRegister(2,'m') # training vector index
+    i = QuantumRegister(2,'i') # feature index
+    r = QuantumRegister(1,'r') # rotation qubit
+    q = QuantumRegister(5,'q') # qram ancilla
+    c = QuantumRegister(2,'c') # class
+    b = ClassicalRegister(4, 'bit')
+    circuit = QuantumCircuit(a,m,i,r,q,c,b)
+
+    circuit.h(a)
+    circuit.h(m)
+    circuit.h(i)
+    circuit.h(c)
+
+    # circuit.cry(theta, control, target)
+    # circuit.mcry(theta, controls, target, ancillae)
+
+    # >>> Encode the input vector >>>
+
+    encodeVector(circuit,inputVirginica,i,a[:]+i[:],r[0],q)
+
+    circuit.x(a) # swap entanglement with ancilla to 0
+
+    # <<< Encode the input vector <<<
+
+    # >>> Encode the training vectors >>>
+
+    buildTrainingState(trainingArray)
+
+    # <<< Encode the training vectors <<<
+
+    circuit.measure(r,b[0])
+
+    circuit.h(a)
+
+    circuit.measure(a,b[1])
+    circuit.measure(c[0],b[2])
+    circuit.measure(c[1],b[3])
+\end{lstlisting}
+
+La funzione \texttt{buildTrainingState} prende i vettori appartenenti a \texttt{trainingArray} 
+e ne codifica i valori nelle ampiezze dei qubit attraverso la funzione mostrata 
+nel riquadro \ref{lst:encodeTraining}. 
+
+\begin{lstlisting}[float=h!,language=Python,frame=tb,caption={Funzione per codificare i vettori},label=lst:encodeTraining]
+    def encodeTraining(circuit,data,i,controls,rotationQubit,ancillaQubits,c,m):
+    # Header
+    encodeClass(circuit,c)
+    encodeIndex(circuit,m)
+    
+    # Encoder
+    encodeVector(circuit,data,i,controls,rotationQubit,ancillaQubits)
+    
+    # Footer
+    encodeClass(circuit,c)
+    encodeIndex(circuit,m)
+\end{lstlisting}
+
+Le funzioni nell'header e nel footer altro non fanno che applicare le giuste porte X, 
+come descritto in sezione \ref{sec:ff-qram} e in figura \ref{fig:qram_classi}. 
+Più nello specifico, la funzione \texttt{encodeVector} applica le porte della parte 
+superiore dell'immagine ed effettua le rotazioni controllate, 
+mentre \texttt{encodeClass} e \texttt{encodeIndex} applicano 
+quelle della parte inferiore\footnote{Per accedere al codice completo, fare riferimento 
+alla cartella Script nella repository su GitHub \url{https://github.com/visika/Tesi}}. 
+
+Nel capitolo successivo si discutono i risultati di classificazione ottenuti in 
+caso di simulazione ed esecuzione su hardware quantistico. 
 
 % Il quantum-enhanced machine learning (QEML) prova a rispondere alla domanda 
 % se le proprietà quantomeccaniche come il parallelismo quantistico, 
