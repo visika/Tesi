@@ -7,33 +7,51 @@ si è riusciti ad implementarne la versione quantistica proposta
 da Schuld et al. \cite{schuld}. Dopo di che si è tentato di 
 estenderne le funzioni, con l'intento principale di rendere il 
 classificatore capace di distinguere la classe corretta tra 
-tutte quelle dell'insieme dati. È stata usata la tecnica di 
-costruzione quantum database arbitrari \ac{FF-QRAM} proposta da 
-Petruccione et al. \cite{petruccione}.L'algoritmo ha avuto un 
+tutte quelle dell'insieme dati e non solo per due alla volta. 
+È stata usata la tecnica di 
+costruzione di quantum database arbitrari \ac{FF-QRAM} proposta da 
+Petruccione et al. \cite{petruccione}. L'algoritmo ha avuto un 
 discreto successo e fornisce una distribuzione di previsioni 
-che conferma le speranze in una applicazione anche a livello 
-commerciale di tecniche di machine learning quantistico. 
+in linea con le aspettative, sebbene le esecuzioni su hardware 
+reale siano ancora significativamente in balia dei fenomeni di 
+rumore. L'avvento di computer quantistici con un numero maggiore 
+di qubit può aprire la strada ad approcci concreti di analisi 
+dati con data set di dimensioni e complessità considerevoli, 
+lasciando intravedere un'opportunità di applicazione 
+commerciale nei confronti dei big data. 
 
 Per questioni di limitatezza di tempo, non è stato possibile 
 sottoporre ad analisi anche altri data set o implementare tecniche 
 più raffinate di preprocessing dei dati. Il lettore interessato 
 ad approfondire la materia in maniera più sistematica si può 
 affidare a lavori analoghi facilmente reperibili 
-online,\footnote{Si veda 
-\url{https://github.com/carstenblank/dc-qiskit-qml}.} o ai tanti 
+online\footnote{Si veda ad esempio 
+\url{https://github.com/carstenblank/dc-qiskit-qml}.}, alla comunità 
+di Qiskit su \url{https://quantumcomputing.stackexchange.com/} o ai tanti 
 articoli sull'argomento che escono ogni anno in libera consultazione. 
 
-\sectionmark{Commento}
+Un'interessante proseguimento di questo progetto potrebbe essere 
+la messa a disposizione degli algoritmi qui studiati per chi volesse 
+usarli per analizzare data set personalizzati. Questo potrebbe 
+essere realizzato attraverso un'ulteriore ottimizzazione e 
+documentazione del codice pubblicato su GitHub, oppure con la 
+creazione di un programma completo apposito, o ancora con la 
+costruzione di un'interfaccia web in cui caricare i propri file 
+(CSV per esempio) e lasciare che il server ottimizzi i dati, crei 
+il circuito quantistico e mandi l'ordine di esecuzione correlato. 
+
+\section{Commento}
 
 Lavorare a questa tesi mi ha permesso di esplorare le terre, 
-a me precedentemente sconosciute, del machine learning e del 
-quantum computing. Nonostante il livello di approfondimento 
-delle materie raggiunto in questi mesi di lavoro sia ridicolo, 
+del machine learning e del quantum computing, due materie 
+fortemente moderne ed in continua evoluzione. 
+Nonostante l'approfondimento delle materie compiuto in 
+questi mesi di lavoro sia tutt'altro che completo, 
 mi ritengo soddisfatto di essere riuscito a mettere a frutto 
 le mie pregresse conoscenze di informatica per partecipare a 
 qualcosa di estremamente innovativo. La critica che faccio a 
 me stesso è di avere iniziato a scrivere ben troppo tardi il 
 testo della tesi; se dovessi ripetere questa esperienza, 
 cercherei di fissare bene fin dall'inizio gli obiettivi di 
-ricerca e tenere traccia dei progressi in maniera più precisa, 
+ricerca e tenere traccia dei progressi in maniera più assidua, 
 aggiornando in corso d'opera il documento finale. 

@@ -9,13 +9,10 @@
 
 \title{Implementazione di un algoritmo KNN multiclasse su hardware quantistico}
 \subtitle{Tesi di laurea in fisica}
-\author{Mariano Mollo N85000880\texorpdfstring{\\}{,} Relatore: Giovanni Acampora}
+\author{Mariano Mollo N85000880\texorpdfstring{\\}{,} Relatori: \texorpdfstring{\\}{,} Giovanni Acampora \texorpdfstring{\\}{,} Autilia Vitiello}
 \titlegraphic{\includegraphics[scale=0.15]{gfx/logo-federico-II-blu}}
-% ********************************************************
-% Prova a mettere la trasparenza
-% ********************************************************
 \institute{Università degli Studi di Napoli Federico II}
-\date{15 ottobre 2019}
+\date{ottobre 2019}
 
 \begin{document}
 	\begin{frame}
@@ -37,161 +34,129 @@
 	\section{Introduzione}
 
 	\begin{frame}
+		\frametitle{Obiettivo}
+		\begin{columns}
+			\column{0.2\textwidth}
+				\includegraphics[width=\textwidth]{gfx/iris/Iris_versicolor_3.jpg}
+			\column{0.8\textwidth}
+				\begin{itemize}
+					% Progettazione di un algoritmo KNN quantistico per la classificazione multiclasse
+					% Implementazione sulla famiglia di processori IBM QX
+					% Figura dell'IBM QX
+					\item Generalizzazione di un algoritmo KNN quantistico per la classificazione multiclasse
+					\item Simulare l'usabilità degli algoritmi di machine learning quantistico in contesti reali
+					\item Applicazione al data set Iris (3 classi, 4 caratteristiche, 150 vettori)
+				\end{itemize}
+		\end{columns}
+	
+	\end{frame}
+
+	\begin{frame}
 		\frametitle{Machine learning}
 	
-		Il machine learning dà l'abilità ai computer di apprendere dai dati
+		Il machine learning è una branca dell'IA che dà l'abilità ai computer di apprendere dai dati
 
-		Gli algoritmi di machine learning prevedono spesso
+		Gli algoritmi di machine learning permettono di apprendere modelli matematici da insiemi di 
+		dati per
 
 		\begin{itemize}
-			\item risolvere grandi sistemi di equazioni lineari
-			\item invertire grandi matrici
-			\item calcolo di distanze
+			\item effettuare previsioni su dati sconosciuti
+			\item individuare regolarità nascoste
+			\item compiere decisioni che danno il risultato migliore
 		\end{itemize}
 	
-		Effettuare queste operazioni su grandi insiemi di dati diventa 
-		man mano più difficoltoso
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Algoritmo k-nearest neighbours}
+		
+		\begin{columns}
+			\column{0.25\textwidth}
+				\includegraphics[width=\textwidth]{gfx/KnnClassification}
+			\column{0.75\textwidth}
+			\begin{itemize}
+				\item $k$ è un numero naturale
+				\item Dato un dataset $D = v_0, \ldots, v_n$ \\ $v_i\in\{ \text{setosa}, \text{versicolor}, \text{virginica} \}$
+				\item Dato un nuovo vettore $x$
+				\item Si considerano i $k$ vettori più vicini ad $x$ 
+				\item Si classifica $x$ con un voto a maggioranza 
+				\item Si assegnano pesi dipendenti dall'inverso della distanza per aumentare l'influenza di quelli più vicini
+			\end{itemize}
+		\end{columns}
+
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Quantum computing}
 	
-		Costruire hardware di elaborazione basandosi sulla meccanica quantistica
+		Usare strumenti di calcolo che sfruttano le proprietà quantistiche della materia
 
 		\begin{itemize}
-			\item La meccanica quantistica si occupa di vettori in spazi di Hilbert
-			\item I computer quantistici eseguono operazioni lineari su qubit
-			\item Sistemi a molti qubit sono descritti da grandi vettori che possono 
-			essere manipolati in parallelo sui computer quantistici 
-			\item Il machine learning prevede la manipolazione di grandi vettori e matrici
+			\item Il qubit è la controparte quantistica del bit. Un bit può assumere un 
+			singolo valore tra 0 e 1. Un qubit può esistere in una sovrapposizione dei 
+			due stati $\ket{0}$ e $\ket{1}$. 
+			\item Un qubit vive in uno spazio di Hilbert bidimensionale. 
+			\item Un sistema di $n$ qubit è descritto da uno spazio di dimensione $2^n$ 
+			\item Il quantum computing permette la parallelizzazione del lavoro e la 
+			memorizzazione di grandi quantità di dati. 
 		\end{itemize}
 	
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Quantum machine learning}
-	
-		Permette ai quantum computer di imparare dai dati più velocemente dei computer classici
-	
-	\end{frame}
-
-	\section{Machine learning}
-
-	\begin{frame}
-		\frametitle{Machine learning supervisionato}
-	
-		Posto un insieme dati di input con i corrispondenti output, 
-		si predica l'output di nuovo input sconosciuto. 
-	
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{k-nearest neighbours classico pesato sulla distanza}
-	
-		k è un numero naturale
-
-		Dato un dataset D = v0, ..., vn
-
-		Dato un nuovo vettore x: 
-
-		si considerino i k vettori più vicini ad x 
-
-		si classifichi x con un voto a maggioranza 
-
-		Si assegni pesi dipendenti dall'inverso della distanza per 
-		aumentare l'influenza di quelli più vicini
-	
-	\end{frame}
-
-	\section{Quantum computing}
-
-	\begin{frame}
-		\frametitle{Bit classici e bit quantistici (qubit)}
-	
-		% immagine *************************
-
-		Bit classico
-
-		\begin{itemize}
-			\item Implementato di solito usando MOSFET\footnote{Metal oxide semiconductor field effect transistor}
-			\item 2 stati definiti (0, 1)
-			\item Può essere o 0 o 1
-		\end{itemize}
-	
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Bit classici e bit quantistici (qubit)}
-	
-		% immagine *************************
-
-		Bit quantistico (qubit)
-
-		Può essere |0> o |1>
-
-		Può essere anche |0> e |1> contemporaneamente (sovrapposizione quantistica)
-	
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Il qubit}
-	
-		Matematicamente, la sovrapposizione di un qubit è espressa come 
-
-		\begin{equation*}
-			\ket{\psi} = \alpha \ket{0} + \beta \ket{1} \cong \begin{pmatrix}
-				\alpha \\ \beta
-			\end{pmatrix}
-		\end{equation*}
-
-		dove alfa e beta sono complessi e sono chiamati ampiezze di probabilità. 
-
-		L'ultima espressione è chiamata vettore ampiezza. 
-	
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Stato dell'arte del quantum computing}
-	
-		IBM 14 qubit superconduttivi
-
-		Google 9 qubit superconduttivi (al 2017)
-
-		Weizmann Research Group in Israele 8 ioni intrappolati (al 2017)
-
-		DWave 1152 qubit ma è limitato (al 2017)
-	
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Sistemi a molti qubit}
+		\frametitle{Quantum computing}
 	
 		Un computer quantistico con $n$ qubit possiede $2^n$ ampiezze di probabilità
 
 		Queste ampiezze possono essere usate per immagazzinare quantità enormi di informazioni
 
-		Numero di qubit | RAM classica richiesta | tempo di simulazione
+		\vspace{1cm}
 
-		5 | 256 byte | secondi su un cellulare
-		25 | 2 gigabyte | secondi su un portatile
-		50 | 8000 terabyte | secondi su un supercomputer
-		275 | numero di atomi nell'universo osservabile | età dell'universo
+		\begin{tabular}{c c c}
+			Numero di qubit & RAM classica richiesta \\ 
+			\hline
+			5 & 256 byte \\
+			25 & 2 gigabyte \\
+			50 & 8000 terabyte \\
+			275 & numero di atomi nell'universo osservabile
+		\end{tabular}
+		
 		
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Motivazione}
+		\frametitle{KNN quantistico}
+		\begin{center}
+			\includegraphics[width=.75\textwidth]{gfx/schuld_circuito}
+		\end{center}
+		
+		In un articolo di ricerca, Schuld et al. propongono un algoritmo KNN quantistico 
+		che permette di ridurre esponenzialmente le risorse necessarie per il riconoscimento. 
+
+		L'algoritmo riesce a comparare due classi alla volta, usa come $k$ il numero totale di 
+		vettori e usa una metrica che va come $^1/_\text{distanza}$. 
+
+		L'implementazione viene fatta su un computer quantistico a 5 qubit. 
 	
-		Si vuole mostrare come rendono gli algoritmi di quantum machine 
-		learning all'aumentare del numero di qubit utilizzati su hardware reale
-	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Domanda di ricerca}
+		\begin{itemize}
+			\item A partire dall'algoritmo KNN quantistico proposto da Schuld et al., è possible 
+			implementarne una versione multiclasse?
+			\item Quali sono le performance di classificazione all'aumentare del numero di qubit?
+		\end{itemize}
 	\end{frame}
 
 	\section{Metodi}
 
 	\begin{frame}
-		\frametitle{IBM Quantum Experience}
+		\frametitle{IBM Q Experience}
 	
+		\begin{center}
+			\includegraphics[width=.75\textwidth]{gfx/IBM_Q_Experience_percettrone}
+		\end{center}
 		\begin{itemize}
 			\item Accessibile al pubblico
 			\item Permette simulazioni con o senza rumore
@@ -205,10 +170,13 @@
 	\begin{frame}
 		\frametitle{Qiskit}
 	
-		Piccoli quantum computer possono essere simulati su computer convenzionali
+		\begin{center}
+			\includegraphics[width=.75\textwidth]{gfx/JupyterLab}
+		\end{center}
+
+		Piccoli circuiti quantistici possono essere simulati su computer convenzionali
 
 		Qiskit permette di 
-
 		\begin{itemize}
 			\item ideare circuiti quantistici
 			\item simularne l'esecuzione sul proprio pc
@@ -222,16 +190,20 @@
 
 	\begin{frame}
 		\frametitle{Codificare i dati nelle ampiezze}
-	
-		Si è usata la costruzione di una QRAM (Quantum RAM) attraverso 
-		l'algoritmo di costruzione di Petruccione et al. per 
-		codificare vettori classici nei vari stati quantistici 
-		a disposizione
-
-		\begin{equation*}
-			\text{QRAM} \ket{0} = \ket{\psi}
-		\end{equation*}
-	
+		
+		\begin{columns}
+			\column{0.4\textwidth}
+				\includegraphics[width=\textwidth]{gfx/qram.png}
+			\column{0.6\textwidth}
+				Si è costruita una QRAM (Quantum RAM) attraverso 
+				l'algoritmo di costruzione di Petruccione et al. per 
+				codificare vettori classici nei vari stati quantistici 
+				a disposizione
+				\begin{equation*}
+					\text{QRAM} \ket{0} = \ket{\psi}
+				\end{equation*}
+		\end{columns}
+		
 	\end{frame}
 
 	\begin{frame}
@@ -308,8 +280,8 @@
 		\frametitle{Simulazioni}
 		\begin{figure}[]
 			\centering
-			\includegraphics[width=\textwidth]{gfx/iris/histogram}
-			\caption{}
+			\includegraphics[width=.8\textwidth]{gfx/iris/histogram}
+			\caption{Misura della classe setosa}
 			\label{fig:setosa_simulazione}
 		\end{figure}
 	
@@ -319,9 +291,38 @@
 		\frametitle{Esecuzioni reali}
 		\begin{figure}[]
 			\centering
-			\includegraphics[width=\textwidth]{gfx/misura_setosa_sperimentale}
-			\caption{}
+			\includegraphics[width=.8\textwidth]{gfx/misura_setosa_sperimentale}
+			\caption{Misura della classe setosa}
 			\label{fig:setosa_sperimentale}
 		\end{figure}
 	\end{frame}
+
+	\begin{frame}
+		\frametitle{Classificazione multiclasse}
+	
+		\begin{figure}[]
+			\centering
+			\includegraphics[width=.8\textwidth]{gfx/multiclass_virginica}
+			\caption{Misura multiclasse virginica}
+			\label{fig:multiclasse}
+		\end{figure}
+	
+	\end{frame}
+
+\begin{frame}
+	\frametitle{Conclusione}
+
+	L'implementazione rispecchia i risultati aspettati di classificazione e permette 
+	di ridurre esponenzialmente le risorse necessarie in termini di memoria usata e 
+	di numero di elaborazioni. 
+
+	L'algoritmo KNN non è l'unico che può beneficiare di un'approccio quantistico e 
+	si aspettano ancora molte evoluzioni nel campo del quantum machine learning. 
+
+\end{frame}
+
+\begin{frame}[focus]
+	Domande?
+\end{frame}
+
 \end{document}

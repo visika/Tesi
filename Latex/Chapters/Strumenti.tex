@@ -15,7 +15,7 @@ lavori di ricerca scientifica.
 
 \section{Qiskit}
 
-Qiskit è un'interfaccia di programmazione che permette di scrivere 
+Qiskit \cite{Qiskit} è un'interfaccia di programmazione che permette di scrivere 
 circuiti quantistici e simularne l'esecuzione sul proprio computer 
 o inviare un ordine di esecuzione a un vero computer quantistico tramite 
 l'interfaccia offerta dall'IBM Quantum Experience. 
@@ -69,7 +69,10 @@ l'algoritmo \ac{QKNN} presentato nella sezione \ref{sec:qknn}.
 
     I valori x0, t0, t1 corrispondono agli angoli di rotazione per il vettore d'input e 
     per i due vettori di training rispettivamente. 
-    La porta mcry non si trovava nelle funzioni di base di Qiskit ma è stata importata 
+    La \marginpar{A partire dalla versione 0.12 di Qiskit la porta mcry è inclusa nei 
+    pacchetti base e non c'è bisogno di importarla separtamente. 
+    (Effettivamente tentarci comporta un errore nel programma.)}
+    porta mcry non si trovava nelle funzioni di base di Qiskit ma è stata importata 
     separatamente attraverso il comando in cima. 
     Il disegno del circuito è presente in appendice nella figura A.1: si può notare 
     come le porte di rotazione controllata siano in realtà realizzate con una sequenza 

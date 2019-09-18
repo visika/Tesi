@@ -245,61 +245,104 @@ valori nelle sue ampiezze di probabilità.
     \label{table:conf.ottimali}
 \end{table}
 
+Un'esecuzione che sfrutti due qubit classe, tre qubit indice e un qubit caratteristica 
+necessita di 5 qubit ancilla ed un qubit registro per la costruzione della \ac{QRAM}, 
+un qubit ancilla per il \ac{QKNN}, per un totale di 13 qubit. Una classificazione di 
+questo tipo è stata eseguita sul processore quantistico ibm\_16\_melbourne: si sono 
+confrontati vettori d'input casuali presi dalle tre classi con insiemi di apprendimento 
+allo stesso modo costruiti casualmente, avendo cura di inserire in maniera uniforme 
+elementi delle diverse classi. Con 3 qubit $\ket{m}$ abbiamo a disposizione 8 vettori di 
+apprendimento; l'insieme di training possiede 2 vettori dalla classe setosa, 3 da versicolor 
+e 3 da virginica. Si riportano in figura \ref{fig:classificazione.reale} i 
+risultati (filtrati, come fatto precedentemente) di classificazione di un elemento 
+della classe setosa; il circuito è stato eseguito 8192 volte e l'istogramma riporta 
+la probabilità che il vettore d'input appartenga ad una determinata classe, 
+come evidenziato nell'eq. \ref{eq:prob.classe}. L'esito di classificazione è rappresentato 
+dai due bit a sinistra, mentre i due bit a destra assicurano l'esecuzione delle misure 
+condizionali $\ket{a} = \ket{0}$ e $\ket{j}_R = \ket{1}_R$. 
+La classe setosa è legata al risultato di 
+misura $\ket{c} = \ket{00}$, versicolor a $\ket{c} = \ket{01}$ e virginica a $\ket{c} = \ket{10}$; 
+lo stato $\ket{c} = \ket{11}$ resta inutilizzato. 
+
+% ************************************************
+% Inserire risultati di esecuzione su hardware reale
+% ************************************************
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{gfx/setosa_reale_20190913:1716}
+    \caption{Risultati sperimentali multiclasse (setosa)}
+    \label{fig:classificazione.reale}
+\end{figure}
+
+Si può notare come nell'esecuzione su hardware reale si presentino disturbi legati 
+agli inevitabili fenomeni di decoerenza, dati dal grande numero di porte usate; 
+tra i risultati di esecuzione sperimentale è capitato infatti che i vettori setosa 
+fossero erroneamente classificati come virginica, in un numero piccolo ma non 
+insignificante di volte. 
+Basti confrontare i risultati sperimentali con quelli di esecuzione simulata usando gli 
+stessi vettori d'input e di training in figura \ref{fig:classificazione.multiclasse.simulata} per rendersi 
+conto dell'effetto non trascurabile delle interazioni ambientali sui qubit.
+Non sono disponibili dati in merito al tempo di esecuzione effettivo sul processore, 
+in quanto l'informazione non viene più fornita nella versione del software in uso 
+mentre si scrive questa tesi. Tenendo conto del tempo di attesa in coda, il tempo totale 
+può andare da mezz'ora alle due ore in media. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{gfx/setosa_simulato_multiclasse.png}
+    \caption{Risultati simulati multiclasse (setosa)}
+    \label{fig:classificazione.multiclasse.simulata}
+\end{figure}
+
 % *********************************************
 % Questa parte va aggiustata
 % *********************************************
 
-Per verificare il miglioramento apportato da un aumento del numero di caratteristiche 
-considerate, si prende in esame la classificazione del vettore d'input 54 (versicolor), 
-con i vettori di training numero 51 (versicolor) e 146 (virginica) del data set. 
-Il vettore d'input viene classificato correttamente durante la simulazione con due caratteristiche, 
-con probabilità vicina al 51.4\%. 
-Effettuando la stessa misura, ma tenendo conto di tutte le quattro feature, arriviamo ad 
-una probabilità di classificazione corretta del 58.3\% nel migliore dei casi. 
-Sembra esserci un margine di miglioramento in determinati casi, 
-ma non può essere garantito in maniera generale. 
+% Per verificare il miglioramento apportato da un aumento del numero di caratteristiche, 
+% si prende in esame la classificazione del vettore d'input 54 (versicolor), 
+% con i vettori di training numero 51 (versicolor) e 146 (virginica) del data set. 
+% Il vettore d'input viene classificato correttamente durante la simulazione con due caratteristiche, 
+% con probabilità vicina al 51.4\%. 
+% Effettuando la stessa misura, ma tenendo conto di tutte le quattro feature, arriviamo ad 
+% una probabilità di classificazione corretta del 58.3\% nel migliore dei casi. 
+% Sembra esserci un margine di miglioramento in determinati casi, 
+% ma non può essere garantito in maniera generale. 
 
-\section{Esecuzione completa}
+% Per studiare l'efficienza dell'algoritmo a diversi stadi di miglioramento, 
+% si divide il data set in un insieme dedicato all'addestramento ed un insieme 
+% di vettori da classificare. Al fine di avere risultati imparziali, 
+% per ogni esecuzione i vettori di training ed il vettore d'input 
+% sono scelti casualmente a partire dal data set completo. 
+% Si contano le classificazioni di successo 
+% rispetto al totale dei tentativi, al variare dei parametri come il numero 
+% di features o il numero di vettori di training usati. 
 
-Per studiare l'efficienza dell'algoritmo a diversi stadi di miglioramento, 
-si divide il data set in un insieme dedicato all'addestramento ed un insieme 
-di vettori da classificare. Al fine di avere risultati imparziali, 
-per ogni esecuzione i vettori di training ed il vettore d'input 
-sono scelti casualmente a partire dal data set completo. 
-Si contano le classificazioni di successo 
-rispetto al totale dei tentativi, al variare dei parametri come il numero 
-di features o il numero di vettori di training usati. 
-
-Provando ad effettuare una classificazione a tre classi con 32 vettori di 
-training otteniamo gli esiti in tabella \ref{table:misure}. 
+Per verificare l'efficienza dell'algoritmo con maggiori risorse, si sono eseguiti 
+vari tentativi di classificazione con circuiti simulati, al variare del numero di 
+vettori di training. In tabella \ref{table:misure} si possono trovare i relativi 
+risultati, dove si intende che per ogni esperimento si è costruito un circuito 
+che accettasse insiemi casuali di vettori dal data set ed è stato eseguito 8192 
+volte, dopo di che si sono rimescolati gli insiemi di training e si è rieseguito 
+l'esperimento per 10 volte in totale. 
 
 \begin{table}[h!]
     \centering
     \begin{tabular}{c c c}
-        classe & esiti positivi \\ 
+        classe & $m=5$ & $m=7$ \\ 
         \hline
-        setosa & 100\% \\ 
-        versicolor & 50\% \\ 
-        virginica & 90\% 
+        setosa & 100\% & 100\%\\ 
+        versicolor & 50\% & 80\%\\ 
+        virginica & 90\% & 90\%
     \end{tabular}
-    \caption{Risultati di classificazione con 32 vettori di training}
+    \caption{Risultati positivi di classificazione con $2^m$ vettori di training}
     \label{table:misure}
 \end{table}
 
-% \begin{itemize}
-%     \item i vettori della classe setosa sono correttamente classificati 10 volte su 10;
-%     \item i vettori della classe versicolor sono correttamente classificati 5 volte su 10;
-%     \item i vettori della classe virginica sono correttamente clasificati 9 volte su 10.
-% \end{itemize}
 I risultati vengono necessariamente da simulazioni, in quanto sono necessari 
-19 qubit sotto queste condizioni. 
-
-Volendo sfruttare appieno le potenzialità del simulatore presso l'IBM, 
-possiamo costruire un circuito che accetti $2^7 = 128$ vettori di training 
-presi a caso, e lasciare i restanti vettori per la classificazione. 
-Con l'uso di 23 qubit si arriva alla classificazione corretta della classe versicolor, 
-senza uso di feature map, 8 volte su 10. 
-Un esempio di classificazione multiclasse può essere visto in figura \ref{fig:multiclasse}. 
+23 qubit per il caso con $m=7$ qubit. Un esempio di simulazione di classificazione 
+positivo, in quanto con $2^7=128$ vettori di training è usato quasi tutto il data set, 
+per la classe virginica è visibile in figura \ref{fig:multiclasse}. 
 
 \begin{figure}[h!]
     \centering
@@ -307,3 +350,9 @@ Un esempio di classificazione multiclasse può essere visto in figura \ref{fig:m
     \caption{Classificazione di virginica multiclasse}
     \label{fig:multiclasse}
 \end{figure}
+
+Si fa presente che l'uso di tecniche di preprocessing avrebbero permesso di 
+distinguere le classi versicolor e virginica con ben meno vettori di training, 
+tuttavia uno tra gli scopi di questa tesi era verificare fino a che punto si possono 
+immagazzinare vettori in quantità sempre maggiori ai fini della classificazione 
+ed ottenere i risultati aspettati. 
