@@ -15,7 +15,9 @@
 \date{ottobre 2019}
 
 % [ ] Le icone sono sgranate, sostiuirle con versioni di qualità migliore. 
-% [ ] Prima dei punti di forza si può inserire una slide sui vettori di probabilità con più qubit. 
+% [x] Si può inserire un'altra slide in cui si scrive l'equazione del QDB. 
+% [x] Quando si introducono i qubit, mettere una slide sui registri a qubit multipli. 
+% [x] Mettere gli obiettivi appena dopo l'introduzione. 
 
 \begin{document}
     \begin{frame}
@@ -65,7 +67,37 @@
         \end{columns}
     \end{frame}
 
+    \begin{frame}{Domanda di ricerca}
+        È possibile implementare su un computer quantistico un 
+        algoritmo k-nearest neighbours multiclasse, in modo da 
+        migliorare le prestazioni ed il numero di problemi risolvibili? 
+    \end{frame}
+
+    \begin{frame}{Obiettivi}
+        \begin{itemize}
+            \item Riprodurre l'algoritmo di classificazione binaria KNN quantistico proposto da Schuld et al. 
+            \item Implementarne una versione multiclasse
+            \item Analizzare le capacità dell'algoritmo usando l'hardware quantistico attualmente disponibile
+            \item Analizzare esperimenti più complessi tramite simulazione
+        \end{itemize}
+    \end{frame}
+
     \section{Machine learning}
+
+    \begin{frame}{Machine learning}
+        \begin{columns}
+            \column{.5\textwidth}
+            Il machine learning è un ramo dell'intelligenza artificiale che permette ai computer di apprendere dai dati. 
+
+            L'apprendimento può formalizzarsi attraverso la definizione di modelli matematici, usati per
+            \column{.5\textwidth}
+            \begin{itemize}
+                \item effettuare previsioni (apprendimento supervisionato)
+                \item trovare regolarità in processi complessi (apprendimento non supervisionato)
+                \item effettuare scelte per ottenere un risultato ottimale (apprendimento per rinforzo)
+            \end{itemize}
+        \end{columns}
+    \end{frame}
 
     \begin{frame}{Machine learning supervisionato}
         \begin{block}{Definizione del problema}
@@ -82,6 +114,7 @@
     \end{frame}
 
     \begin{frame}{k-nearest neighbours classico}
+        L'algoritmo KNN è uno tra i più semplici del ML ed è un lazy learner
         \begin{columns}
             \column{0.3\textwidth}
             \includegraphics[width=\textwidth]{gfx/KnnClassification.png}
@@ -131,14 +164,14 @@
 
     \begin{frame}{Qubit}
         Matematicamente, la sovrapposizione di un qubit è espressa come
-        \begin{equation}
+        \begin{equation*}
             \ket{\psi} = \alpha \ket{0} + \beta \ket{1} = \begin{matrix}
                 0 \\ 1
             \end{matrix}\begin{pmatrix}
                 \alpha \\ \beta
             \end{pmatrix}
             , \quad \alpha, \beta \in \mathbb{C}, 
-        \end{equation}
+        \end{equation*}
         dove $\alpha$ e $\beta$ sono chimate ampiezze di probabilità. 
         
         L'ultima espressione è chiamata vettore di probabilità. 
@@ -150,30 +183,59 @@
             \includegraphics[width=\textwidth]{gfx/Bloch_sphere.png}
             \column{.7\textwidth}
             Un qubit si può visualizzare su una 2-sfera parametrizzando $\alpha$ e $\beta$ in coordinate polari
-            \begin{equation}
+            \begin{equation*}
                 \ket{\psi} = \cos \frac{\theta}{2} \ket{0} + e^{i\varphi}\sin \frac{\theta}{2} \ket{1},
-            \end{equation}
+            \end{equation*}
             dove $0\leq\theta\leq\pi$ e $0\leq\varphi<2\pi$
         \end{columns}
     \end{frame}
 
-    \begin{frame}{Stato dell'arte}
-        \begin{columns}
-            \column{.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/ibm_q_system_one.png}
-            \column{.7\textwidth}
-            L'IBM Q System One è il primo computer quantistico basato su circuiti commerciale al mondo, 
-            introdotto dall'IBM nel gennaio 2019. L'IBM Q System One possiede 20 qubit. 
-        \end{columns}
+    \begin{frame}{Registro di 2 qubit}
+        Un computer quantistico con $n$ qubit ha $2^n$ ampiezze di probabilità. 
+
+        Lo stato di un registro a più qubit è rappresentato dal prodotto tensore dello stato dei singoli qubit. 
+
+        \begin{equation*}
+            \ket{00} = \ket{0} \otimes \ket{0}
+        \end{equation*}
+        \begin{equation*}
+            \ket{\psi} = c_0 \ket{00} + c_1 \ket{01} + c_2 \ket{10} + c_3 \ket{11} = 
+            \begin{matrix}
+                00 \\ 01 \\ 10 \\ 11
+            \end{matrix} \begin{pmatrix}
+                c_0 \\ c_1 \\ c_2 \\ c_3
+            \end{pmatrix}
+        \end{equation*}  
+    \end{frame}
+
+    \begin{frame}{Registro di $n$ qubit}
+        Un computer quantistico con $n$ qubit ha $2^n$ ampiezze di probabilità. 
+
+        Lo stato di un registro a più qubit è rappresentato dal prodotto tensore dello stato dei singoli qubit. 
+
+        \begin{equation*}
+            \ket{00\ldots00} = \ket{0} \otimes \ket{0} \otimes \ldots \otimes \ket{0} \otimes \ket{0}
+        \end{equation*}
+        \begin{equation*}
+            \begin{split}
+                \ket{\psi} &= c_0 \ket{00\ldots00} + c_1 \ket{00\ldots01} + \ldots + c_{n-2} \ket{11\ldots10} + \\ 
+                &+ c_{n-1} \ket{11\ldots11} = \begin{matrix}
+                00\ldots00 \\ 00\ldots01 \\ \vdots \\ 11\ldots10 \\ 11\ldots11
+            \end{matrix} \begin{pmatrix}
+                c_0 \\ c_1 \\ \vdots \\ c_{n-2} \\ c_{n-1}
+            \end{pmatrix}
+            \end{split}
+        \end{equation*}
     \end{frame}
 
     \begin{frame}{Punti di forza dei quantum computer}
-        Un computer quantistico con $n$ qubit ha $2^n$ ampiezze di probabilità
 
-        Queste ampiezze possono essere usate per memorizzare quantità enormi di informazioni
+        Queste $n$ ampiezze di probabilità possono essere usate per memorizzare quantità enormi di informazioni
 
-        \begin{tabular}{ccc}
-            Numero di qubit & RAM classica richiesta & Tempo di simulazione \\ \hline
+        \vspace{1cm}
+
+        \begin{tabular}{p{.1\textwidth}p{.4\textwidth}p{.4\textwidth}}
+            \# di qubit & RAM classica richiesta & Tempo di simulazione \\ \hline
             5 & 256 byte & secondi su uno smartwatch \\ 
             25 & 2 gigabyte & secondi su un portatile \\ 
             50 & 8000 terabyte & secondi sul prossimo supercomputer \\ 
@@ -181,13 +243,14 @@
         \end{tabular}
     \end{frame}
 
-    \begin{frame}{Obiettivi}
-        \begin{itemize}
-            \item Riprodurre l'algoritmo di classificazione binaria KNN quantistico proposto da Schuld et al. 
-            \item Implementarne una versione multiclasse
-            \item Esplorare le possibilità usando l'hardware attualmente disponibile
-            \item Simulare esperimenti più complessi che richiedono più risorse
-        \end{itemize}
+    \begin{frame}{Stato dell'arte}
+        \begin{columns}
+            \column{.3\textwidth}
+            \includegraphics[width=\textwidth]{gfx/ibm_q_system_one.png}
+            \column{.7\textwidth}
+            L'IBM Q System One è il primo computer quantistico a circuiti commerciale al mondo, 
+            introdotto dall'IBM nel gennaio 2019. L'IBM Q System One possiede 20 qubit. 
+        \end{columns}
     \end{frame}
 
     \section{Metodi}
@@ -224,13 +287,22 @@
 
     \section{Quantum machine learning}
 
-    \begin{frame}{Codificare dati classici nelle ampiezze di probabilità}
+    \begin{frame}{Codificare dati classici nelle ampiezze}
         \includegraphics[width=\textwidth]{gfx/qram.png}
         Per codificare dati classici nelle ampiezze di probabilità è stata usata la tecnica di costruzione 
         di stati flip-flop QRAM, come proposto da Petruccione et al. 
     \end{frame}
 
-% Si può inserire un'altra slide in cui si scrive l'equazione del QDB
+    \begin{frame}{FF-QRAM}
+        La FF-QRAM è usata per memorizzare un QDB inizializzato in maniera arbitraria. 
+
+        L'operazione QRAM sui qubit sovrappone un insieme di dati classici 
+        $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) | 0 \leq l < M \right\}$ come
+        \begin{equation*} \label{eq:qram}
+            \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
+            \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
+        \end{equation*}
+    \end{frame}
 
     \begin{frame}{Algoritmo KNN quantistico}
         Stato quantistico iniziale
@@ -244,7 +316,7 @@
 
 		\begin{equation*}
 			\ket{\psi_1} = \frac{1}{2\sqrt{M}}\sum_{m=1}^M 
-			(\ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}})+\ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}))\ket{c^m}\ket{m}
+			\Big( \ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}}) + \ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}) \Big) \ket{c^m}\ket{m}
 		\end{equation*}
 	
 		Misura condizionale
@@ -259,7 +331,7 @@
         Probabilità di misurare una data classe
 
 		\begin{equation*}
-			P(\ket{c^m} = \ket{s}) = \sum_{m|c^m=s} 
+			\text{P}(\ket{c^m} = \ket{s}) = \sum_{m|c^m=s} 
 			1 - \frac{1}{4M} |x-t^m|^2
 		\end{equation*}
 
@@ -267,8 +339,8 @@
 
 		\begin{equation*}
 			c = \begin{cases}
-			0 \quad \text{se}\, P(\ket{c^0})\, \text{maggiore} \\
-			1 \quad \text{se}\, P(\ket{c^1})\, \text{maggiore} \\
+			0 \quad \text{se}\, \text{P}(\ket{c^0})\, \text{maggiore} \\
+			1 \quad \text{se}\, \text{P}(\ket{c^1})\, \text{maggiore} \\
 			\text{etc}\ldots
 		\end{cases}
 		\end{equation*}
