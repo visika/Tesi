@@ -46,7 +46,7 @@ all'asse $p$ della sfera di Bloch solo se tutti gli $n$ qubit sono 1.
     \centering
     \includegraphics[width=\linewidth]{gfx/qram}
     \caption[Procedimento di costruzione FF-QRAM]%
-    {Procedimento di costruzione FF-QRAM \par \small 
+    {Procedimento di costruzione FF-QRAM \cite{petruccione} \par \small 
     Circuito quantistico per \ac{FF-QRAM} che scrive
     le stringhe di bit $\vec{d}^{(l)}$ e $\vec{d}^{(l+1)}$ 
     come una sovrapposizione di stato quantistico con ampiezze 
@@ -127,7 +127,7 @@ $\mathcal{O}(n)$ qubit e $\mathcal{O}(Mn)$ operazioni quantistiche.
 L'algoritmo \ac{QKNN} presentato in sezione \ref{sec:qknn} è stato implementato 
 su un computer a 5 qubit, di cui solo 4 sono stati usati. La codifica usata prevedeva 
 che un vettore bidimensionale $x = (x_0,x_1)$ normalizzato fosse codificato nello stato del 
-qubit $\ket{i}$ come $\ket{psi_x} = x_0 \ket{0} + x_1 \ket{1}$ attraverso una rotazione 
+qubit $\ket{i}$ come $\ket{\psi_x} = x_0 \ket{0} + x_1 \ket{1}$ attraverso una rotazione 
 controllata dai qubit $\ket{a}$ e $\ket{m}$. Si faccia riferimento alla figura 
 \ref{fig:circuito_schuld}. Parametrizzando l'angolo di Bloch attraverso la relazione 
 \begin{equation}
@@ -141,7 +141,7 @@ otteniamo la relazione tra i vettori d'input e l'angolo $\theta$
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{gfx/schuld_circuito}
-    \caption{Il circuito quantistico base per il QKNN}
+    \caption{Il circuito quantistico base per il QKNN \cite{schuld}}
     \label{fig:circuito_schuld}
 \end{figure}
 
@@ -173,7 +173,7 @@ quello più generico mostrato in figura \ref{fig:qram_classi}.
     \centering
     \includegraphics[width=\linewidth]{gfx/qram_classi}
     \caption[Circuito quantistico per preparare il \acs{QDB} per un quantum support vector machine]%
-    {Circuito quantistico per preparare il \acs{QDB} per un quantum support vector machine. \par \small 
+    {Circuito quantistico per preparare il \acs{QDB} per un quantum support vector machine \cite{petruccione} \par \small 
     Sono mostrate le porte per scrivere solo l'$i$-esimo vettore di apprendimento. Le porte ombreggiate 
     in grigio sono aggiunte esclusivamente per illustrare il processo flip-flop, e non sono implementate 
     in pratica.}
