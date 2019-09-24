@@ -3,6 +3,7 @@
 
 \usepackage{amsmath}
 \usepackage{braket}
+\usepackage{listing}
 
 \definecolor{main}{RGB}{170, 85, 0}
 \definecolor{background}{RGB}{240, 247, 255}
@@ -15,6 +16,7 @@
 \date{ottobre 2019}
 
 % [ ] Le icone sono sgranate, sostiuirle con versioni di qualità migliore. 
+% [ ] Mettere slide sulle porte quantistiche usate
 % [x] Si può inserire un'altra slide in cui si scrive l'equazione del QDB. 
 % [x] Quando si introducono i qubit, mettere una slide sui registri a qubit multipli. 
 % [x] Mettere gli obiettivi appena dopo l'introduzione. 
@@ -49,7 +51,7 @@
             Il quantum computing studia la costruzione e l'uso di hardware di elaborazione basato sulla meccanica quantistica
             \column{0.7\textwidth}
             \begin{itemize}
-                \item Il quantum computing lavora con vettori in spazi di Hilbert
+                \item Il quantum computing lavora con vettori in spazi di Hilbert complessi
                 \item I computer quantistici eseguono operazioni lineari sui qubit
                 \item Sistemi a molti qubit sono descritti da grandi vettori che possono essere manipolati in parallelo
                 \item Il machine learning prevede la manipolazione di grandi vettori e matrici
@@ -228,19 +230,49 @@
         \end{equation*}
     \end{frame}
 
+    \begin{frame}{Porte logiche quantistiche}
+        Per manipolare $n$ qubit esistono apposite porte logiche quantistiche, 
+        che sono operatori rappresentabili come matrici $2^n\times2^n$. 
+        \begin{columns}
+            \column{.3\textwidth}
+            \begin{figure}[]
+                \centering
+                \includegraphics[width=\textwidth]{gfx/Hadamard_gate}
+                \caption{Hadamard}
+                \label{}
+            \end{figure}
+            \column{.3\textwidth}
+            \begin{figure}[]
+                \centering
+                \includegraphics[width=\textwidth]{gfx/CNOT_gate}                
+                \caption{CNOT}
+                \label{}
+            \end{figure}
+            \column{.3\textwidth}
+            \begin{figure}[]
+                \centering
+                \includegraphics[width=\textwidth]{gfx/Toffoli_gate}                
+                \caption{Toffoli}
+                \label{}
+            \end{figure}
+        \end{columns}
+    \end{frame}
+
     \begin{frame}{Punti di forza dei quantum computer}
+        \begin{columns}
+            \column{.45\textwidth}
+            \begin{tabular}{p{.15\textwidth}p{.8\textwidth}}
+                \# di qubit & RAM classica richiesta \\ \hline
+                5 & 256 byte \\ 
+                25 & 2 gigabyte \\ 
+                50 & 8000 terabyte \\ 
+                275 & numero di atomi nell'universo osservabile 
+            \end{tabular}
+            \column{.45\textwidth}
+            Le $n$ ampiezze di probabilità possono essere usate per memorizzare quantità enormi di informazioni. 
 
-        Queste $n$ ampiezze di probabilità possono essere usate per memorizzare quantità enormi di informazioni
-
-        \vspace{1cm}
-
-        \begin{tabular}{p{.1\textwidth}p{.4\textwidth}p{.4\textwidth}}
-            \# di qubit & RAM classica richiesta & Tempo di simulazione \\ \hline
-            5 & 256 byte & secondi su uno smartwatch \\ 
-            25 & 2 gigabyte & secondi su un portatile \\ 
-            50 & 8000 terabyte & secondi sul prossimo supercomputer \\ 
-            275 & numero di atomi nell'universo osservabile & età dell'universo
-        \end{tabular}
+            Possiamo inoltre creare e lavorare su più copie in parallelo degli stessi dati. 
+        \end{columns}
     \end{frame}
 
     \begin{frame}{Stato dell'arte}
@@ -290,18 +322,21 @@
     \begin{frame}{Codificare dati classici nelle ampiezze}
         \includegraphics[width=\textwidth]{gfx/qram.png}
         Per codificare dati classici nelle ampiezze di probabilità è stata usata la tecnica di costruzione 
-        di stati flip-flop QRAM, come proposto da Petruccione et al. 
+        di stati flip-flop QRAM, come proposto da Petruccione et al.
     \end{frame}
 
     \begin{frame}{FF-QRAM}
         La FF-QRAM è usata per memorizzare un QDB inizializzato in maniera arbitraria. 
 
         L'operazione QRAM sui qubit sovrappone un insieme di dati classici 
-        $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) | 0 \leq l < M \right\}$ come
+        $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) \Big| 0 \leq l < M \right\}$ come
         \begin{equation*} \label{eq:qram}
             \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
             \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
         \end{equation*}
+        dove $\vec{d}^{(l)}$ rappresenta un indirizzo di memoria con 
+        $n$ bit di informazione 
+        e $b_l$ è l'attributo ad esso associato. 
     \end{frame}
 
     \begin{frame}{Algoritmo KNN quantistico}
@@ -344,6 +379,50 @@
 			\text{etc}\ldots
 		\end{cases}
 		\end{equation*}
+    \end{frame}
+
+    \section{Implementazione}
+
+    \begin{frame}{Preparazione dei dati}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{gfx/iris/iris4features}
+            \caption{Data set Iris}
+            \label{}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}{Preparazione dei dati}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{gfx/iris/irisscaled}
+            \caption{Data set Iris standardizzato}
+            \label{}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}{Preparazione dei dati}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{gfx/iris/irisnormalized}
+            \caption{Data set Iris normalizzato (2 caratteristiche)}
+            \label{}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}{Preparazione dei dati}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.8\textwidth]{gfx/iris/iris4normalized}
+            \caption{Data set Iris normalizzato (4 caratteristiche)}
+            \label{}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}{Il circuito quantistico}
+        Il circuito quantistico per un classificatore binario è il seguente
+        \includegraphics[width=\textwidth]{gfx/base_circuit_crop}
+        Per il classificatore multiclasse il disegno è più complicato. 
     \end{frame}
 
     \section{Risultati}
@@ -409,5 +488,125 @@
 
     \begin{frame}[focus]
         Domande?
+    \end{frame}
+
+    \appendix
+
+    \begin{frame}{Algoritmo per classificatore binario}
+        \begin{block}{Inizializzazione dei registri quantistici}
+            a = QuantumRegister(1, 'a') \\
+            m = QuantumRegister(1, 'm') \\
+            i = QuantumRegister(1, 'i') \\
+            c = QuantumRegister(1, 'c') \\
+            b = ClassicalRegister(2, 'bit') \\
+            circuit = QuantumCircuit(a, m, i, c, b)
+        \end{block}
+
+        \begin{block}{Sovrapposizione degli stati}
+            circuit.h(a) \\
+            circuit.h(m)
+        \end{block}
+
+        \begin{block}{Codifica del vettore d'input}
+            circuit.cry(x0, a[0], i[0]) \\
+            circuit.x(a) \# entanglement dell'ancilla con 0
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{Algoritmo per classificatore binario}
+        \begin{block}{Codifica dei vettori di training}
+            circuit.mcry(t0, a[:] + m[:], i[0], None) \\
+            circuit.x(m) \# entanglement di m con 0 \\
+            circuit.mcry(t1, a[:] + m[:], i[0], None) \\
+            circuit.cx(m, c) \# entanglement della classe 1 con m 1 \\
+        \end{block}
+
+        \begin{block}{Interferenza degli stati}
+            circuit.h(a)
+        \end{block}
+        
+        \begin{block}{Operazione di misura}
+            circuit.measure(a, b[0]) \\
+            circuit.measure(c, b[1]) \\
+        \end{block}
+        \# circuit.draw(output='mpl')
+    \end{frame}
+
+    \begin{frame}{Algoritmo per classificatore multiclasse}
+        \begin{block}{Inizializzazione dei registri quantistici}
+            a = QuantumRegister(1, 'a') \# knn ancilla \\
+            m = QuantumRegister(2, 'm') \# training vector index \\
+            i = QuantumRegister(2, 'i') \# feature index \\
+            r = QuantumRegister(1, 'r') \# rotation qubit \\
+            q = QuantumRegister(5, 'q') \# qram ancilla \\
+            c = QuantumRegister(2, 'c') \# class \\
+            b = ClassicalRegister(4, 'bit') \\
+            circuit = QuantumCircuit(a, m, i, r, q, c, b)
+        \end{block}
+
+        \begin{block}{Sovrapposizione degli stati}
+            circuit.h(a) \\
+            circuit.h(m) \\
+            circuit.h(i) \\
+            circuit.h(c)
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{Algoritmo per classificatore multiclasse}
+        \begin{block}{Codifica dei vettori}
+            \# circuit.cry(theta, control, target) \\
+            \# circuit.mcry(theta, controls, target, ancillae) \\
+
+            \# >> Encode the input vector >> \\
+
+            encodeVector(circuit, inputVirginica, i, a[:] + i[:], r[0], q) \\ 
+
+            circuit.x(a) \# entanglement dell'ancilla con 0 \\
+
+            \# >> Encode the training vectors >> \\
+
+            buildTrainingState(trainingArray) \\
+        \end{block}
+        \begin{block}{Interferenza e misura}
+            circuit.measure(r, b[0]) \\
+            circuit.h(a) \\
+            circuit.measure(a, b[1]) \\
+            circuit.measure(c[0], b[2]) \\
+            circuit.measure(c[1], b[3])
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{Algoritmo per classificatore multiclasse}
+        \begin{block}{Definizione dei costruttori}
+            def encodeTraining(circuit, data, i, controls, rotationQ, ancillaQ, c, m): \\
+            \# Header \\
+            encodeClass(circuit, c) \\
+            encodeIndex(circuit,m) \\
+            \# Encoder \\
+            encodeVector(circuit, data, i, controls, rotationQ, ancillaQ) \\
+            \# Footer \\
+            encodeClass(circuit, c) \\
+            encodeIndex(circuit, m)
+        \end{block}
+    \end{frame}
+
+    \begin{frame}{Algoritmo per classificatore multiclasse}
+        \begin{block}{Definizione del codificatore}
+            def encodeVector(circ, data, i, controls, rotationQ, ancillaQ): \\
+            \# |00>\\
+            circuit.x(i)\\
+            circuit.mcry(data[0], controls, rotationQ, ancillaQ)\\
+            circuit.x(i)\\
+            \# |01>\\
+            circuit.x(i[1])\\
+            circuit.mcry(data[1], controls, rotationQ, ancillaQ)\\
+            circuit.x(i[1])\\
+            \# |10>\\
+            circuit.x(i[0])\\
+            circuit.mcry(data[2], controls, rotationQ, ancillaQ)\\
+            circuit.x(i[0])\\
+            \# |11>\\
+            circuit.mcry(data[3], controls, rotationQ, ancillaQ)
+        \end{block}
     \end{frame}
 \end{document}

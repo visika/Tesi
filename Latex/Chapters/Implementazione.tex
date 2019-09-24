@@ -29,7 +29,8 @@ $\ket{j}_B$ della base computazionale codifica i valori classici di partenza.
 
 L'operazione QRAM sui qubit bus e registro sovrappone un insieme di dati classici 
 $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) | 0 \leq l < M \right\}$, dove 
-$\vec{d}^{(l)}$ rappresenta $n$ bit di informazione e $b_l$ è il relativo attributo, come 
+$\vec{d}^{(l)}$ rappresenta un indirizzo di memoria con $n$ bit di informazione 
+e $b_l$ è l'attributo ad esso associato, come 
 \begin{equation} \label{eq:qram}
     \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
     \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
