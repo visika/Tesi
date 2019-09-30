@@ -356,3 +356,65 @@ distinguere le classi versicolor e virginica con ben meno vettori di training,
 tuttavia uno tra gli scopi di questa tesi era verificare fino a che punto si possono 
 immagazzinare vettori in quantità sempre maggiori ai fini della classificazione 
 ed ottenere i risultati aspettati. 
+
+\section{Un esempio più semplice}
+
+Per ottenere dei risultati più chiari, si è effettuata la classificazione 
+anche su un data set semplificato, formato da vettori bidimensionali 
+appartenenti a quattro classi, disposti in cluster ben separati tra loro. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{gfx/cluster/cluster}
+    \caption{Data set a cluster}
+    \label{fig:cluster}
+\end{figure}
+
+Usando lo stesso procedimento visto nella sezione precedente, si sono 
+selezionati due elementi da ciascun cluster ed li si è etichettati con un colore; 
+si è poi confrontato in quattro esecuzioni separate un terzo vettore 
+casuale da ciascun gruppo.\footnote{Si veda \cite{anagolum} per una versione 
+one vs. all in cui vengono implementati $n$ classificatori quantistici binari di questo tipo, 
+dove $n$ è il numero di classi.}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{gfx/cluster/random}
+    \caption{Vettori casuali dopo l'applicazione di arcoseno}
+    \label{fig:random}
+\end{figure}
+
+I risultati di simulazione vengono presentati nel riquadro \ref{fig:cluster.simulazione}, 
+quelli di esecuzione su hardware reale non sono disponibili per mancanza di tempo 
+dovuta alle scadenze di consegna della tesi. 
+
+\begin{figure}[h!]
+    \myfloatalign
+    \hspace{-0.30\linewidth}
+    \subfloat[Classe verde]
+    {\includegraphics[width=.60\linewidth]{gfx/cluster/Simulated/green}} \quad
+    \subfloat[Classe blu]
+    {\includegraphics[width=.60\linewidth]{gfx/cluster/Simulated/blue}} \\
+    \hspace{-0.30\linewidth}
+    \subfloat[Classe nera]
+    {\includegraphics[width=.60\linewidth]{gfx/cluster/Simulated/black}} \quad
+    \subfloat[Classe gialla]
+    {\includegraphics[width=.60\linewidth]{gfx/cluster/Simulated/yellow}}
+    \caption{Risultati di simulazione su cluster semplici}
+    \label{fig:cluster.simulazione}
+\end{figure}
+
+% \begin{figure}[h!]
+%     \myfloatalign
+%     \subfloat[Classe verde]
+%     {\includegraphics[width=.45\linewidth]{gfx/cluster/Real/green}} \quad
+%     \subfloat[Classe blu]
+%     {\includegraphics[width=.45\linewidth]{gfx/cluster/Real/blue}} \\
+%     \subfloat[Classe nera]
+%     {\includegraphics[width=.45\linewidth]{gfx/cluster/Real/black}} \quad
+%     \subfloat[Classe gialla]
+%     {\includegraphics[width=.45\linewidth]{gfx/cluster/Real/yellow}}
+%     \caption{Risultati di esecuzione reale su cluster semplici}
+%     \label{fig:cluster.esecuzione}
+% \end{figure}
+
