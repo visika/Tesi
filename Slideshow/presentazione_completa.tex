@@ -31,7 +31,7 @@
     \begin{frame}{Machine learning}
         \begin{columns}
             \column{0.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/icons/icons8-machine-learning-240.png}
+            \includegraphics[width=\textwidth]{gfx/icons/icons8-machine-learning-480}
             Il machine learning permette ai computer di imparare dai dati
             \column{0.7\textwidth}
             Gli algoritmi di ML prevedono spesso di
@@ -47,7 +47,7 @@
     \begin{frame}{Quantum computing}
         \begin{columns}
             \column{0.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/icons/icons8-physics-240.png}
+            \includegraphics[width=\textwidth]{gfx/icons/icons8-physics-480}
             Il quantum computing studia la costruzione e l'uso di hardware di elaborazione basato sulla meccanica quantistica
             \column{0.7\textwidth}
             \begin{itemize}
@@ -105,14 +105,20 @@
         \begin{block}{Definizione del problema}
             Dato un insieme dati in input con i corrispondenti output, predire l'output di un nuovo input ignoto. 
         \end{block}
-        \begin{tabular}{cc}
-            Input & Output \\ \hline
-            facce & emozioni \\ 
-            battito cardiaco & stato di salute \\ 
-            meteo dell'anno scorso & meteo di domani \\ 
-            messaggio di un utente & intenzione del messaggio \\ 
-            cronologia di ricerca & probabilità di cliccare su un annuncio
-        \end{tabular}
+        Un tipico esempio di compito di classificazione multiclasse è il 
+        \emph{riconoscimento di caratteri scritti a mano}. 
+        
+        In questo caso si può raccogliere un insieme dati di addestramento che 
+        consiste di molteplici caratteri scritti a mano di ciascuna lettera 
+        dell'alfabeto. 
+        % \begin{tabular}{cc}
+        %     Input & Output \\ \hline
+        %     facce & emozioni \\ 
+        %     battito cardiaco & stato di salute \\ 
+        %     meteo dell'anno scorso & meteo di domani \\ 
+        %     messaggio di un utente & intenzione del messaggio \\ 
+        %     cronologia di ricerca & probabilità di cliccare su un annuncio
+        % \end{tabular}
     \end{frame}
 
     \begin{frame}{k-nearest neighbours classico}
@@ -146,7 +152,7 @@
             \column{0.7\textwidth}
             \begin{itemize}
                 \item Solitamente implementati attraverso MOSFET\footnote{MOSFET: Metal Oxide Semiconductor Field Effect Transistor}
-                \item 2 stati definiti (0, 1)
+                \item 2 stati definiti: 0 e 1
                 \item Può trovarsi in uno tra gli stati 0 o 1
             \end{itemize}
         \end{columns}
@@ -155,11 +161,12 @@
     \begin{frame}{Qubit}
         \begin{columns}
             \column{0.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/qubit_ibm.png}
+            \includegraphics[width=\textwidth]{gfx/qubit}
             \column{0.7\textwidth}
             \begin{itemize}
-                \item Può essere $\ket{0}$ o $\ket{1}$
-                \item Può anche essere $\ket{0}$ e $\ket{1}$ contemporaneamente (sovrapposizione quantistica)
+                \item Implementato in diversi modi: giunzioni superconduttive, ioni intrappolati, fotoni polarizzati\ldots
+                \item Due stati definiti: $\ket{0}$ e $\ket{1}$
+                \item Può trovarsi in una sovrapposizione degli stati $\ket{0}$ e $\ket{1}$
             \end{itemize}
         \end{columns}
     \end{frame}
@@ -195,7 +202,7 @@
     \begin{frame}{Registro di 2 qubit}
         Un computer quantistico con $n$ qubit ha $2^n$ ampiezze di probabilità. 
 
-        Lo stato di un registro a più qubit è rappresentato dal prodotto tensore dello stato dei singoli qubit. 
+        Lo stato di un registro a più qubit è rappresentato dal prodotto tensoriale dello stato dei singoli qubit. 
 
         \begin{equation*}
             \ket{00} = \ket{0} \otimes \ket{0}
@@ -213,7 +220,7 @@
     \begin{frame}{Registro di $n$ qubit}
         Un computer quantistico con $n$ qubit ha $2^n$ ampiezze di probabilità. 
 
-        Lo stato di un registro a più qubit è rappresentato dal prodotto tensore dello stato dei singoli qubit. 
+        Lo stato di un registro a più qubit è rappresentato dal prodotto tensoriale dello stato dei singoli qubit. 
 
         \begin{equation*}
             \ket{00\ldots00} = \ket{0} \otimes \ket{0} \otimes \ldots \otimes \ket{0} \otimes \ket{0}
@@ -467,6 +474,26 @@
         \end{columns}
     \end{frame}
 
+    \begin{frame}{Classificazione multiclasse}
+        \begin{columns}
+            \column{.5\linewidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\linewidth]{gfx/multiclass_versicolor}
+                \caption{Simulazione su versicolor}
+                \label{}
+            \end{figure}
+            \column{.5\linewidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\linewidth]{gfx/multiclass_virginica}
+                \caption{Simulazione su virginica}
+                \label{}
+            \end{figure}
+        \end{columns}
+        Nota: i risultati per la classe versicolor sono molto variabili. 
+    \end{frame}
+
     \section{Conclusione}
 
     \begin{frame}{Riassunto}
@@ -479,11 +506,16 @@
     \end{frame}
 
     \begin{frame}{Prospettive}
-        \begin{itemize}
-            \item Far girare gli algoritmi su computer con maggiori risorse, sia in termini di numero di qubit che di tempi di decoerenza
-            \item A tal proposito, sarebbe interessante l'esecuzione sul computer a 20 qubit annunciato quest'anno
-            \item Si attende lo sviluppo di corrispettivi quantistici per algoritmi di IA più complessi
-        \end{itemize}
+        \begin{columns}
+            \column{.7\linewidth}
+            \begin{itemize}
+                \item Far girare gli algoritmi su computer con maggiori risorse, sia in termini di numero di qubit che di tempi di decoerenza
+                \item A tal proposito, sarebbe interessante l'esecuzione sul computer a 20 qubit annunciato quest'anno
+                \item Si attende lo sviluppo di corrispettivi quantistici per algoritmi di IA più complessi
+            \end{itemize}
+            \column{.3\linewidth}
+            \includegraphics[width=\linewidth]{gfx/quantum_computer.png}
+        \end{columns}
     \end{frame}
 
     \begin{frame}[focus]
@@ -609,4 +641,24 @@
             circuit.mcry(data[3], controls, rotationQ, ancillaQ)
         \end{block}
     \end{frame}
+
+    \begin{frame}{Classificazione di cluster}
+        \includegraphics[width=\linewidth]{gfx/Clusters/cluster}
+    \end{frame}
+
+    \begin{frame}{Classificazione di cluster}
+        \includegraphics[width=\linewidth]{gfx/Clusters/random}
+    \end{frame}
+
+    \begin{frame}{Classificazione di cluster}
+        \begin{columns}
+            \column{.5\linewidth}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/green}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/blue}
+            \column{.5\linewidth}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/black}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/yellow}
+        \end{columns}
+    \end{frame}
+
 \end{document}

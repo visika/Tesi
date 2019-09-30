@@ -1,7 +1,8 @@
 \beamer@sectionintoc {1}{Introduzione}{2}{0}{1}
 \beamer@sectionintoc {2}{Machine learning}{8}{0}{2}
 \beamer@sectionintoc {3}{Quantum computing}{12}{0}{3}
-\beamer@sectionintoc {4}{Metodi}{21}{0}{4}
-\beamer@sectionintoc {5}{Quantum machine learning}{24}{0}{5}
-\beamer@sectionintoc {6}{Risultati}{29}{0}{6}
-\beamer@sectionintoc {7}{Conclusione}{32}{0}{7}
+\beamer@sectionintoc {4}{Metodi}{22}{0}{4}
+\beamer@sectionintoc {5}{Quantum machine learning}{25}{0}{5}
+\beamer@sectionintoc {6}{Implementazione}{30}{0}{6}
+\beamer@sectionintoc {7}{Risultati}{36}{0}{7}
+\beamer@sectionintoc {8}{Conclusione}{40}{0}{8}
