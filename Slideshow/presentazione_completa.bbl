@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{Qiskit}
+H{\'e}ctor Abraham et~al.
+\newblock Qiskit: An open-source framework for quantum computing, 2019.
+
+\bibitem{petruccione}
+Daniel~K. Park, Francesco Petruccione, and June-Koo~Kevin Rhee.
+\newblock Circuit-based quantum random access memory for classical data.
+\newblock {\em Scientific Reports}, 9(3949), 2019.
+
+\bibitem{schuld}
+M.~Schuld, M.~Fingerhuth, and F.~Petruccione.
+\newblock Implementing a distance-based classifier with a quantum interference
+  circuit.
+\newblock {\em EPL (Europhysics Letters)}, 119(6), 2017.
+
+\end{thebibliography}

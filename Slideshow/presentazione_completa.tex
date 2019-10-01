@@ -15,8 +15,8 @@
 \institute{Università degli Studi di Napoli Federico II\texorpdfstring{\\}{,} Scuola Politecnica e delle Scienze di Base}
 \date{ottobre 2019}
 
-% [ ] Le icone sono sgranate, sostiuirle con versioni di qualità migliore. 
-% [ ] Mettere slide sulle porte quantistiche usate
+% [x] Le icone sono sgranate, sostiuirle con versioni di qualità migliore. 
+% [x] Mettere slide sulle porte quantistiche usate
 % [x] Si può inserire un'altra slide in cui si scrive l'equazione del QDB. 
 % [x] Quando si introducono i qubit, mettere una slide sui registri a qubit multipli. 
 % [x] Mettere gli obiettivi appena dopo l'introduzione. 
@@ -77,7 +77,7 @@
 
     \begin{frame}{Obiettivi}
         \begin{itemize}
-            \item Riprodurre l'algoritmo di classificazione binaria KNN quantistico proposto da Schuld et al. 
+            \item Riprodurre l'algoritmo di classificazione binaria KNN quantistico proposto da Schuld et al. \cite{schuld}
             \item Implementarne una versione multiclasse
             \item Analizzare le capacità dell'algoritmo usando l'hardware quantistico attualmente disponibile
             \item Analizzare esperimenti più complessi tramite simulazione
@@ -240,28 +240,70 @@
     \begin{frame}{Porte logiche quantistiche}
         Per manipolare $n$ qubit esistono apposite porte logiche quantistiche, 
         che sono operatori rappresentabili come matrici $2^n\times2^n$. 
+        
         \begin{columns}
             \column{.3\textwidth}
-            \begin{figure}[]
-                \centering
-                \includegraphics[width=\textwidth]{gfx/Hadamard_gate}
-                \caption{Hadamard}
-                \label{}
-            \end{figure}
+            \begin{center}
+                Hadamard
+            \end{center}
             \column{.3\textwidth}
-            \begin{figure}[]
-                \centering
-                \includegraphics[width=\textwidth]{gfx/CNOT_gate}                
-                \caption{CNOT}
-                \label{}
-            \end{figure}
+            \begin{center}
+                CNOT = CX
+            \end{center}
             \column{.3\textwidth}
-            \begin{figure}[]
+            \begin{center}
+                Toffoli
+            \end{center}
+        \end{columns}
+
+        \begin{columns}
+            \column{.3\textwidth}
+            \begin{figure}[h]
                 \centering
-                \includegraphics[width=\textwidth]{gfx/Toffoli_gate}                
-                \caption{Toffoli}
-                \label{}
+                \includegraphics[width=\columnwidth]{gfx/Hadamard_gate}
+                \label{fig:hadamard}
             \end{figure}
+            \column{.3\linewidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\columnwidth]{gfx/CNOT_gate}                
+                \label{fig:cnot}
+            \end{figure}
+            \column{.3\linewidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\columnwidth]{gfx/Toffoli_gate}                
+                \label{fig:toffoli}
+            \end{figure}
+        \end{columns}
+
+        \vspace{-2em}
+
+        \begin{columns}
+            \column{.3\linewidth}
+            \begin{equation*}
+                \frac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                    1 & 1 \\ 1 & -1
+                \end{pmatrix}
+            \end{equation*}
+            \column{.3\linewidth}
+            \begin{equation*}
+                \begin{pmatrix}
+                    1 & 0 & 0 & 0 \\
+                    0 & 1 & 0 & 0 \\
+                    0 & 0 & 0 & 1 \\
+                    0 & 0 & 1 & 0
+                \end{pmatrix}
+            \end{equation*}
+            \column{.3\linewidth}
+            \begin{equation*}
+                \begin{pmatrix}
+                    \mathbb{I}_6 & 0 & 0 \\
+                    0 & 0 & 1 \\
+                    0 & 1 & 0
+                \end{pmatrix}
+            \end{equation*}
         \end{columns}
     \end{frame}
 
@@ -314,7 +356,7 @@
             \column{.3\textwidth}
             \includegraphics[width=\textwidth]{gfx/laptop_strumenti.png}
             \column{.7\textwidth}
-            Struttura open source di sviluppo software per quantum computing, permette di 
+            Struttura open source di sviluppo software per quantum computing \cite{Qiskit}, permette di 
             \begin{itemize}
                 \item progettare circuiti quantistici
                 \item simularli sul proprio computer personale
@@ -329,7 +371,7 @@
     \begin{frame}{Codificare dati classici nelle ampiezze}
         \includegraphics[width=\textwidth]{gfx/qram.png}
         Per codificare dati classici nelle ampiezze di probabilità è stata usata la tecnica di costruzione 
-        di stati flip-flop QRAM, come proposto da Petruccione et al.
+        di stati flip-flop QRAM. \cite{petruccione}
     \end{frame}
 
     \begin{frame}{FF-QRAM}
@@ -347,21 +389,21 @@
     \end{frame}
 
     \begin{frame}{Algoritmo KNN quantistico}
-        Stato quantistico iniziale
+        Stato quantistico iniziale: $\ket{a} \otimes \ket{d} \otimes \ket{c} \otimes \ket{m}$
 
 		\begin{equation*}
 			\ket{\psi_0} = \frac{1}{\sqrt{2M}} \sum_{m=1}^M 
 			(\ket{0}\ket{\psi_x}+\ket{1}\ket{\psi_{t^m}})\ket{c^m}\ket{m}
 		\end{equation*}
 
-		Calcolo della distanza con interferenza quantistica
+		Calcolo della distanza con interferenza quantistica: applico $H\ket{a}$
 
 		\begin{equation*}
 			\ket{\psi_1} = \frac{1}{2\sqrt{M}}\sum_{m=1}^M 
 			\Big( \ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}}) + \ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}) \Big) \ket{c^m}\ket{m}
 		\end{equation*}
 	
-		Misura condizionale
+		Misura condizionale: $\ket{a} = \ket{0}$
 
 		\begin{equation*}
 			\ket{\psi_2} = \frac{1}{2\sqrt{M}} \sum_{m=1}^M \sum_{i=1}^N
@@ -395,7 +437,7 @@
             \centering
             \includegraphics[width=.8\textwidth]{gfx/iris/iris4features}
             \caption{Data set Iris}
-            \label{}
+            \label{fig:iris.dataset}
         \end{figure}
     \end{frame}
 
@@ -404,7 +446,7 @@
             \centering
             \includegraphics[width=.8\textwidth]{gfx/iris/irisscaled}
             \caption{Data set Iris standardizzato}
-            \label{}
+            \label{fig:iris.standard}
         \end{figure}
     \end{frame}
 
@@ -413,7 +455,7 @@
             \centering
             \includegraphics[width=.8\textwidth]{gfx/iris/irisnormalized}
             \caption{Data set Iris normalizzato (2 caratteristiche)}
-            \label{}
+            \label{fig:iris2.normalizzato}
         \end{figure}
     \end{frame}
 
@@ -422,7 +464,7 @@
             \centering
             \includegraphics[width=.8\textwidth]{gfx/iris/iris4normalized}
             \caption{Data set Iris normalizzato (4 caratteristiche)}
-            \label{}
+            \label{fig:iris4.normalizzato}
         \end{figure}
     \end{frame}
 
@@ -481,14 +523,14 @@
                 \centering
                 \includegraphics[width=\linewidth]{gfx/multiclass_versicolor}
                 \caption{Simulazione su versicolor}
-                \label{}
+                \label{fig:multiclass.versicolor}
             \end{figure}
             \column{.5\linewidth}
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=\linewidth]{gfx/multiclass_virginica}
                 \caption{Simulazione su virginica}
-                \label{}
+                \label{fig:multiclass.virginica}
             \end{figure}
         \end{columns}
         Nota: i risultati per la classe versicolor sono molto variabili. 
@@ -523,6 +565,11 @@
     \end{frame}
 
     \appendix
+
+    \begin{frame}{Fonti}
+        \bibliography{bibliography.bib}
+        \bibliographystyle{plain}
+    \end{frame}
 
     \begin{frame}{Algoritmo per classificatore binario}
         \begin{block}{Inizializzazione dei registri quantistici}
@@ -613,7 +660,7 @@
             def encodeTraining(circuit, data, i, controls, rotationQ, ancillaQ, c, m): \\
             \# Header \\
             encodeClass(circuit, c) \\
-            encodeIndex(circuit,m) \\
+            encodeIndex(circuit, m) \\
             \# Encoder \\
             encodeVector(circuit, data, i, controls, rotationQ, ancillaQ) \\
             \# Footer \\
