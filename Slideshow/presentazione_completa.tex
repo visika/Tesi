@@ -13,7 +13,7 @@
 \author{Mariano Mollo N85000880\texorpdfstring{\\}{,} Relatori: \texorpdfstring{\\}{,} Giovanni Acampora \texorpdfstring{\\}{,} Autilia Vitiello}
 \titlegraphic{\includegraphics[scale=0.15]{gfx/logo-federico-II-blu}}
 \institute{Università degli Studi di Napoli Federico II\texorpdfstring{\\}{,} Scuola Politecnica e delle Scienze di Base}
-\date{ottobre 2019}
+\date{25 ottobre 2019}
 
 % [x] Le icone sono sgranate, sostiuirle con versioni di qualità migliore. 
 % [x] Mettere slide sulle porte quantistiche usate
@@ -30,31 +30,51 @@
 
     \begin{frame}{Machine learning}
         \begin{columns}
-            \column{0.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/icons/icons8-machine-learning-480}
-            Il machine learning permette ai computer di imparare dai dati
-            \column{0.7\textwidth}
-            Gli algoritmi di ML prevedono spesso di
-            \begin{itemize}
-                \item risolvere grandi sistemi di equazioni lineari
-                \item invertire grandi matrici
-                \item calcolare distanze
-            \end{itemize}
-            Effettuare questi calcoli su insiemi dati grandi e complessi diventa difficile
+            \column{.5\textwidth}
+            \begin{center}
+                \includegraphics[width=.5\columnwidth]{gfx/icons/icons8-machine-learning-480}                
+            \end{center}            
+
+            Il machine learning è un ramo dell'intelligenza artificiale che permette ai computer di apprendere dai dati. 
+
+            L'apprendimento può formalizzarsi attraverso la definizione di modelli matematici, usati per:
+            \column{.5\textwidth}
+            \begin{columns}
+                \column{.5\textwidth}
+                riconoscimento facciale e delle emozioni
+                \column{.5\textwidth}
+                \includegraphics[width=\columnwidth]{gfx/Visage_Technologies_Face_Tracking_and_Analysis.png}
+            \end{columns}
+
+            \begin{columns}
+                \column{.5\textwidth}
+                veicoli a guida autonoma
+                \column{.5\textwidth}
+                \includegraphics[width=\columnwidth]{gfx/tesla.jpg}
+            \end{columns}
+
+            \begin{columns}
+                \column{.5\textwidth}
+                identificazione dei sintomi di malattie
+                \column{.5\textwidth}
+                \includegraphics[width=\columnwidth]{gfx/pianta_malata.png}
+            \end{columns}
         \end{columns}
     \end{frame}
 
     \begin{frame}{Quantum computing}
         \begin{columns}
-            \column{0.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/icons/icons8-physics-480}
+            \column{0.5\textwidth}
+            \begin{center}
+                \includegraphics[width=.5\columnwidth]{gfx/icons/icons8-physics-480}                
+            \end{center}
+            
             Il quantum computing studia la costruzione e l'uso di hardware di elaborazione basato sulla meccanica quantistica
-            \column{0.7\textwidth}
+            \column{0.5\textwidth}
             \begin{itemize}
                 \item Il quantum computing lavora con vettori in spazi di Hilbert complessi
                 \item I computer quantistici eseguono operazioni lineari sui qubit
                 \item Sistemi a molti qubit sono descritti da grandi vettori che possono essere manipolati in parallelo
-                \item Il machine learning prevede la manipolazione di grandi vettori e matrici
             \end{itemize}
         \end{columns}
     \end{frame}
@@ -64,8 +84,12 @@
             \column{0.3\textwidth}
             \includegraphics[width=\textwidth]{gfx/quantum-computer.jpg}
             \column{0.7\textwidth}
+            Il machine learning prevede la manipolazione di grandi vettori e matrici.
+
+            \vspace{1cm}
+
             L'uso dei computer quantistici per risolvere problemi classici difficili o classi di problemi completamente nuove è chiamato machine learning quantistico, 
-            ovvero permettere ai computer quantistici di imparare dai dati più velocemente dei computer classici
+            ovvero il permettere ai computer quantistici di imparare dai dati più velocemente dei computer classici
         \end{columns}
     \end{frame}
 
@@ -77,28 +101,9 @@
 
     \begin{frame}{Obiettivi}
         \begin{itemize}
-            \item Riprodurre l'algoritmo di classificazione binaria KNN quantistico proposto da Schuld et al. \cite{schuld}
-            \item Implementarne una versione multiclasse
-            \item Analizzare le capacità dell'algoritmo usando l'hardware quantistico attualmente disponibile
-            \item Analizzare esperimenti più complessi tramite simulazione
+            \item Riprodurre l'algoritmo di classificazione KNN quantistico proposto da Schuld et al. \cite{schuld} e implementarne una versione multiclasse su processore quantistico dell'IBM
+            \item Analizzare le capacità dell'algoritmo attraverso esecuzioni su hardware quantistico e tramite simulazione
         \end{itemize}
-    \end{frame}
-
-    \section{Machine learning}
-
-    \begin{frame}{Machine learning}
-        \begin{columns}
-            \column{.5\textwidth}
-            Il machine learning è un ramo dell'intelligenza artificiale che permette ai computer di apprendere dai dati. 
-
-            L'apprendimento può formalizzarsi attraverso la definizione di modelli matematici, usati per
-            \column{.5\textwidth}
-            \begin{itemize}
-                \item effettuare previsioni (apprendimento supervisionato)
-                \item trovare regolarità in processi complessi (apprendimento non supervisionato)
-                \item effettuare scelte per ottenere un risultato ottimale (apprendimento per rinforzo)
-            \end{itemize}
-        \end{columns}
     \end{frame}
 
     \begin{frame}{Machine learning supervisionato}
@@ -122,14 +127,19 @@
     \end{frame}
 
     \begin{frame}{k-nearest neighbours classico}
-        L'algoritmo KNN è uno tra i più semplici del ML ed è un lazy learner
         \begin{columns}
             \column{0.3\textwidth}
             \includegraphics[width=\textwidth]{gfx/KnnClassification.png}
             \column{0.7\textwidth}
-            $k$ è un numero naturale
+            L'algoritmo KNN è uno tra i più semplici del ML ed è un lazy learner
+            \vspace{.5cm}
+            
+            Sia $k$ un numero naturale. 
 
-            Dato un insieme di apprendimento $D = v_0,\ldots,v_{M-1}, v_i\in\left\{ \text{classe}_0, \text{classe}_1 \right\}$
+            Si abbia un insieme di apprendimento 
+            \begin{equation*}
+                D = v_0,\ldots,v_{M-1}, v_i\in\left\{ \text{classe}_0, \text{classe}_1, \ldots \right\}
+            \end{equation*}
 
             Dato un nuovo vettore $x$: 
             \begin{itemize}
@@ -139,8 +149,341 @@
 
             Si assegnano pesi dipendenti da $\frac{1}{\text{distanza}}$ per aumentare l'influenza 
             dei vettori più vicini
-
         \end{columns}
+    \end{frame}
+
+    \begin{frame}{Algoritmo KNN quantistico}
+        Stato quantistico iniziale: $\ket{a} \otimes \ket{i} \otimes \ket{c} \otimes \ket{m}$
+
+		\begin{equation*}
+			\ket{\psi_0} = \frac{1}{\sqrt{2M}} \sum_{m=1}^M 
+			(\ket{0}\ket{\psi_x}+\ket{1}\ket{\psi_{t^m}})\ket{c^m}\ket{m}
+		\end{equation*}
+
+		Calcolo della distanza con interferenza quantistica: applico $H\ket{a}$
+		\begin{equation*}
+			\ket{\psi_1} = \frac{1}{2\sqrt{M}}\sum_{m=1}^M 
+			\Big( \ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}}) + \ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}) \Big) \ket{c^m}\ket{m}
+		\end{equation*}
+	
+		Misura condizionale: $\ket{a} = \ket{0}$
+
+		\begin{equation*}
+			\ket{\psi_2} = \frac{1}{2\sqrt{M}} \sum_{m=1}^M \sum_{i=1}^N
+			(x_i+t_i^m)\ket{0}\ket{i}\ket{c^m}\ket{m}
+		\end{equation*}
+    \end{frame}
+
+    \begin{frame}{Algoritmo KNN quantistico}
+        Se i vettori sono appropriatamente normalizzati 
+        la probabilità di misurare una data classe è:
+
+		\begin{equation*}
+			\text{P}(\ket{c^m} = \ket{s}) = \sum_{m|c^m=s} 
+			1 - \frac{1}{4M} |x-t^m|^2
+		\end{equation*}
+
+		Classificazione:
+
+		\begin{equation*}
+			c = \begin{cases}
+			0 \quad \text{se}\, \text{P}(\ket{c^0})\, \text{maggiore} \\
+			1 \quad \text{se}\, \text{P}(\ket{c^1})\, \text{maggiore} \\
+			\text{etc}\ldots
+		\end{cases}
+		\end{equation*}
+    \end{frame}
+
+    \begin{frame}{Il circuito quantistico di partenza}
+        % Il circuito quantistico per un classificatore binario è il seguente
+        \includegraphics[width=\textwidth]{gfx/qknn.pdf}
+        % Per il classificatore multiclasse il disegno è più complicato. 
+    \end{frame}
+
+    \section{Metodi implementativi}
+
+    \begin{frame}{IBM Q Experience}
+        \begin{columns}
+            \column{.3\textwidth}
+            \includegraphics[width=\textwidth]{gfx/laptop_strumenti.png}
+            \column{.7\textwidth}
+            L'IBM Q Experience è un'interfaccia per interagire con le risorse di quantum computing dell'IBM
+            \begin{itemize}
+                \item accessibile al pubblico
+                \item permette simulazioni con e senza rumore
+                \item fino a 14 qubit superconduttivi
+                \item fino a 32 qubit simulati
+            \end{itemize}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Qiskit}
+        \begin{columns}
+            \column{.3\textwidth}
+            \includegraphics[width=\textwidth]{gfx/laptop_strumenti.png}
+            \column{.7\textwidth}
+            Struttura open source di sviluppo software per quantum computing \cite{Qiskit}, permette di 
+            \begin{itemize}
+                \item progettare circuiti quantistici
+                \item simularli sul proprio computer personale
+                \item inviare ordini di esecuzione su harware quantistico reale
+                \item visualizzare i risultati
+            \end{itemize}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Stato dell'arte}
+        \begin{columns}
+            \column{.3\textwidth}
+            \includegraphics[width=\textwidth]{gfx/ibm_16}
+            \column{.7\textwidth}
+            L'ibmq\_16\_melbourne è il computer quantistico accessibile al pubblico 
+            a partire dal 2018 tramite interfaccia web. Le porte quantistiche di base 
+            sono u1, u2, u3, cx, id. I tempi di decoerenza sono dell'ordine di 
+            $T1 \approx 25 \div 88 \mu s$, $T2 \approx 15 \div 105 \mu s$. 
+        \end{columns}
+
+        \begin{columns}
+            \column{.3\textwidth}
+            \includegraphics[width=\textwidth]{gfx/ibm_q_system_one.png}
+            \column{.7\textwidth}
+            L'IBM Q System One è il primo computer quantistico a circuiti commerciale al mondo, 
+            introdotto dall'IBM nel gennaio 2019. L'IBM Q System One possiede 20 qubit. 
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{FF-QRAM}
+        La FF-QRAM è usata per memorizzare un QDB inizializzato in maniera arbitraria. 
+
+        L'operazione QRAM sui qubit sovrappone un insieme di dati classici 
+        $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) \Big| 0 \leq l < M \right\}$ come
+        \begin{equation*} \label{eq:qram}
+            \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
+            \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
+        \end{equation*}
+        dove $\vec{d}^{(l)}$ rappresenta un indirizzo di memoria con 
+        $n$ bit di informazione 
+        e $b_l$ è l'attributo ad esso associato. 
+    \end{frame}
+
+    \begin{frame}{Codificare dati classici nelle ampiezze}
+        \begin{columns}
+            \column{.4\textwidth}
+            Per codificare dati classici nelle ampiezze di probabilità è stata usata la tecnica di costruzione 
+            di stati flip-flop QRAM proposta da Petruccione et al. \cite{petruccione}
+            \column{.6\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/qram}
+        \end{columns}
+
+        \begin{columns}
+            \column{.4\textwidth}
+            È stata scelta una procedura di costruzione di stati di questo tipo per codificare più di due vettori di training e più di due classi
+            \column{.6\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/qram_qsvm}
+        \end{columns}
+    \end{frame}
+
+    \section{Risultati}
+
+    \subsection{Classificazione di cluster}
+
+    \begin{frame}{Classificazione di cluster}
+        \begin{columns}
+            \column{.5\textwidth}
+            Per verificare il funzionamento base dell'algoritmo, è stato creato un insieme dati ad hoc formato da quattro raggruppamenti ben separati tra loro. 
+            \column{.5\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/Clusters/cluster}
+    \end{columns}
+
+    \begin{columns}
+        \column{.5\textwidth}
+        Sono stati selezionati otto elementi (due da ogni cluster) come vettori di training e si sono sottoposti a classificazione quattro vettori d'input in quattro esperimenti. 
+        \column{.5\textwidth}
+        \includegraphics[width=\columnwidth]{gfx/Clusters/random}            
+    \end{columns}
+    \end{frame}
+
+    \begin{frame}{Classificazione di cluster (simulazione)}
+        \begin{columns}
+            \column{.5\linewidth}
+            \rotatebox{90}{Classe verde}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/green}
+            \rotatebox{90}{Classe blu}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/blue}
+            \column{.5\linewidth}
+            \rotatebox{90}{Classe nero}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/black}
+            \rotatebox{90}{Classe giallo}
+            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/yellow}
+        \end{columns}
+    \end{frame}
+
+    \subsection{Data set Iris}
+
+    \begin{frame}{Data set Iris}
+        \begin{columns}
+            \column{.4\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/iris4features}
+            \column{.6\textwidth}
+            Per avere un confronto con un insieme conosciuto si sono analizzate le tre classi del noto data set Iris. 
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Preparazione dei dati}
+        \begin{columns}
+            \column{.4\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/irisscaled}
+            \column{.6\textwidth}
+            Si è centrato nell'origine e scalato i dati in modo che avessero varianza unitaria. 
+
+            Successivamente il data set è stato normalizzato per ragioni di compatibilità con l'algoritmo. 
+        \end{columns}
+
+        \vspace{.5cm}
+
+        \begin{columns}
+            \column{.5\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/irisnormalized}
+            \column{.5\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/iris4normalized}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Classificazione binaria (setosa vs. versicolor)}
+        \begin{columns}
+            \column{.5\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{gfx/iris/iris2SetosaVersicolorResult.png}
+                \caption{Simulazione su setosa}
+                \label{fig:simulazione.setosa}
+            \end{figure}
+            \column{.5\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{gfx/misura_setosa_sperimentale.png}
+                \caption{Esecuzione reale su setosa}
+                \label{fig:esecuzione.setosa}
+            \end{figure}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Classificazione multiclasse (setosa vs. versicolor vs. virginica)}
+        % Classificazione setosa vs. versicolor vs. virginica dal data set Iris
+        \begin{columns}
+            \column{.5\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{gfx/setosa_simulato_multiclasse.png}
+                \caption{Simulazione su setosa}
+                \label{fig:simulazione.multi.setosa}
+            \end{figure}
+            \column{.5\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\textwidth]{gfx/setosa_reale_20190913:1716.png}
+                \caption{Esecuzione reale su setosa}
+                \label{fig:esecuzione.multi.setosa}
+            \end{figure}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Classificazione multiclasse}
+        \begin{columns}
+            \column{.5\linewidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\linewidth]{gfx/multiclass_versicolor}
+                \caption{Simulazione su versicolor}
+                \label{fig:multiclass.versicolor}
+            \end{figure}
+            \column{.5\linewidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\linewidth]{gfx/multiclass_virginica}
+                \caption{Simulazione su virginica}
+                \label{fig:multiclass.virginica}
+            \end{figure}
+        \end{columns}
+        Nota importante: gli elementi delle classi versicolor e virginica non sono linearmente separabili. 
+        Pertanto qualsiasi algoritmo basato sulla distanza non è efficace nel distinguere tra le due classi 
+        in maniera efficiente, sia esso classico o quantistico. 
+    \end{frame}
+
+    \begin{frame}{Efficienza di esecuzione}
+        \begin{columns}
+            \column{.5\textwidth}
+            \begin{table}[h!]
+                \centering
+                \begin{tabular}{c c}
+                    classe & esiti positivi\\
+                    \hline
+                    verde & 100\%\\
+                    blu & 88,9\%\\
+                    nero & 100\%\\
+                    giallo & 100\%
+                \end{tabular}
+                \caption{Risultati positivi per simulazione su cluster con otto vettori di training}
+            \end{table}    
+            \column{.5\textwidth}
+            \begin{table}[h!]
+                \centering
+                \begin{tabular}{c c c}
+                    classe & $m=5$ & $m=7$ \\ 
+                    \hline
+                    setosa & 100\% & 100\%\\ 
+                    versicolor & 50\% & 80\%\\ 
+                    virginica & 90\% & 90\%
+                \end{tabular}
+                \caption{Risultati positivi per simulazione su Iris con $2^m$ vettori di training}
+                \label{table:misure}
+            \end{table}
+        \end{columns}
+        Il tasso di errore stimato sul data set Iris per il classificatore KNN è 0,0467.\footnote{https://www.mathworks.com/help/bioinfo/ref/classperf.html}
+    \end{frame}
+
+    \section{Conclusione}
+
+    \begin{frame}{Riassunto}
+        \begin{itemize}
+            \item L'elaborazione quantistica è nella frontiera dei supercomputer e ha il potenziale di accelerare gli algoritmi di machine learning classico
+            \item È stata riprodotta un'implementazione di algoritmo KNN quantistico di classificazione binaria su hardware di piccola scala e 
+            se ne è esteso il funzionamento grazie alla procedura di costruzione di stati arbitrari FF-QRAM in modo da renderlo multiclasse. 
+            \item Si sono effettuati test di esecuzione su hardware quantistico di media scala
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Prospettive}
+        \begin{columns}
+            \column{.7\linewidth}
+            \begin{itemize}
+                \item Far girare gli algoritmi su computer con maggiori risorse, sia in termini di numero di qubit che di tempi di decoerenza
+                \item A tal proposito, sarebbe interessante l'esecuzione sul computer a 20 qubit annunciato quest'anno
+                \item Per mitigare gli errori di esecuzione reale, si potrebbe applicare un filtro sui risultati tramite la libreria qiskit-ignis
+                \item Si attende lo sviluppo di corrispettivi quantistici per algoritmi di IA più complessi
+            \end{itemize}
+            \column{.3\linewidth}
+            \includegraphics[width=\linewidth]{gfx/quantum_computer.png}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}[focus]
+        Domande?
+    \end{frame}
+
+    \appendix
+
+    \begin{frame}{Fonti}
+        \bibliography{bibliography.bib}
+        \bibliographystyle{plain}
+    \end{frame}
+
+    \begin{frame}{Immagini}
+        \begin{itemize}
+            \item Visage Technologies Face Tracking and Analysis, by Abyssus
+            \item Tesla Model 3 Headlights in Dever, Photo by Vlad Tchompalov on Unsplash
+            \item An example of a diseased cassava leaf. https://www.blog.google/technology/ai/ai-takes-root-helping-farmers-identity-diseased-plants/
+        \end{itemize}
     \end{frame}
 
     \section{Quantum computing}
@@ -183,7 +526,7 @@
         \end{equation*}
         dove $\alpha$ e $\beta$ sono chimate ampiezze di probabilità. 
         
-        L'ultima espressione è chiamata vettore di probabilità. 
+        L'ultimo termine è chiamato vettore di probabilità. 
     \end{frame}
 
     \begin{frame}{Sfera di Bloch}
@@ -239,7 +582,7 @@
 
     \begin{frame}{Porte logiche quantistiche}
         Per manipolare $n$ qubit esistono apposite porte logiche quantistiche, 
-        che sono operatori rappresentabili come matrici $2^n\times2^n$. 
+        che sono operatori unitari rappresentabili come matrici $2^n\times2^n$. 
         
         \begin{columns}
             \column{.3\textwidth}
@@ -322,253 +665,6 @@
 
             Possiamo inoltre creare e lavorare su più copie in parallelo degli stessi dati. 
         \end{columns}
-    \end{frame}
-
-    \begin{frame}{Stato dell'arte}
-        \begin{columns}
-            \column{.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/ibm_q_system_one.png}
-            \column{.7\textwidth}
-            L'IBM Q System One è il primo computer quantistico a circuiti commerciale al mondo, 
-            introdotto dall'IBM nel gennaio 2019. L'IBM Q System One possiede 20 qubit. 
-        \end{columns}
-    \end{frame}
-
-    \section{Metodi}
-
-    \begin{frame}{IBM Q Experience}
-        \begin{columns}
-            \column{.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/laptop_strumenti.png}
-            \column{.7\textwidth}
-            L'IBM Q Experience è un'interfaccia per interagire con le risorse di quantum computing dell'IBM
-            \begin{itemize}
-                \item accessibile al pubblico
-                \item permette simulazioni con e senza rumore
-                \item fino a 14 qubit superconduttivi
-                \item fino a 32 qubit simulati
-            \end{itemize}
-        \end{columns}
-    \end{frame}
-
-    \begin{frame}{Qiskit}
-        \begin{columns}
-            \column{.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/laptop_strumenti.png}
-            \column{.7\textwidth}
-            Struttura open source di sviluppo software per quantum computing \cite{Qiskit}, permette di 
-            \begin{itemize}
-                \item progettare circuiti quantistici
-                \item simularli sul proprio computer personale
-                \item inviare ordini di esecuzione su harware quantistico reale
-                \item visualizzare i risultati
-            \end{itemize}
-        \end{columns}
-    \end{frame}
-
-    \section{Quantum machine learning}
-
-    \begin{frame}{Codificare dati classici nelle ampiezze}
-        \includegraphics[width=\textwidth]{gfx/qram.png}
-        Per codificare dati classici nelle ampiezze di probabilità è stata usata la tecnica di costruzione 
-        di stati flip-flop QRAM. \cite{petruccione}
-    \end{frame}
-
-    \begin{frame}{FF-QRAM}
-        La FF-QRAM è usata per memorizzare un QDB inizializzato in maniera arbitraria. 
-
-        L'operazione QRAM sui qubit sovrappone un insieme di dati classici 
-        $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) \Big| 0 \leq l < M \right\}$ come
-        \begin{equation*} \label{eq:qram}
-            \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
-            \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
-        \end{equation*}
-        dove $\vec{d}^{(l)}$ rappresenta un indirizzo di memoria con 
-        $n$ bit di informazione 
-        e $b_l$ è l'attributo ad esso associato. 
-    \end{frame}
-
-    \begin{frame}{Algoritmo KNN quantistico}
-        Stato quantistico iniziale: $\ket{a} \otimes \ket{d} \otimes \ket{c} \otimes \ket{m}$
-
-		\begin{equation*}
-			\ket{\psi_0} = \frac{1}{\sqrt{2M}} \sum_{m=1}^M 
-			(\ket{0}\ket{\psi_x}+\ket{1}\ket{\psi_{t^m}})\ket{c^m}\ket{m}
-		\end{equation*}
-
-		Calcolo della distanza con interferenza quantistica: applico $H\ket{a}$
-
-		\begin{equation*}
-			\ket{\psi_1} = \frac{1}{2\sqrt{M}}\sum_{m=1}^M 
-			\Big( \ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}}) + \ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}) \Big) \ket{c^m}\ket{m}
-		\end{equation*}
-	
-		Misura condizionale: $\ket{a} = \ket{0}$
-
-		\begin{equation*}
-			\ket{\psi_2} = \frac{1}{2\sqrt{M}} \sum_{m=1}^M \sum_{i=1}^N
-			(x_i+t_i^m)\ket{0}\ket{i}\ket{c^m}\ket{m}
-		\end{equation*}
-    \end{frame}
-
-    \begin{frame}{Algoritmo KNN quantistico}
-        Probabilità di misurare una data classe
-
-		\begin{equation*}
-			\text{P}(\ket{c^m} = \ket{s}) = \sum_{m|c^m=s} 
-			1 - \frac{1}{4M} |x-t^m|^2
-		\end{equation*}
-
-		Classificazione
-
-		\begin{equation*}
-			c = \begin{cases}
-			0 \quad \text{se}\, \text{P}(\ket{c^0})\, \text{maggiore} \\
-			1 \quad \text{se}\, \text{P}(\ket{c^1})\, \text{maggiore} \\
-			\text{etc}\ldots
-		\end{cases}
-		\end{equation*}
-    \end{frame}
-
-    \section{Implementazione}
-
-    \begin{frame}{Preparazione dei dati}
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=.8\textwidth]{gfx/iris/iris4features}
-            \caption{Data set Iris}
-            \label{fig:iris.dataset}
-        \end{figure}
-    \end{frame}
-
-    \begin{frame}{Preparazione dei dati}
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=.8\textwidth]{gfx/iris/irisscaled}
-            \caption{Data set Iris standardizzato}
-            \label{fig:iris.standard}
-        \end{figure}
-    \end{frame}
-
-    \begin{frame}{Preparazione dei dati}
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=.8\textwidth]{gfx/iris/irisnormalized}
-            \caption{Data set Iris normalizzato (2 caratteristiche)}
-            \label{fig:iris2.normalizzato}
-        \end{figure}
-    \end{frame}
-
-    \begin{frame}{Preparazione dei dati}
-        \begin{figure}[h]
-            \centering
-            \includegraphics[width=.8\textwidth]{gfx/iris/iris4normalized}
-            \caption{Data set Iris normalizzato (4 caratteristiche)}
-            \label{fig:iris4.normalizzato}
-        \end{figure}
-    \end{frame}
-
-    \begin{frame}{Il circuito quantistico}
-        Il circuito quantistico per un classificatore binario è il seguente
-        \includegraphics[width=\textwidth]{gfx/base_circuit_crop}
-        Per il classificatore multiclasse il disegno è più complicato. 
-    \end{frame}
-
-    \section{Risultati}
-
-    \begin{frame}{Classificazione binaria}
-        Classificazione setosa vs. versicolor dal data set Iris
-        \begin{columns}
-            \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{gfx/iris/iris2SetosaVersicolorResult.png}
-                \caption{Simulazione su setosa}
-                \label{fig:simulazione.setosa}
-            \end{figure}
-            \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{gfx/misura_setosa_sperimentale.png}
-                \caption{Esecuzione reale su setosa}
-                \label{fig:esecuzione.setosa}
-            \end{figure}
-        \end{columns}
-    \end{frame}
-
-    \begin{frame}{Classificazione multiclasse}
-        Classificazione setosa vs. versicolor vs. virginica dal data set Iris
-        \begin{columns}
-            \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{gfx/setosa_simulato_multiclasse.png}
-                \caption{Simulazione su setosa}
-                \label{fig:simulazione.multi.setosa}
-            \end{figure}
-            \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\textwidth]{gfx/setosa_reale_20190913:1716.png}
-                \caption{Esecuzione reale su setosa}
-                \label{fig:esecuzione.multi.setosa}
-            \end{figure}
-        \end{columns}
-    \end{frame}
-
-    \begin{frame}{Classificazione multiclasse}
-        \begin{columns}
-            \column{.5\linewidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\linewidth]{gfx/multiclass_versicolor}
-                \caption{Simulazione su versicolor}
-                \label{fig:multiclass.versicolor}
-            \end{figure}
-            \column{.5\linewidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\linewidth]{gfx/multiclass_virginica}
-                \caption{Simulazione su virginica}
-                \label{fig:multiclass.virginica}
-            \end{figure}
-        \end{columns}
-        Nota: i risultati per la classe versicolor sono molto variabili. 
-    \end{frame}
-
-    \section{Conclusione}
-
-    \begin{frame}{Riassunto}
-        \begin{itemize}
-            \item L'elaborazione quantistica è nella frontiera dei supercomputer e ha il potenziale di accelerare gli algoritmi di machine learning classico
-            \item È stata riprodotta un'implementazione di algoritmo KNN quantistico di classificazione binaria su hardware di piccola scala
-            \item Se ne è esteso il funzionamento in modo da renderlo multiclasse
-            \item Si sono effettuati test su hardware quantistico di media scala
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}{Prospettive}
-        \begin{columns}
-            \column{.7\linewidth}
-            \begin{itemize}
-                \item Far girare gli algoritmi su computer con maggiori risorse, sia in termini di numero di qubit che di tempi di decoerenza
-                \item A tal proposito, sarebbe interessante l'esecuzione sul computer a 20 qubit annunciato quest'anno
-                \item Si attende lo sviluppo di corrispettivi quantistici per algoritmi di IA più complessi
-            \end{itemize}
-            \column{.3\linewidth}
-            \includegraphics[width=\linewidth]{gfx/quantum_computer.png}
-        \end{columns}
-    \end{frame}
-
-    \begin{frame}[focus]
-        Domande?
-    \end{frame}
-
-    \appendix
-
-    \begin{frame}{Fonti}
-        \bibliography{bibliography.bib}
-        \bibliographystyle{plain}
     \end{frame}
 
     \begin{frame}{Algoritmo per classificatore binario}
@@ -689,23 +785,40 @@
         \end{block}
     \end{frame}
 
-    \begin{frame}{Classificazione di cluster}
-        \includegraphics[width=\linewidth]{gfx/Clusters/cluster}
+    \begin{frame}{Routine FF-QRAM}
+        \begin{equation*}
+            \ket{\psi_0}_l = \psi_{\vec{d}^{(l)}} \ket{\vec{d}^{(l)}} \ket{0}_R + \sum_{j \neq \vec{d}^{(l)}} \psi_j \ket{j} \ket{0}_R
+        \end{equation*}
+
+        \begin{equation*}
+            \ket{\psi_1}_l = \psi_{\vec{d}^{(l)}} \ket{1}^{\otimes n} \ket{0}_R + \sum_{\ket{\overline{j \oplus \vec{d}^{(l)}}} \neq \ket{1}^{\otimes n}} \psi_j \overline{j \oplus \vec{d}^{(l)}} \ket{0}_R
+        \end{equation*}
+
+        \begin{equation*}
+            \ket{\psi_2}_l = \psi_{\vec{d}^{(l)}} \ket{1}^{\otimes n} \ket{\theta^{(l)}}_R + \sum_{\ket{\overline{j \oplus \vec{d}^{(l)}}} \neq \ket{1}^{\otimes n}} \psi_j \ket{\overline{j \oplus \vec{d}^{(l)}}} \ket{0}_R
+        \end{equation*}
+        
+        \begin{equation*}
+            \ket{\psi_3}_l = \psi_{\vec{d}^{(l)}} \ket{\vec{d}^{(l)}} \ket{\theta}_R + \sum_{j \neq \vec{d}^{(l)}} \psi_j \ket{j} \ket{0}_R
+        \end{equation*}
+
+        \begin{equation*}
+            \ket{\psi_4}_{l,l+1} = \psi_{\vec{d}^{(l)}} \ket{\vec{d}^{(l)}} \ket{\theta^{(l)}}_R + \psi_{\vec{d}^{(l+1)}} \ket{\vec{d}^{(l+1)}} \ket{\theta^{(l+1)}}_R + \sum_{j \neq \vec{d}^{(l)},\vec{d}^{(l+1)}} \psi_j \ket{j} \ket{0}_R
+        \end{equation*}
     \end{frame}
 
-    \begin{frame}{Classificazione di cluster}
-        \includegraphics[width=\linewidth]{gfx/Clusters/random}
+    \begin{frame}{Routine FF-QRAM}
+        \begin{equation*}
+            \sum_{l=0}^{M-1} \psi_{\vec{d}^{(l)}} \ket{\vec{d}^{(l)}} \left[ \cos\theta^{(l)} \ket{0}_R + \sin\theta^{(l)} \ket{1}_R \right] + \sum_{j \notin \{ \vec{d}^{(l)} \}} \psi_j \ket{j} \ket{0}_R
+        \end{equation*}
+
+        \begin{equation*}
+            \text{P}(1) = \sum_{l=0}^{M-1} | \psi_{\vec{d}^{(l)}} \sin\theta^{(l)} |^2
+        \end{equation*}
     \end{frame}
 
-    \begin{frame}{Classificazione di cluster}
-        \begin{columns}
-            \column{.5\linewidth}
-            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/green}
-            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/blue}
-            \column{.5\linewidth}
-            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/black}
-            \includegraphics[width=.9\linewidth]{gfx/Clusters/Simulated/yellow}
-        \end{columns}
+    \begin{frame}{QRAM per QSVM}
+        \includegraphics[width=\linewidth]{gfx/qram_qsvm.png}
     \end{frame}
 
 \end{document}

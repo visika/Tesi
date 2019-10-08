@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.30)  1 OCT 2019 16:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.8.30)  8 OCT 2019 21:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -959,37 +959,52 @@ Overfull \vbox (18.59999pt too high) detected at line 29
 <gfx/icons/icons8-machine-learning-480.png, id=30, 481.8pt x 481.8pt>
 File: gfx/icons/icons8-machine-learning-480.png Graphic file (type png)
 <use gfx/icons/icons8-machine-learning-480.png>
-Package pdftex.def Info: gfx/icons/icons8-machine-learning-480.png  used on input line 45.
-(pdftex.def)             Requested size: 96.45586pt x 96.45386pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 45.
+Package pdftex.def Info: gfx/icons/icons8-machine-learning-480.png  used on input line 63.
+(pdftex.def)             Requested size: 80.37906pt x 80.37576pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 63.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 45.
+LaTeX Font Info:    Try loading font information for U+msb on input line 63.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 45.
+(Font)              scaled to size 10.95pt on input line 63.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 45.
+(Font)              scaled to size 8.0pt on input line 63.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 6.0pt on input line 45.
+(Font)              scaled to size 6.0pt on input line 63.
+<gfx/Visage_Technologies_Face_Tracking_and_Analysis.png, id=31, 644.4075pt x 703.87968pt>
+File: gfx/Visage_Technologies_Face_Tracking_and_Analysis.png Graphic file (type png)
+<use gfx/Visage_Technologies_Face_Tracking_and_Analysis.png>
+Package pdftex.def Info: gfx/Visage_Technologies_Face_Tracking_and_Analysis.png  used on input line 63.
+(pdftex.def)             Requested size: 80.37906pt x 87.79141pt.
+<gfx/tesla.jpg, id=32, 6263.4pt x 4175.6pt>
+File: gfx/tesla.jpg Graphic file (type jpg)
+<use gfx/tesla.jpg>
+Package pdftex.def Info: gfx/tesla.jpg  used on input line 63.
+(pdftex.def)             Requested size: 80.37906pt x 53.58385pt.
+<gfx/pianta_malata.png, id=33, 2007.5pt x 1131.22626pt>
+File: gfx/pianta_malata.png Graphic file (type png)
+<use gfx/pianta_malata.png>
+Package pdftex.def Info: gfx/pianta_malata.png  used on input line 63.
+(pdftex.def)             Requested size: 80.37906pt x 45.29312pt.
  [3
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/icons/icons8-machine-learning-480.png>]
-<gfx/icons/icons8-physics-480.png, id=38, 481.8pt x 481.8pt>
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/icons/icons8-machine-learning-480.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Visage_Technologies_Face_Tracking_and_Analysis.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/tesla.jpg> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/pianta_malata.png>]
+<gfx/icons/icons8-physics-480.png, id=42, 481.8pt x 481.8pt>
 File: gfx/icons/icons8-physics-480.png Graphic file (type png)
 <use gfx/icons/icons8-physics-480.png>
-Package pdftex.def Info: gfx/icons/icons8-physics-480.png  used on input line 60.
-(pdftex.def)             Requested size: 96.45586pt x 96.45386pt.
+Package pdftex.def Info: gfx/icons/icons8-physics-480.png  used on input line 80.
+(pdftex.def)             Requested size: 80.37906pt x 80.37576pt.
  [4
 
  </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/icons/icons8-physics-480.png>]
-<gfx/quantum-computer.jpg, id=45, 1686.3pt x 1124.2pt>
+<gfx/quantum-computer.jpg, id=49, 1686.3pt x 1124.2pt>
 File: gfx/quantum-computer.jpg Graphic file (type jpg)
 <use gfx/quantum-computer.jpg>
-Package pdftex.def Info: gfx/quantum-computer.jpg  used on input line 70.
+Package pdftex.def Info: gfx/quantum-computer.jpg  used on input line 94.
 (pdftex.def)             Requested size: 96.45586pt x 64.29277pt.
  [5
 
@@ -997,298 +1012,335 @@ Package pdftex.def Info: gfx/quantum-computer.jpg  used on input line 70.
 
 ] [7
 
-]
-Overfull \vbox (18.59999pt too high) detected at line 87
- []
-
-[8
-
-] [9
-
-] [10
+] [8
 
 ]
-<gfx/KnnClassification.png, id=81, 224.037pt x 202.356pt>
+<gfx/KnnClassification.png, id=74, 224.037pt x 202.356pt>
 File: gfx/KnnClassification.png Graphic file (type png)
 <use gfx/KnnClassification.png>
-Package pdftex.def Info: gfx/KnnClassification.png  used on input line 144.
+Package pdftex.def Info: gfx/KnnClassification.png  used on input line 153.
 (pdftex.def)             Requested size: 96.45586pt x 87.12253pt.
- [11
+ [9
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/KnnClassification.png>]
-Overfull \vbox (18.59999pt too high) detected at line 146
- []
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/KnnClassification.png>] [10
 
-[12
+] [11
 
 ]
-<gfx/MOSFET_Structure.png, id=98, 461.47406pt x 307.1475pt>
-File: gfx/MOSFET_Structure.png Graphic file (type png)
-<use gfx/MOSFET_Structure.png>
-Package pdftex.def Info: gfx/MOSFET_Structure.png  used on input line 159.
-(pdftex.def)             Requested size: 96.45586pt x 64.19824pt.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 159.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
-(Font)              scaled to size 5.0pt on input line 159.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 159.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 5.0pt on input line 159.
+<gfx/qknn.pdf, id=97, 262.9825pt x 92.345pt>
+File: gfx/qknn.pdf Graphic file (type pdf)
+<use gfx/qknn.pdf>
+Package pdftex.def Info: gfx/qknn.pdf  used on input line 201.
+(pdftex.def)             Requested size: 321.51625pt x 112.90308pt.
+ [12
 
-Overfull \hbox (41.82877pt too wide) detected at line 159
-[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/qknn.pdf>]
+Overfull \vbox (18.59999pt too high) detected at line 203
  []
 
 [13
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/MOSFET_Structure.png>]
-<gfx/qubit.jpg, id=105, 1001.7425pt x 1027.84pt>
-File: gfx/qubit.jpg Graphic file (type jpg)
-<use gfx/qubit.jpg>
-Package pdftex.def Info: gfx/qubit.jpg  used on input line 172.
-(pdftex.def)             Requested size: 96.45586pt x 98.96323pt.
+]
+<gfx/laptop_strumenti.png, id=134, 2007.5pt x 1335.99126pt>
+File: gfx/laptop_strumenti.png Graphic file (type png)
+<use gfx/laptop_strumenti.png>
+Package pdftex.def Info: gfx/laptop_strumenti.png  used on input line 218.
+(pdftex.def)             Requested size: 96.45586pt x 64.17374pt.
  [14
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/qubit.jpg>] [15
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/laptop_strumenti.png>]
+File: gfx/laptop_strumenti.png Graphic file (type png)
+<use gfx/laptop_strumenti.png>
+Package pdftex.def Info: gfx/laptop_strumenti.png  used on input line 233.
+(pdftex.def)             Requested size: 96.45586pt x 64.17374pt.
+ [15
 
 ]
-<gfx/Bloch_sphere.png, id=118, 178.5069pt x 189.5883pt>
-File: gfx/Bloch_sphere.png Graphic file (type png)
-<use gfx/Bloch_sphere.png>
-Package pdftex.def Info: gfx/Bloch_sphere.png  used on input line 200.
-(pdftex.def)             Requested size: 96.45586pt x 102.44557pt.
+<gfx/ibm_16.jpg, id=148, 2055.68pt x 1370.11874pt>
+File: gfx/ibm_16.jpg Graphic file (type jpg)
+<use gfx/ibm_16.jpg>
+Package pdftex.def Info: gfx/ibm_16.jpg  used on input line 253.
+(pdftex.def)             Requested size: 96.45586pt x 64.28687pt.
+<gfx/ibm_q_system_one.png, id=149, 722.7pt x 566.115pt>
+File: gfx/ibm_q_system_one.png Graphic file (type png)
+<use gfx/ibm_q_system_one.png>
+Package pdftex.def Info: gfx/ibm_q_system_one.png  used on input line 253.
+(pdftex.def)             Requested size: 96.45586pt x 75.54976pt.
  [16
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Bloch_sphere.png>] [17
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/ibm_16.jpg> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/ibm_q_system_one.png (PNG copy)>] [17
 
 ]
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 238.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 238.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 14.4pt on input line 238.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 238.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
-(Font)              scaled to size 7.0pt on input line 238.
+<gfx/qram.png, id=162, 1644.1425pt x 768.8725pt>
+File: gfx/qram.png Graphic file (type png)
+<use gfx/qram.png>
+Package pdftex.def Info: gfx/qram.png  used on input line 284.
+(pdftex.def)             Requested size: 192.91171pt x 90.20761pt.
+<gfx/qram_qsvm.png, id=163, 1507.6325pt x 808.01875pt>
+File: gfx/qram_qsvm.png Graphic file (type png)
+<use gfx/qram_qsvm.png>
+Package pdftex.def Info: gfx/qram_qsvm.png  used on input line 284.
+(pdftex.def)             Requested size: 192.91171pt x 103.38165pt.
  [18
 
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/qram.png (PNG copy)> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/qram_qsvm.png (PNG copy)>]
+Overfull \vbox (18.59999pt too high) detected at line 286
+ []
+
+[19
+
 ]
-<gfx/Hadamard_gate.png, id=136, 39.45943pt x 16.54984pt>
-File: gfx/Hadamard_gate.png Graphic file (type png)
-<use gfx/Hadamard_gate.png>
-Package pdftex.def Info: gfx/Hadamard_gate.png  used on input line 308.
-(pdftex.def)             Requested size: 96.45586pt x 40.46106pt.
-<gfx/CNOT_gate.png, id=137, 32.01561pt x 19.65744pt>
-File: gfx/CNOT_gate.png Graphic file (type png)
-<use gfx/CNOT_gate.png>
-Package pdftex.def Info: gfx/CNOT_gate.png  used on input line 308.
-(pdftex.def)             Requested size: 96.45586pt x 59.23753pt.
-<gfx/Toffoli_gate.png, id=138, 32.01561pt x 27.60715pt>
-File: gfx/Toffoli_gate.png Graphic file (type png)
-<use gfx/Toffoli_gate.png>
-Package pdftex.def Info: gfx/Toffoli_gate.png  used on input line 308.
-(pdftex.def)             Requested size: 96.45586pt x 83.19402pt.
- [19
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Hadamard_gate.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/CNOT_gate.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Toffoli_gate.png>]
-Underfull \hbox (badness 1389) in paragraph at lines 325--325
-[]\T1/FiraSans-OsF/m/n/10.95 # di
- []
-
-
-Overfull \hbox (4.76479pt too wide) in paragraph at lines 325--325
-\T1/FiraSans-OsF/m/n/10.95 qubit| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--325
-[]\T1/FiraSans-OsF/m/n/10.95 numero di atomi
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--325
-\T1/FiraSans-OsF/m/n/10.95 nell'universo os-serv-
- []
-
-
-Overfull \hbox (16.76547pt too wide) in paragraph at lines 325--325
-[][]  
+Overfull \vbox (18.59999pt too high) detected at line 288
  []
 
 [20
 
 ]
-<gfx/ibm_q_system_one.png, id=156, 722.7pt x 566.115pt>
-File: gfx/ibm_q_system_one.png Graphic file (type png)
-<use gfx/ibm_q_system_one.png>
-Package pdftex.def Info: gfx/ibm_q_system_one.png  used on input line 335.
-(pdftex.def)             Requested size: 96.45586pt x 75.54976pt.
+<gfx/Clusters/cluster.png, id=185, 433.62pt x 289.08pt>
+File: gfx/Clusters/cluster.png Graphic file (type png)
+<use gfx/Clusters/cluster.png>
+Package pdftex.def Info: gfx/Clusters/cluster.png  used on input line 304.
+(pdftex.def)             Requested size: 160.75812pt x 107.17406pt.
+<gfx/Clusters/random.png, id=186, 433.62pt x 289.08pt>
+File: gfx/Clusters/random.png Graphic file (type png)
+<use gfx/Clusters/random.png>
+Package pdftex.def Info: gfx/Clusters/random.png  used on input line 304.
+(pdftex.def)             Requested size: 160.75812pt x 107.17406pt.
  [21
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/ibm_q_system_one.png (PNG copy)>]
-Overfull \vbox (18.59999pt too high) detected at line 337
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/cluster.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/random.png>]
+<gfx/Clusters/Simulated/green.png, id=194, 505.89pt x 361.35pt>
+File: gfx/Clusters/Simulated/green.png Graphic file (type png)
+<use gfx/Clusters/Simulated/green.png>
+Package pdftex.def Info: gfx/Clusters/Simulated/green.png  used on input line 319.
+(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
+<gfx/Clusters/Simulated/blue.png, id=195, 505.89pt x 361.35pt>
+File: gfx/Clusters/Simulated/blue.png Graphic file (type png)
+<use gfx/Clusters/Simulated/blue.png>
+Package pdftex.def Info: gfx/Clusters/Simulated/blue.png  used on input line 319.
+(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
+<gfx/Clusters/Simulated/black.png, id=196, 505.89pt x 361.35pt>
+File: gfx/Clusters/Simulated/black.png Graphic file (type png)
+<use gfx/Clusters/Simulated/black.png>
+Package pdftex.def Info: gfx/Clusters/Simulated/black.png  used on input line 319.
+(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
+<gfx/Clusters/Simulated/yellow.png, id=197, 505.89pt x 361.35pt>
+File: gfx/Clusters/Simulated/yellow.png Graphic file (type png)
+<use gfx/Clusters/Simulated/yellow.png>
+Package pdftex.def Info: gfx/Clusters/Simulated/yellow.png  used on input line 319.
+(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
+ [22
+
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/green.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/blue.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/black.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/yellow.png>]
+Overfull \vbox (18.59999pt too high) detected at line 321
  []
 
-[22
+[23
 
 ]
-<gfx/laptop_strumenti.png, id=168, 2007.5pt x 1335.99126pt>
-File: gfx/laptop_strumenti.png Graphic file (type png)
-<use gfx/laptop_strumenti.png>
-Package pdftex.def Info: gfx/laptop_strumenti.png  used on input line 352.
-(pdftex.def)             Requested size: 96.45586pt x 64.17374pt.
- [23
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/laptop_strumenti.png>]
-File: gfx/laptop_strumenti.png Graphic file (type png)
-<use gfx/laptop_strumenti.png>
-Package pdftex.def Info: gfx/laptop_strumenti.png  used on input line 367.
-(pdftex.def)             Requested size: 96.45586pt x 64.17374pt.
+<gfx/iris/iris4features.png, id=214, 433.62pt x 289.08pt>
+File: gfx/iris/iris4features.png Graphic file (type png)
+<use gfx/iris/iris4features.png>
+Package pdftex.def Info: gfx/iris/iris4features.png  used on input line 330.
+(pdftex.def)             Requested size: 128.60452pt x 85.7366pt.
  [24
 
-]
-Overfull \vbox (18.59999pt too high) detected at line 369
- []
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris4features.png>]
+<gfx/iris/irisscaled.png, id=221, 433.62pt x 289.08pt>
+File: gfx/iris/irisscaled.png Graphic file (type png)
+<use gfx/iris/irisscaled.png>
+Package pdftex.def Info: gfx/iris/irisscaled.png  used on input line 350.
+(pdftex.def)             Requested size: 128.60452pt x 85.7366pt.
+<gfx/iris/irisnormalized.png, id=222, 433.62pt x 289.08pt>
+File: gfx/iris/irisnormalized.png Graphic file (type png)
+<use gfx/iris/irisnormalized.png>
+Package pdftex.def Info: gfx/iris/irisnormalized.png  used on input line 350.
+(pdftex.def)             Requested size: 160.75812pt x 107.17406pt.
+<gfx/iris/iris4normalized.png, id=223, 433.62pt x 289.08pt>
+File: gfx/iris/iris4normalized.png Graphic file (type png)
+<use gfx/iris/iris4normalized.png>
+Package pdftex.def Info: gfx/iris/iris4normalized.png  used on input line 350.
+(pdftex.def)             Requested size: 160.75812pt x 107.17406pt.
+ [25
 
-[25
-
-]
-<gfx/qram.png, id=190, 1644.1425pt x 768.8725pt>
-File: gfx/qram.png Graphic file (type png)
-<use gfx/qram.png>
-Package pdftex.def Info: gfx/qram.png  used on input line 375.
-(pdftex.def)             Requested size: 321.51625pt x 150.34602pt.
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/irisscaled.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/irisnormalized.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris4normalized.png>]
+<gfx/iris/iris2SetosaVersicolorResult.png, id=233, 465.74pt x 319.1925pt>
+File: gfx/iris/iris2SetosaVersicolorResult.png Graphic file (type png)
+<use gfx/iris/iris2SetosaVersicolorResult.png>
+Package pdftex.def Info: gfx/iris/iris2SetosaVersicolorResult.png  used on input line 369.
+(pdftex.def)             Requested size: 160.75812pt x 110.1751pt.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 369.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 369.
+<gfx/misura_setosa_sperimentale.png, id=234, 505.89pt x 361.35pt>
+File: gfx/misura_setosa_sperimentale.png Graphic file (type png)
+<use gfx/misura_setosa_sperimentale.png>
+Package pdftex.def Info: gfx/misura_setosa_sperimentale.png  used on input line 369.
+(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
  [26
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/qram.png (PNG copy)>] [27
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris2SetosaVersicolorResult.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/misura_setosa_sperimentale.png>]
+<gfx/setosa_simulato_multiclasse.png, id=245, 505.89pt x 361.35pt>
+File: gfx/setosa_simulato_multiclasse.png Graphic file (type png)
+<use gfx/setosa_simulato_multiclasse.png>
+Package pdftex.def Info: gfx/setosa_simulato_multiclasse.png  used on input line 389.
+(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
+<gfx/setosa_reale_20190913:1716.png, id=246, 505.89pt x 361.35pt>
+File: gfx/setosa_reale_20190913:1716.png Graphic file (type png)
+<use gfx/setosa_reale_20190913:1716.png>
+Package pdftex.def Info: gfx/setosa_reale_20190913:1716.png  used on input line 389.
+(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
+ [27
 
-] [28
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/setosa_simulato_multiclasse.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/setosa_reale_20190913:1716.png>]
+<gfx/multiclass_versicolor.png, id=256, 505.89pt x 361.35pt>
+File: gfx/multiclass_versicolor.png Graphic file (type png)
+<use gfx/multiclass_versicolor.png>
+Package pdftex.def Info: gfx/multiclass_versicolor.png  used on input line 411.
+(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
+<gfx/multiclass_virginica.png, id=257, 505.89pt x 361.35pt>
+File: gfx/multiclass_virginica.png Graphic file (type png)
+<use gfx/multiclass_virginica.png>
+Package pdftex.def Info: gfx/multiclass_virginica.png  used on input line 411.
+(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
+ [28
 
-] [29
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_versicolor.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_virginica.png>]
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 443.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
+(Font)              scaled to size 5.0pt on input line 443.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 443.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
+(Font)              scaled to size 7.0pt on input line 443.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
+(Font)              scaled to size 5.0pt on input line 443.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 443.
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 443.
+ [29
 
 ]
-Overfull \vbox (18.59999pt too high) detected at line 433
+Overfull \vbox (18.59999pt too high) detected at line 445
  []
 
 [30
 
-]
-<gfx/iris/iris4features.png, id=221, 433.62pt x 289.08pt>
-File: gfx/iris/iris4features.png Graphic file (type png)
-<use gfx/iris/iris4features.png>
-Package pdftex.def Info: gfx/iris/iris4features.png  used on input line 442.
-(pdftex.def)             Requested size: 257.21397pt x 171.48203pt.
-LaTeX Font Info:    Font shape `T1/FiraSans-OsF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 442.
- [31
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris4features.png>]
-<gfx/iris/irisscaled.png, id=231, 433.62pt x 289.08pt>
-File: gfx/iris/irisscaled.png Graphic file (type png)
-<use gfx/iris/irisscaled.png>
-Package pdftex.def Info: gfx/iris/irisscaled.png  used on input line 451.
-(pdftex.def)             Requested size: 257.21397pt x 171.48203pt.
- [32
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/irisscaled.png>]
-<gfx/iris/irisnormalized.png, id=239, 433.62pt x 289.08pt>
-File: gfx/iris/irisnormalized.png Graphic file (type png)
-<use gfx/iris/irisnormalized.png>
-Package pdftex.def Info: gfx/iris/irisnormalized.png  used on input line 460.
-(pdftex.def)             Requested size: 257.21397pt x 171.48203pt.
- [33
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/irisnormalized.png>]
-<gfx/iris/iris4normalized.png, id=247, 433.62pt x 289.08pt>
-File: gfx/iris/iris4normalized.png Graphic file (type png)
-<use gfx/iris/iris4normalized.png>
-Package pdftex.def Info: gfx/iris/iris4normalized.png  used on input line 469.
-(pdftex.def)             Requested size: 257.21397pt x 171.48203pt.
- [34
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris4normalized.png>]
-<gfx/base_circuit_crop.png, id=255, 1059.2373pt x 594.7821pt>
-File: gfx/base_circuit_crop.png Graphic file (type png)
-<use gfx/base_circuit_crop.png>
-Package pdftex.def Info: gfx/base_circuit_crop.png  used on input line 475.
-(pdftex.def)             Requested size: 321.51625pt x 180.53247pt.
- [35
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/base_circuit_crop.png>]
-Overfull \vbox (18.59999pt too high) detected at line 477
- []
-
-[36
+] [31
 
 ]
-<gfx/iris/iris2SetosaVersicolorResult.png, id=268, 465.74pt x 319.1925pt>
-File: gfx/iris/iris2SetosaVersicolorResult.png Graphic file (type png)
-<use gfx/iris/iris2SetosaVersicolorResult.png>
-Package pdftex.def Info: gfx/iris/iris2SetosaVersicolorResult.png  used on input line 497.
-(pdftex.def)             Requested size: 160.75812pt x 110.1751pt.
-<gfx/misura_setosa_sperimentale.png, id=269, 505.89pt x 361.35pt>
-File: gfx/misura_setosa_sperimentale.png Graphic file (type png)
-<use gfx/misura_setosa_sperimentale.png>
-Package pdftex.def Info: gfx/misura_setosa_sperimentale.png  used on input line 497.
-(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
- [37
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris2SetosaVersicolorResult.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/misura_setosa_sperimentale.png>]
-<gfx/setosa_simulato_multiclasse.png, id=280, 505.89pt x 361.35pt>
-File: gfx/setosa_simulato_multiclasse.png Graphic file (type png)
-<use gfx/setosa_simulato_multiclasse.png>
-Package pdftex.def Info: gfx/setosa_simulato_multiclasse.png  used on input line 517.
-(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
-<gfx/setosa_reale_20190913:1716.png, id=281, 505.89pt x 361.35pt>
-File: gfx/setosa_reale_20190913:1716.png Graphic file (type png)
-<use gfx/setosa_reale_20190913:1716.png>
-Package pdftex.def Info: gfx/setosa_reale_20190913:1716.png  used on input line 517.
-(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
- [38
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/setosa_simulato_multiclasse.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/setosa_reale_20190913:1716.png>]
-<gfx/multiclass_versicolor.png, id=291, 505.89pt x 361.35pt>
-File: gfx/multiclass_versicolor.png Graphic file (type png)
-<use gfx/multiclass_versicolor.png>
-Package pdftex.def Info: gfx/multiclass_versicolor.png  used on input line 537.
-(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
-<gfx/multiclass_virginica.png, id=292, 505.89pt x 361.35pt>
-File: gfx/multiclass_virginica.png Graphic file (type png)
-<use gfx/multiclass_virginica.png>
-Package pdftex.def Info: gfx/multiclass_virginica.png  used on input line 537.
-(pdftex.def)             Requested size: 160.75812pt x 114.82935pt.
- [39
-
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_versicolor.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_virginica.png>]
-Overfull \vbox (18.59999pt too high) detected at line 539
- []
-
-[40
-
-] [41
-
-]
-<gfx/quantum_computer.png, id=313, 476.78125pt x 642.4pt>
+<gfx/quantum_computer.png, id=285, 476.78125pt x 642.4pt>
 File: gfx/quantum_computer.png Graphic file (type png)
 <use gfx/quantum_computer.png>
-Package pdftex.def Info: gfx/quantum_computer.png  used on input line 561.
+Package pdftex.def Info: gfx/quantum_computer.png  used on input line 468.
 (pdftex.def)             Requested size: 96.45586pt x 129.95786pt.
- [42
+ [32
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/quantum_computer.png>] [43
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/quantum_computer.png>] [33
 
 ] (/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.bbl
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/sc' will be
 (Font)              scaled to size 10.0pt on input line 1.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/b/sc' will be
 (Font)              scaled to size 10.0pt on input line 5.
-) [44
+) [34
 
- </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
-Overfull \vbox (0.47523pt too high) detected at line 593
+ </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>] [35
+
+]
+Overfull \vbox (18.59999pt too high) detected at line 489
+ []
+
+[36
+
+]
+<gfx/MOSFET_Structure.png, id=321, 461.47406pt x 307.1475pt>
+File: gfx/MOSFET_Structure.png Graphic file (type png)
+<use gfx/MOSFET_Structure.png>
+Package pdftex.def Info: gfx/MOSFET_Structure.png  used on input line 502.
+(pdftex.def)             Requested size: 96.45586pt x 64.19824pt.
+
+Overfull \hbox (41.82877pt too wide) detected at line 502
+[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
+ []
+
+[37
+
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/MOSFET_Structure.png>]
+<gfx/qubit.jpg, id=328, 1001.7425pt x 1027.84pt>
+File: gfx/qubit.jpg Graphic file (type jpg)
+<use gfx/qubit.jpg>
+Package pdftex.def Info: gfx/qubit.jpg  used on input line 515.
+(pdftex.def)             Requested size: 96.45586pt x 98.96323pt.
+ [38
+
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/qubit.jpg>] [39
+
+]
+<gfx/Bloch_sphere.png, id=341, 178.5069pt x 189.5883pt>
+File: gfx/Bloch_sphere.png Graphic file (type png)
+<use gfx/Bloch_sphere.png>
+Package pdftex.def Info: gfx/Bloch_sphere.png  used on input line 543.
+(pdftex.def)             Requested size: 96.45586pt x 102.44557pt.
+ [40
+
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Bloch_sphere.png>] [41
+
+]
+LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' will be
+(Font)              scaled to size 14.4pt on input line 581.
+ [42
+
+]
+<gfx/Hadamard_gate.png, id=359, 39.45943pt x 16.54984pt>
+File: gfx/Hadamard_gate.png Graphic file (type png)
+<use gfx/Hadamard_gate.png>
+Package pdftex.def Info: gfx/Hadamard_gate.png  used on input line 651.
+(pdftex.def)             Requested size: 96.45586pt x 40.46106pt.
+<gfx/CNOT_gate.png, id=360, 32.01561pt x 19.65744pt>
+File: gfx/CNOT_gate.png Graphic file (type png)
+<use gfx/CNOT_gate.png>
+Package pdftex.def Info: gfx/CNOT_gate.png  used on input line 651.
+(pdftex.def)             Requested size: 96.45586pt x 59.23753pt.
+<gfx/Toffoli_gate.png, id=361, 32.01561pt x 27.60715pt>
+File: gfx/Toffoli_gate.png Graphic file (type png)
+<use gfx/Toffoli_gate.png>
+Package pdftex.def Info: gfx/Toffoli_gate.png  used on input line 651.
+(pdftex.def)             Requested size: 96.45586pt x 83.19402pt.
+ [43
+
+ </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Hadamard_gate.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/CNOT_gate.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Toffoli_gate.png>]
+Underfull \hbox (badness 1389) in paragraph at lines 668--668
+[]\T1/FiraSans-OsF/m/n/10.95 # di
+ []
+
+
+Overfull \hbox (4.76479pt too wide) in paragraph at lines 668--668
+\T1/FiraSans-OsF/m/n/10.95 qubit| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 668--668
+[]\T1/FiraSans-OsF/m/n/10.95 numero di atomi
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 668--668
+\T1/FiraSans-OsF/m/n/10.95 nell'universo os-serv-
+ []
+
+
+Overfull \hbox (16.76547pt too wide) in paragraph at lines 668--668
+[][]  
+ []
+
+[44
+
+]
+Overfull \vbox (0.47523pt too high) detected at line 689
  []
 
 [45
@@ -1304,45 +1356,22 @@ Overfull \vbox (0.47523pt too high) detected at line 593
 ] [50
 
 ]
-<gfx/Clusters/cluster.png, id=371, 433.62pt x 289.08pt>
-File: gfx/Clusters/cluster.png Graphic file (type png)
-<use gfx/Clusters/cluster.png>
-Package pdftex.def Info: gfx/Clusters/cluster.png  used on input line 694.
-(pdftex.def)             Requested size: 321.51625pt x 214.35252pt.
- [51
+Overfull \hbox (8.87637pt too wide) detected at line 808
+[][] \OT1/cmss/m/n/10.95 = \OML/cmm/m/it/10.95  [] [] [][] \OT1/cmss/m/n/10.95 + \OML/cmm/m/it/10.95  [] [] [][] \OT1/cmss/m/n/10.95 + [] \OML/cmm/m/it/10.95  [] [] [][]
+ []
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/cluster.png>]
-<gfx/Clusters/random.png, id=378, 433.62pt x 289.08pt>
-File: gfx/Clusters/random.png Graphic file (type png)
-<use gfx/Clusters/random.png>
-Package pdftex.def Info: gfx/Clusters/random.png  used on input line 698.
-(pdftex.def)             Requested size: 321.51625pt x 214.35252pt.
- [52
+[51
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/random.png>]
-<gfx/Clusters/Simulated/green.png, id=385, 505.89pt x 361.35pt>
-File: gfx/Clusters/Simulated/green.png Graphic file (type png)
-<use gfx/Clusters/Simulated/green.png>
-Package pdftex.def Info: gfx/Clusters/Simulated/green.png  used on input line 709.
-(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
-<gfx/Clusters/Simulated/blue.png, id=386, 505.89pt x 361.35pt>
-File: gfx/Clusters/Simulated/blue.png Graphic file (type png)
-<use gfx/Clusters/Simulated/blue.png>
-Package pdftex.def Info: gfx/Clusters/Simulated/blue.png  used on input line 709.
-(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
-<gfx/Clusters/Simulated/black.png, id=387, 505.89pt x 361.35pt>
-File: gfx/Clusters/Simulated/black.png Graphic file (type png)
-<use gfx/Clusters/Simulated/black.png>
-Package pdftex.def Info: gfx/Clusters/Simulated/black.png  used on input line 709.
-(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
-<gfx/Clusters/Simulated/yellow.png, id=388, 505.89pt x 361.35pt>
-File: gfx/Clusters/Simulated/yellow.png Graphic file (type png)
-<use gfx/Clusters/Simulated/yellow.png>
-Package pdftex.def Info: gfx/Clusters/Simulated/yellow.png  used on input line 709.
-(pdftex.def)             Requested size: 144.68132pt x 103.34421pt.
+] [52
+
+]
+File: gfx/qram_qsvm.png Graphic file (type png)
+<use gfx/qram_qsvm.png>
+Package pdftex.def Info: gfx/qram_qsvm.png  used on input line 822.
+(pdftex.def)             Requested size: 321.51625pt x 172.3151pt.
  [53
 
- </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/green.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/blue.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/black.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Clusters/Simulated/yellow.png>]
+]
 \tf@nav=\write5
 \openout5 = `presentazione_completa.nav'.
 
@@ -1352,25 +1381,25 @@ Package pdftex.def Info: gfx/Clusters/Simulated/yellow.png  used on input line 7
 \tf@snm=\write7
 \openout7 = `presentazione_completa.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 711.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 711.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 824.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 824.
  (/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 711.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 711.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 824.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 824.
  ) 
 Here is how much of TeX's memory you used:
- 22433 strings out of 494509
- 438142 string characters out of 6175963
- 493702 words of memory out of 5000000
- 25401 multiletter control sequences out of 15000+600000
- 404140 words of font info for 101 fonts, out of 8000000 for 9000
+ 22451 strings out of 494509
+ 438862 string characters out of 6175963
+ 494559 words of memory out of 5000000
+ 25415 multiletter control sequences out of 15000+600000
+ 405409 words of font info for 104 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 71i,23n,77p,856b,893s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_7gpamp.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_765q6w.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf (53 pages, 4260876 bytes).
+ 71i,23n,77p,856b,900s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_7gpamp.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_765q6w.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf (53 pages, 16206755 bytes).
 PDF statistics:
- 498 PDF objects out of 1000 (max. 8388607)
- 360 compressed objects within 4 object streams
- 133 named destinations out of 1000 (max. 500000)
- 275 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 523 PDF objects out of 1000 (max. 8388607)
+ 374 compressed objects within 4 object streams
+ 129 named destinations out of 1000 (max. 500000)
+ 292 words of extra memory for PDF output out of 10000 (max. 10000000)
 
