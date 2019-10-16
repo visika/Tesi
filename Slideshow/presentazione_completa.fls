@@ -86,6 +86,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
@@ -467,9 +468,9 @@ INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/irisnormalized
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris4normalized.png
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris4normalized.png
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris4normalized.png
-INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris2SetosaVersicolorResult.png
-INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris2SetosaVersicolorResult.png
-INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/iris2SetosaVersicolorResult.png
+INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/misura_setosa_filtrata_20191015_1145.png
+INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/misura_setosa_filtrata_20191015_1145.png
+INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/misura_setosa_filtrata_20191015_1145.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/fira/FiraSans-Regular-osf-t1.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/fira/FiraSans-Bold-osf-t1.tfm
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/misura_setosa_sperimentale.png
@@ -488,6 +489,9 @@ INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/setosa_reale_201909
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_versicolor.png
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_versicolor.png
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_versicolor.png
+INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/versicolor_reale_20191015_1506.png
+INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/versicolor_reale_20191015_1506.png
+INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/versicolor_reale_20191015_1506.png
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_virginica.png
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_virginica.png
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_virginica.png
@@ -569,8 +573,8 @@ OUTPUT /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa
 OUTPUT /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.toc
 OUTPUT /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.snm
 INPUT /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.aux
-INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_7gpamp.enc
-INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_765q6w.enc
+INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_iln36p.enc
+INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_2mfh3o.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Bold.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Italic.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Regular.pfb
@@ -582,4 +586,5 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb

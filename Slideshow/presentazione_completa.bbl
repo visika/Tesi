@@ -4,6 +4,12 @@
 H{\'e}ctor Abraham et~al.
 \newblock Qiskit: An open-source framework for quantum computing, 2019.
 
+\bibitem{fingerhuth}
+Mark Fingerhuth.
+\newblock Quantum-enhanced machine learning: Implementing a quantum k-nearest
+  neighbour algorithm.
+\newblock {\em Bachelor Thesis, Maastricht University}, 2017.
+
 \bibitem{petruccione}
 Daniel~K. Park, Francesco Petruccione, and June-Koo~Kevin Rhee.
 \newblock Circuit-based quantum random access memory for classical data.

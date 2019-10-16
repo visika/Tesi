@@ -402,14 +402,21 @@
 
     \begin{frame}{Classificazione multiclasse}
         \begin{columns}
-            \column{.5\linewidth}
+            \column{.33\textwidth}
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=\linewidth]{gfx/multiclass_versicolor}
                 \caption{Simulazione su versicolor}
                 \label{fig:multiclass.versicolor}
             \end{figure}
-            \column{.5\linewidth}
+            \column{.33\textwidth}
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=\linewidth]{gfx/versicolor_reale_20191015_1506.png}
+                \caption{Esecuzione reale su versicolor}
+                \label{fig:multiclass.virginica}
+            \end{figure}
+            \column{.33\textwidth}
             \begin{figure}[h]
                 \centering
                 \includegraphics[width=\linewidth]{gfx/multiclass_virginica}
@@ -424,7 +431,7 @@
 
     \begin{frame}{Efficienza di esecuzione}
         \begin{columns}
-            \column{.5\textwidth}
+            \column{.4\textwidth}
             \begin{table}[h!]
                 \centering
                 \begin{tabular}{c c}
@@ -437,15 +444,15 @@
                 \end{tabular}
                 \caption{Risultati positivi per simulazione su cluster con otto vettori di training}
             \end{table}    
-            \column{.5\textwidth}
+            \column{.6\textwidth}
             \begin{table}[h!]
                 \centering
-                \begin{tabular}{c c c}
-                    classe & $m=5$ & $m=7$ \\ 
+                \begin{tabular}{c c c c}
+                    classe & m=3 & $m=5$ & $m=7$ \\ 
                     \hline
-                    setosa & 100\% & 100\%\\ 
-                    versicolor & 50\% & 80\%\\ 
-                    virginica & 90\% & 90\%
+                    setosa & 100\% & 100\% & 100\%\\ 
+                    versicolor & 30\% & 50\% & 80\%\\ 
+                    virginica & 60\% & 90\% & 90\%
                 \end{tabular}
                 \caption{Risultati positivi per simulazione su Iris con $2^m$ vettori di training}
                 \label{table:misure}
