@@ -20,6 +20,8 @@
 % [x] Si può inserire un'altra slide in cui si scrive l'equazione del QDB. 
 % [x] Quando si introducono i qubit, mettere una slide sui registri a qubit multipli. 
 % [x] Mettere gli obiettivi appena dopo l'introduzione. 
+% [x] Metti numeretti di classe nel grafico dei cluster
+% [x] Suddividi graficamente le varie parti del circuito semplice
 
 \begin{document}
     \begin{frame}
@@ -160,7 +162,7 @@
 			(\ket{0}\ket{\psi_x}+\ket{1}\ket{\psi_{t^m}})\ket{c^m}\ket{m}
 		\end{equation*}
 
-		Calcolo della distanza con interferenza quantistica: applico $H\ket{a}$
+		Calcolo della distanza: si fanno interferire gli stati applicando $H\ket{a}$
 		\begin{equation*}
 			\ket{\psi_1} = \frac{1}{2\sqrt{M}}\sum_{m=1}^M 
 			\Big( \ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}}) + \ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}) \Big) \ket{c^m}\ket{m}
@@ -196,10 +198,9 @@
 
     \begin{frame}{Algoritmo KNN quantistico}
         \begin{center}
-            \includegraphics[width=.8\textwidth]{gfx/qknn.pdf}            
+            \includegraphics[width=.8\textwidth]{gfx/qknn_boxes.png}            
         \end{center}
 
-        In fin dei conti il classificatore è realizzato applicando la porta H sullo stato iniziale. 
         La complessità algoritmica del procedimento, ignorando la preparazione dello 
         stato, è $\mathcal{O}\left(\frac{1}{\text{P(MC)}}\right)$, 
         dove $\text{P(MC)}$ è la probabilità di successo della misura condizionale 
@@ -303,7 +304,7 @@
             \column{.5\textwidth}
             Per verificare il funzionamento base dell'algoritmo, è stato creato un insieme dati ad hoc formato da quattro raggruppamenti ben separati tra loro. 
             \column{.5\textwidth}
-            \includegraphics[width=\columnwidth]{gfx/Clusters/cluster}
+            \includegraphics[width=\columnwidth]{gfx/Clusters/cluster_numbered.png}
     \end{columns}
 
     \begin{columns}
@@ -311,7 +312,7 @@
         Sono stati selezionati otto elementi (due da ogni cluster) come vettori di training 
         e si sono sottoposti a classificazione un vettore d'input per ciascuna classe in quattro esperimenti. 
         \column{.5\textwidth}
-        \includegraphics[width=\columnwidth]{gfx/Clusters/random}            
+        \includegraphics[width=\columnwidth]{gfx/Clusters/random_numbered.png}            
     \end{columns}
     \end{frame}
 
@@ -468,8 +469,8 @@
             \item L'elaborazione quantistica è nella frontiera dei supercomputer e ha il potenziale di accelerare gli algoritmi di machine learning classico
             \item È stata riprodotta un'implementazione di algoritmo KNN quantistico di classificazione binaria su hardware di piccola e media scala e 
             se ne è esteso il funzionamento grazie alla procedura di costruzione di stati arbitrari FF-QRAM in modo da renderlo multiclasse. 
-            \item La complessità algoritmica è stimata come $\mathcal{O}(MN)$, usando $\mathcal{O}(\log_2(MN))$ risorse hardware. 
-            A confronto, l'algoritmo kNN classico non ottimizzato impiega $\mathcal{O}(MNk)$ operazioni\footnote{http://www.cs.haifa.ac.il/$\sim$rita/ml\_course/lectures/KNN.pdf}, impiegando $\mathcal{O}(MN)$ risorse di memoria. 
+            \item La complessità algoritmica è stimata come $\mathcal{O}(MNr)$, usando $\mathcal{O}(\log_2(MN))$ risorse hardware ($r$ è il numero di run). 
+            L'algoritmo kNN classico non ottimizzato impiega $\mathcal{O}(MNk)$ operazioni\footnote{http://www.cs.haifa.ac.il/$\sim$rita/ml\_course/lectures/KNN.pdf}, impiegando $\mathcal{O}(MN)$ risorse di memoria. 
         \end{itemize}
     \end{frame}
 
