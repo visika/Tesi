@@ -23,11 +23,9 @@ Chiunque abbia un cellulare di nuova generazione è venuto in contatto con il
 campo del machine learning, la disciplina che si pone l'obiettivo di rendere 
 i computer capaci di apprendere dall'esperienza. 
 Gli esseri umani sono strettamente legati al processo di apprendimento, a 
-partire dalla prima infanzia ed in maniera più o meno evidente durante 
-tutto il corso vitale. 
+partire dalla prima infanzia ed in maniera continua durante tutta la loro vita. 
 Sebbene tale processo sembri automatico, in realtà è espressione di un 
-complesso sistema di feedback, che in fin dei conti è codificato dal 
-nostro codice genetico. 
+complesso sistema di feedback, che è codificato dal nostro codice genetico. 
 Il \ac{ML} (tradotto \emph{apprendimento automatico}) prevede la scrittura 
 del codice di programmazione che permetta 
 ai computer di effettuare qualcosa di analogo all'apprendimento. 
@@ -36,7 +34,8 @@ lanciata in Android 9, che usa il machine learning per predire quali applicazion
 l'utente userà nelle prossime ore e quali no, in modo da dedicare la carica solo per le 
 applicazioni più usate dal proprietario. \cite{android10}}
 Tali algoritmi sono il motore dei moderni assistenti vocali e dei sistemi 
-che ci suggeriscono nuovi prodotti da acquistare o video da guardare, ma anche 
+che ci suggeriscono il prodotto da acquistare o il video da guardare più affine ai nostri gusti, 
+imparando dall'esperienza; ma sono impiegati anche 
 nel prevenire le frodi su carta di credito, per filtrare lo spam dalle nostre caselle 
 email, nell'individuare e diagnosticare malattie, e tanto ancora \cite{pml}. 
 
@@ -55,25 +54,25 @@ email, nell'individuare e diagnosticare malattie, e tanto ancora \cite{pml}.
 % Tali algoritmi formano il nucleo di p.e. motori di riconoscimento del linguaggio % parola
 % umano e di raccomandazione come quelli usati da Amazon. % Fonti
 
-Stando all'IBM \cite{ibm-big-data}, ogni giorno vengono creati circa $2,5\times10^{18}$ byte di dati: 
+Secondo l'IBM \cite{ibm-big-data}, ogni giorno vengono creati circa $2,5\times10^{18}$ byte di dati: 
 questo numero in costante crescita mette chi ha a che fare con i dati di fronte 
-alla necessità di dotarsi di algoritmi avanzati che possando fare ordine in questo 
+alla necessità di dotarsi di algoritmi avanzati che possano fare ordine in questo 
 oceano di informazioni. Per trovare modelli e correlazioni su insiemi molto grandi
 è necessario un numero di operazioni che richiede molto tempo ed 
 energia per essere portate a termine; trovare metodi efficienti per completare 
 questi compiti diventa necessario sotto molti punti di vista. 
 
-Diversi lavori hanno evidenziato il ruolo nodale rispetto a questo problema 
+Diversi lavori hanno evidenziato il ruolo fondamentale rispetto a questo problema 
 che può avere l'uso della computazione quantistica, 
-oggetto di intensa ricerca teorica da vari decenni 
-e recentemente di sperimentazione da parte di studenti \cite{fingerhuth} e ricercatori \cite{schuld}. 
+oggetto da vari decenni di intensa ricerca teorica, 
+e più recentemente anche di ricerca sperimentale \cite{schuld} e tesi di laurea \cite{fingerhuth}. 
 
 Un \ac{CQ} (o \ac{QC}) usa le proprietà peculiari dei sistemi quantomeccanici per manipolare 
 ed elaborare l'informazione in modi inaccessibili ai normali computer classici. 
 Così come un computer classico manipola bit, un computer quantistico fa uso dei 
 cosiddetti bit quantistici (qubit). I bit e i qubit sono entrambi entità binarie, 
-il che significa che possono assumere solo i valori 0 o 1. Ad ogni modo, un bit 
-classico non probabilistico\footnote{Per informazioni sui bit classici 
+il che significa che possono assumere solo i valori 0 o 1. 
+Un bit classico non probabilistico\footnote{Per informazioni sui bit classici 
 probabilitici si faccia riferimento alla sezione 3.2 di \cite{mannucci}.} 
 può assumere solo uno di questi valori alla volta, 
 laddove un qubit può trovarsi in una sovrapposizione lineare dei due stati. 
@@ -104,7 +103,7 @@ contenute nel qubit.
 
 Per avere un'idea di come un \ac{CQ} si rapporti con un computer ordinario, 
 si possono considerare diversi algoritmi quantistici, che forniscono 
-accelerazioni esponenziali se confrontati con le loro controparti classiche; 
+miglioramenti esponenziali nel numero di operazioni se confrontati con le loro controparti classiche; 
 l'algoritmo di fattorizzazione in numeri primi di Shor è uno tra i più famosi \cite{shor}. 
 % La computazione quantistica ha il potenziale di migliorare la potenza computazionale, 
 % accelerare l'elaborazione di grandi dati e probabilmente risolvere alcuni problemi che sono 
@@ -127,7 +126,7 @@ della computazione quantistica \cite{PhysRevLett.116.230504}.
 % hanno mostrato che un algoritmo genetico classico può essere usato per ridurre 
 % l'errore sperimentale nelle porte logiche quantistiche. 
 Questa tesi si occuperà solo del campo del machine 
-learning aumentato quantisticamente. 
+learning migliorato quantisticamente. 
 
 % ***********************************************
 
@@ -136,17 +135,15 @@ learning aumentato quantisticamente.
 Il \ac{QML} è un campo molto giovane e in fermento. Stiamo assistendo a qualcosa di 
 analogo a quella che era la nascita dei computer classici, ovvero lo sviluppo di un 
 numero sempre crescente di algoritmi, tecniche ed hardware di base in 
-un ambiente in cui le cose consolidate sono ben poche: il \ac{QML} è solo una 
-delle branche che sono state reputate promettenti per quanto riguarda i vantaggi 
-portati dai computer quantistici \cite{what-is-ibm-q}. \marginpar{I campi che si 
+un ambiente in cui le cose consolidate sono ben poche. \marginpar{I campi che si 
 prevede otterranno accelerazioni maggiori grazie al quantum computing sono il 
 machine learning, la simulazione di sistemi quantomeccanici, i problemi di 
-ottimizzazione e l'analisi finanziaria.}
+ottimizzazione e l'analisi finanziaria. \cite{what-is-ibm-q}} 
 In ogni caso c'è necessità di inventare nuove strategie per risolvere anche i 
 problemi più semplici: per avere risultati affidabili spesso si richiede un 
 numero considerevole di qubit ed unità di memorizzazione che possano conservare 
 informazioni quantistiche, come la \ac{QRAM}. 
-Al giorno d'oggi il numero massimo di qubit a superconduzione, da quanto viene 
+Al giorno d'oggi il numero massimo di qubit superconduttivi, da quanto viene 
 riferito, è di 50 \cite{50qubit}. 
 
 Negli ultimi anni ci sono state varie implementazioni innovative di algoritmi di \ac{MLQ} \cite{quantum-advantage}: 
@@ -199,7 +196,7 @@ implementarne una versione multiclasse.
 % la maggior parte dei \ac{CQ} preliminari descritti hanno a che fare con qubit senza correzione 
 % d'errore, con vite brevi e sono, quindi, inadatti per grandi implementazioni di \ac{MLQ}. 
 
-\section{Domanda di ricerca}
+\section{Domanda di ricerca} % Sostituire con altra formula
 
 % Alla luce della natura teorica dell'attuale ricerca nel \ac{MLQ} 
 % e del piccolo numero di realizzazioni sperimentali, questa ricerca si dedicherà 
