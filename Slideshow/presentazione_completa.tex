@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{braket}
 \usepackage{listing}
+\usepackage{verbatim}
 
 \definecolor{main}{RGB}{170, 85, 0}
 \definecolor{background}{RGB}{240, 247, 255}
@@ -28,8 +29,9 @@
         \maketitle
     \end{frame}
 
-    \section{Introduzione}
+    % \section{Introduzione}
 
+    \begin{comment}
     \begin{frame}{Machine learning}
         \begin{columns}
             \column{.5\textwidth}
@@ -94,30 +96,67 @@
             ovvero il permettere ai computer quantistici di imparare dai dati più velocemente dei computer classici
         \end{columns}
     \end{frame}
+    \end{comment}
 
-    \begin{frame}{Domanda di ricerca}
+    \begin{frame}{Quantum machine learning}
+        \begin{columns}
+            \column{.33\linewidth}
+            \includegraphics[width=\columnwidth]{gfx/icons/icons8-machine-learning-480.png}
+            \begin{center}
+                ML
+            \end{center}
+            permette ai computer di apprendere dai dati: riconoscimento facciale, guida autonoma, etc.
+            \column{.33\linewidth}
+            \includegraphics[width=\columnwidth]{gfx/icons/icons8-physics-480.png}
+            \begin{center}
+                QC
+            \end{center}
+            impiega la meccanica quantistica per eseguire calcoli più velocemente ed in maniera inaccessibile ai computer classici
+            \column{.33\linewidth}
+            \includegraphics[width=\columnwidth]{gfx/icons/quantum-machine-learning-480.png}
+            \begin{center}
+                QML
+            \end{center}
+            risolvere problemi difficili e sconosciuti impiegando la meccanica quantistica
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Obiettivo di ricerca}
         È possibile implementare su un computer quantistico un 
         algoritmo k-nearest neighbours multiclasse, in modo da 
         migliorare le prestazioni ed il numero di problemi risolvibili? 
-    \end{frame}
 
-    \begin{frame}{Obiettivi}
+        \vspace{.5cm}
+
+        Passaggi: 
         \begin{itemize}
-            \item Riprodurre l'algoritmo di classificazione KNN quantistico proposto da Schuld et al. \cite{schuld} e implementarne una versione multiclasse su processore quantistico dell'IBM
+            \item Riprodurre l'algoritmo di classificazione KNN quantistico a due classi proposto da Schuld et al. \cite{schuld} e implementarne una versione multiclasse su processore quantistico dell'IBM
             \item Analizzare le capacità dell'algoritmo attraverso esecuzioni su hardware quantistico e tramite simulazione
         \end{itemize}
     \end{frame}
 
+    \iffalse
     \begin{frame}{Machine learning supervisionato}
         \begin{block}{Definizione del problema}
             Dato un insieme dati in input con i corrispondenti output, predire l'output di un nuovo input ignoto. 
         \end{block}
-        Un tipico esempio di compito di classificazione multiclasse è il 
-        \emph{riconoscimento di caratteri scritti a mano}. 
+
+        \vspace{.5cm}
+
+        \begin{columns}
+            \column{.7\textwidth}
+            Esempio: \emph{riconoscimento di caratteri scritti a mano}. 
+            
+            \vspace{.5cm}
+
+            L'insieme dati di addestramento è 
+            formato da molteplici caratteri scritti a mano per ciascun numero o 
+            lettera dell'alfabeto. 
+
+            \column{.3\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/MnistExamples}
+        \end{columns}
         
-        In questo caso si può raccogliere un insieme dati di addestramento che 
-        consiste di molteplici caratteri scritti a mano di ciascuna lettera 
-        dell'alfabeto. 
         % \begin{tabular}{cc}
         %     Input & Output \\ \hline
         %     facce & emozioni \\ 
@@ -127,25 +166,34 @@
         %     cronologia di ricerca & probabilità di cliccare su un annuncio
         % \end{tabular}
     \end{frame}
+    \fi
 
-    \begin{frame}{k-nearest neighbours classico}
+    \begin{frame}{k-nearest neighbours classico pesato}
         \begin{columns}
-            \column{0.3\textwidth}
-            \includegraphics[width=\textwidth]{gfx/KnnClassification.png}
-            \column{0.7\textwidth}
-            L'algoritmo KNN è uno tra i più semplici del ML ed è un lazy learner
-            \vspace{.5cm}
-            
-            Sia $k$ un numero naturale. 
+            \column{0.4\textwidth}
+            L'algoritmo di classificazione KNN è uno tra i più semplici del ML ed è un lazy learner
 
-            Si abbia un insieme di apprendimento 
+            \vspace{.5cm}
+
+            Sia $k$ un numero naturale 
+
+            \begin{center}
+                \includegraphics[width=.6\columnwidth]{gfx/KnnClassification.png}
+            \end{center}
+
+            \column{0.6\textwidth}
+
+            Dato un insieme di vettori di training 
             \begin{equation*}
-                D = v_0,\ldots,v_{M-1}, v_i\in\left\{ \text{classe}_0, \text{classe}_1, \ldots \right\}
+                \begin{split}
+                    &D = v_0,\ldots,v_{M-1}, \\
+                    &v_i\in\left\{ \text{classe}_0, \text{classe}_1, \ldots \right\}
+                \end{split}
             \end{equation*}
 
             Dato un nuovo vettore $x$: 
             \begin{itemize}
-                \item considera i $k$ elementi più vicini ad $x$
+                \item considera i $k$ vettori di training più vicini ad $x$
                 \item classifica $x$ con un voto a maggioranza
             \end{itemize}
 
@@ -162,10 +210,10 @@
 			(\ket{0}\ket{\psi_x}+\ket{1}\ket{\psi_{t^m}})\ket{c^m}\ket{m}
 		\end{equation*}
 
-		Calcolo della distanza: si fanno interferire gli stati applicando $H\ket{a}$
+		Calcolo della distanza: \\ si fanno interferire gli stati applicando $H\ket{a}$
 		\begin{equation*}
 			\ket{\psi_1} = \frac{1}{2\sqrt{M}}\sum_{m=1}^M 
-			\Big( \ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}}) + \ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}) \Big) \ket{c^m}\ket{m}
+			\Big[ \ket{0}(\ket{\psi_x}+\ket{\psi_{t^m}}) + \ket{1}(\ket{\psi_x}-\ket{\psi_{t^m}}) \Big] \ket{c^m}\ket{m}
 		\end{equation*}
 	
 		Misura condizionale: $\ket{a} = \ket{0}$
@@ -181,8 +229,8 @@
         la probabilità di misurare una data classe è:
 
 		\begin{equation*}
-			\text{P}(\ket{c^m} = \ket{s}) = \sum_{m|c^m=s} 
-			1 - \frac{1}{4M} |x-t^m|^2
+			\text{P}(\ket{c^m} = \ket{s}) = 1 - \sum_{m|c^m=s} 
+			\frac{1}{4M} |x-t^m|^2
 		\end{equation*}
 
 		Classificazione:
@@ -209,8 +257,73 @@
         dice che l'algoritmo ha un tempo di esecuzione costante. \cite{fingerhuth}
     \end{frame}
 
-    \section{Metodi implementativi}
+    \begin{frame}{FF-QRAM}
+        Per codificare dati classici nelle ampiezze di probabilità è stata usata la tecnica di costruzione 
+        di stati flip-flop QRAM proposta da Petruccione et al. \cite{petruccione}
+        La FF-QRAM è usata per inizializzare efficientemente un QDB in maniera arbitraria. 
 
+        L'operazione QRAM sui qubit sovrappone un insieme di dati classici 
+        $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) \Big| 0 \leq l < M \right\}$ come
+        \begin{equation*} \label{eq:qram}
+            \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
+            \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
+        \end{equation*}
+        dove $\vec{d}^{(l)}$ rappresenta un indirizzo di memoria con 
+        $n$ bit di informazione 
+        e $b_l$ è l'attributo ad esso associato (per es. numero reale). 
+    \end{frame}
+
+    \begin{frame}{Codificare dati classici nelle ampiezze}
+        \begin{columns}
+            \column{.4\textwidth}
+            La complessità algoritmica di questa routine è $\mathcal{O}(MN)$, dove $M$ è il numero di 
+            vettori e $N$ la loro lunghezza. La quantità di risorse hardware necessarie va 
+            come $\mathcal{O}(\log_2(MN))$. \cite{petruccione} 
+            \column{.6\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/qram}
+        \end{columns}
+
+        \begin{columns}
+            \column{.4\textwidth}
+            Per codificare più di due classi una procedura di tipo QRAM risulta conveniente. 
+            \column{.6\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/qram_qsvm}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}[t]{Metodi}
+        \begin{minipage}[t]{.45\textwidth}
+            \vspace{0pt}
+            \begin{center}
+                Qiskit
+            \end{center}
+            Struttura open source di sviluppo software \cite{Qiskit} per 
+            \begin{itemize}
+                \item progettare circuiti quantistici
+                \item simularli sul proprio computer personale
+                \item inviare ordini di esecuzione su harware quantistico reale
+                \item visualizzare i risultati
+            \end{itemize}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{.45\textwidth}
+            \vspace{0pt}
+            \begin{center}
+                \includegraphics[width=.6\columnwidth]{gfx/laptop_strumenti.png}
+            \end{center}
+            \begin{center}
+                IBM Q Experience
+            \end{center}
+            \begin{itemize}
+                \item accessibile al pubblico
+                \item permette simulazioni ideali e con rumore
+                \item fino a 14 qubit superconduttivi
+                \item fino a 32 qubit simulati
+            \end{itemize}
+        \end{minipage}
+    \end{frame}
+
+    \begin{comment}
     \begin{frame}{IBM Q Experience}
         \begin{columns}
             \column{.3\textwidth}
@@ -240,6 +353,7 @@
             \end{itemize}
         \end{columns}
     \end{frame}
+    \end{comment}
 
     \begin{frame}{Stato dell'arte}
         \begin{columns}
@@ -261,42 +375,7 @@
         \end{columns}
     \end{frame}
 
-    \begin{frame}{FF-QRAM}
-        Per codificare dati classici nelle ampiezze di probabilità è stata usata la tecnica di costruzione 
-        di stati flip-flop QRAM proposta da Petruccione et al. \cite{petruccione}
-        La FF-QRAM è usata per inizializzare efficientemente un QDB in maniera arbitraria. 
-
-        L'operazione QRAM sui qubit sovrappone un insieme di dati classici 
-        $D = \left\{ \left( \vec{d}^{(l)}, b_l \right) \Big| 0 \leq l < M \right\}$ come
-        \begin{equation*} \label{eq:qram}
-            \text{QRAM}(D) \sum_j \psi_j \ket{j}_B \ket{0}_R \equiv 
-            \sum_l \psi_l \ket{\vec{d}^{(l)}}_B \ket{b_l}_R,
-        \end{equation*}
-        dove $\vec{d}^{(l)}$ rappresenta un indirizzo di memoria con 
-        $n$ bit di informazione 
-        e $b_l$ è l'attributo ad esso associato. 
-    \end{frame}
-
-    \begin{frame}{Codificare dati classici nelle ampiezze}
-        \begin{columns}
-            \column{.4\textwidth}
-            La complessità algoritmica di questa routine è $\mathcal{O}(MN)$, dove $M$ è il numero di 
-            vettori e $N$ la loro lunghezza. La quantità di risorse hardware necessarie va 
-            come $\mathcal{O}(\log_2(MN))$. \cite{petruccione} 
-            \column{.6\textwidth}
-            \includegraphics[width=\columnwidth]{gfx/qram}
-        \end{columns}
-
-        \begin{columns}
-            \column{.4\textwidth}
-            Per codificare più di due classi è utile una procedura di questo tipo. 
-            \column{.6\textwidth}
-            \includegraphics[width=\columnwidth]{gfx/qram_qsvm}
-        \end{columns}
-    \end{frame}
-
-    \section{Risultati}
-
+    \section*{Risultati}
     \subsection{Classificazione di cluster}
 
     \begin{frame}{Classificazione di cluster}
@@ -310,7 +389,7 @@
     \begin{columns}
         \column{.5\textwidth}
         Sono stati selezionati otto elementi (due da ogni cluster) come vettori di training 
-        e si sono sottoposti a classificazione un vettore d'input per ciascuna classe in quattro esperimenti. 
+        e si sono sottoposti a classificazione un vettore d'input di ciascuna classe in quattro esperimenti. 
         \column{.5\textwidth}
         \includegraphics[width=\columnwidth]{gfx/Clusters/random_numbered.png}            
     \end{columns}
@@ -339,6 +418,15 @@
             \includegraphics[width=\columnwidth]{gfx/iris/iris4features}
             \column{.6\textwidth}
             Per avere un confronto con un insieme conosciuto si sono analizzate le tre classi del noto data set Iris. 
+        \end{columns}
+        \vspace{.5cm}
+        \begin{columns}
+            \column{.3\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/Iris_setosa.jpg}
+            \column{.3\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/Iris_versicolor_3.jpg}
+            \column{.3\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/Iris_virginica.jpg}
         \end{columns}
     \end{frame}
 
@@ -403,31 +491,25 @@
 
     \begin{frame}{Classificazione multiclasse}
         \begin{columns}
-            \column{.33\textwidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\linewidth]{gfx/multiclass_versicolor}
-                \caption{Simulazione su versicolor}
-                \label{fig:multiclass.versicolor}
-            \end{figure}
-            \column{.33\textwidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\linewidth]{gfx/versicolor_reale_20191015_1506.png}
-                \caption{Esecuzione reale su versicolor}
-                \label{fig:multiclass.virginica}
-            \end{figure}
-            \column{.33\textwidth}
-            \begin{figure}[h]
-                \centering
-                \includegraphics[width=\linewidth]{gfx/multiclass_virginica}
-                \caption{Simulazione su virginica}
-                \label{fig:multiclass.virginica}
-            \end{figure}
+            \column{.45\textwidth}
+            \rotatebox{90}{Sim. versicolor}
+            \includegraphics[width=.9\linewidth]{gfx/multiclass_versicolor}
+            \column{.45\textwidth}
+            \rotatebox{90}{Sim. virginica}
+            \includegraphics[width=.9\linewidth]{gfx/multiclass_virginica}
         \end{columns}
-        Nota importante: gli elementi delle classi versicolor e virginica non sono linearmente separabili. 
-        Pertanto qualsiasi algoritmo basato sulla distanza non è efficace nel distinguere tra le due classi 
-        in maniera efficiente, sia esso classico o quantistico. 
+        \begin{columns}
+            \column{.45\textwidth}
+            \rotatebox{90}{Reale versicolor}
+            \includegraphics[width=.9\linewidth]{gfx/versicolor_reale_20191015_1506.png}
+            \column{.45\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/iris/irisscaled_separation.png}
+        \end{columns}
+        
+        % Nota importante: gli elementi delle classi versicolor e virginica non sono linearmente separabili. 
+
+        % Pertanto qualsiasi algoritmo basato sulla distanza non è efficiente nel distinguere tra le due classi 
+        % senza ottimizzazione dei dati, sia esso classico o quantistico. 
     \end{frame}
 
     \begin{frame}{Efficienza di esecuzione}
@@ -497,6 +579,10 @@
     \begin{frame}{Fonti}
         \bibliography{bibliography.bib}
         \bibliographystyle{plain}
+
+        \vspace{.2cm}
+
+        Riferimenti completi su: \url{https://github.com/visika/Tesi}
     \end{frame}
 
     \begin{frame}{Immagini}

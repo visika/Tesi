@@ -1,7 +1,4 @@
-\beamer@sectionintoc {1}{Introduzione}{2}{0}{1}
-\beamer@sectionintoc {2}{Metodi implementativi}{13}{0}{2}
-\beamer@sectionintoc {3}{Risultati}{19}{0}{3}
-\beamer@subsectionintoc {3}{1}{Classificazione di cluster}{20}{0}{3}
-\beamer@subsectionintoc {3}{2}{Data set Iris}{23}{0}{3}
-\beamer@sectionintoc {4}{Conclusione}{30}{0}{4}
-\beamer@sectionintoc {5}{Quantum computing}{36}{1}{5}
+\beamer@subsectionintoc {1}{1}{Classificazione di cluster}{12}{0}{0}
+\beamer@subsectionintoc {1}{2}{Data set Iris}{15}{0}{0}
+\beamer@sectionintoc {2}{Conclusione}{22}{0}{1}
+\beamer@sectionintoc {3}{Quantum computing}{28}{1}{2}
