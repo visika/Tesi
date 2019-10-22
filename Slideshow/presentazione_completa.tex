@@ -100,24 +100,47 @@
 
     \begin{frame}{Quantum machine learning}
         \begin{columns}
+            \column{.3\linewidth}
+            \begin{center}
+                \includegraphics[width=.8\columnwidth]{gfx/icons/icons8-machine-learning-480.png}                
+            \end{center}
+            \column{.3\linewidth}
+            \begin{center}
+                \includegraphics[width=.8\columnwidth]{gfx/icons/icons8-physics-480.png}                
+            \end{center}
+            \column{.3\linewidth}
+            \begin{center}
+                \includegraphics[width=.8\columnwidth]{gfx/icons/quantum-machine-learning-480.png}
+            \end{center}
+        \end{columns}
+        \begin{columns}
             \column{.33\linewidth}
-            \includegraphics[width=\columnwidth]{gfx/icons/icons8-machine-learning-480.png}
             \begin{center}
                 ML
             \end{center}
-            permette ai computer di apprendere dai dati: riconoscimento facciale, guida autonoma, etc.
             \column{.33\linewidth}
-            \includegraphics[width=\columnwidth]{gfx/icons/icons8-physics-480.png}
             \begin{center}
                 QC
             \end{center}
-            impiega la meccanica quantistica per eseguire calcoli più velocemente ed in maniera inaccessibile ai computer classici
             \column{.33\linewidth}
-            \includegraphics[width=\columnwidth]{gfx/icons/quantum-machine-learning-480.png}
             \begin{center}
                 QML
             \end{center}
-            risolvere problemi difficili e sconosciuti impiegando la meccanica quantistica
+        \end{columns}
+        \vspace{.1cm}
+        \begin{columns}
+            \column{.33\textwidth}
+            \begin{center}
+                permette ai computer di apprendere dai dati: riconoscimento facciale, guida autonoma, etc.
+            \end{center}
+            \column{.33\textwidth}
+            \begin{center}
+                impiega la meccanica quantistica per eseguire calcoli più velocemente ed in maniera inaccessibile ai computer classici            
+            \end{center}
+            \column{.33\textwidth}
+            \begin{center}
+                risolvere problemi difficili e sconosciuti impiegando la meccanica quantistica                
+            \end{center}
         \end{columns}
     \end{frame}
 
@@ -388,8 +411,8 @@
 
     \begin{columns}
         \column{.5\textwidth}
-        Sono stati selezionati otto elementi (due da ogni cluster) come vettori di training 
-        e si sono sottoposti a classificazione un vettore d'input di ciascuna classe in quattro esperimenti. 
+        Sono stati selezionati otto vettori di training 
+        e si è classificato un vettore d'input per ciascuna classe. 
         \column{.5\textwidth}
         \includegraphics[width=\columnwidth]{gfx/Clusters/random_numbered.png}            
     \end{columns}
@@ -450,22 +473,20 @@
         \end{columns}
     \end{frame}
 
-    \begin{frame}{Classificazione binaria (setosa vs. versicolor)}
+    \begin{frame}{Classificazione a due classi (setosa vs. versicolor)}
         \begin{columns}
             \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
+            \begin{center}
                 \includegraphics[width=\textwidth]{gfx/misura_setosa_filtrata_20191015_1145.png}
-                \caption{Simulazione su setosa}
-                \label{fig:simulazione.setosa}
-            \end{figure}
+                
+                Simulazione su setosa
+            \end{center}
             \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
+            \begin{center}
                 \includegraphics[width=\textwidth]{gfx/misura_setosa_sperimentale.png}
-                \caption{Esecuzione reale su setosa}
-                \label{fig:esecuzione.setosa}
-            \end{figure}
+
+                Esecuzione reale su setosa
+            \end{center}
         \end{columns}
     \end{frame}
 
@@ -473,19 +494,17 @@
         % Classificazione setosa vs. versicolor vs. virginica dal data set Iris
         \begin{columns}
             \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
+            \begin{center}
                 \includegraphics[width=\textwidth]{gfx/setosa_simulato_multiclasse.png}
-                \caption{Simulazione su setosa}
-                \label{fig:simulazione.multi.setosa}
-            \end{figure}
+
+                Simulazione su setosa
+            \end{center}
             \column{.5\textwidth}
-            \begin{figure}[h]
-                \centering
+            \begin{center}
                 \includegraphics[width=\textwidth]{gfx/setosa_reale_20190913:1716.png}
-                \caption{Esecuzione reale su setosa}
-                \label{fig:esecuzione.multi.setosa}
-            \end{figure}
+                
+                Esecuzione reale su setosa
+            \end{center}
         \end{columns}
     \end{frame}
 
@@ -512,7 +531,7 @@
         % senza ottimizzazione dei dati, sia esso classico o quantistico. 
     \end{frame}
 
-    \begin{frame}{Efficienza di esecuzione}
+    \begin{frame}{Efficienza di classificazione}
         \begin{columns}
             \column{.4\textwidth}
             \begin{table}[h!]
@@ -525,8 +544,9 @@
                     nero & 100\%\\
                     giallo & 100\%
                 \end{tabular}
-                \caption{Risultati positivi per simulazione su cluster con otto vettori di training}
-            \end{table}    
+            \end{table}
+
+            Simulazione su cluster con otto vettori di training
             \column{.6\textwidth}
             \begin{table}[h!]
                 \centering
@@ -537,10 +557,12 @@
                     versicolor & 30\% & 50\% & 80\%\\ 
                     virginica & 60\% & 90\% & 90\%
                 \end{tabular}
-                \caption{Risultati positivi per simulazione su Iris con $2^m$ vettori di training}
                 \label{table:misure}
             \end{table}
+
+            Risultati positivi per simulazione su Iris con $2^m$ vettori di training                
         \end{columns}
+        \vspace{.5cm}
         Il tasso di errore stimato sul data set Iris per il classificatore KNN classico è del 4,67\%.\footnote{https://www.mathworks.com/help/bioinfo/ref/classperf.html}
     \end{frame}
 
