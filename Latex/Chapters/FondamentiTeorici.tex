@@ -316,7 +316,7 @@ l'apprendimento supervisionato, l'apprendimento non supervisionato e l'apprendim
 Qui si parlerà solo di apprendimento supervisionato. 
 
 L'obiettivo dell'apprendimento supervisionato è di imparare un modello da dati 
-etichettati che ci permetta di fare previsioni su dati futuri sconosciuti. 
+etichettati (detti anche di training) che ci permetta di fare previsioni su dati futuri sconosciuti. 
 Con il termine supervisionato si intende l'esistenza di un insieme di campioni 
 dove i risultati aspettati (l'appartenenza ad una determinata classe, il 
 risultato di una funzione) sono già conosciuti. 
@@ -482,14 +482,14 @@ il circuito di classificazione porta un sistema di $n$
 qubit nello stato 
 \begin{equation}
     \ket{D} = \frac{1}{\sqrt{2MC}} \sum_{m=1}^M \ket{m} 
-    \left( \ket{0}\ket{\psi_x} + \ket{1}\ket{\psi_{t^m}} \right)
+    \left( \ket{0}_a\ket{\psi_x}_i + \ket{1}_a\ket{\psi_{t^m}}_i \right)
     \ket{c^m}.
 \end{equation}
-Qui $\ket{m}$ è un registro indice che prende valori 
+Qui il primo registro $\ket{m}$ è un registro indice che prende valori 
 $m=1,\ldots,M$ e che contrassegna l'$m$-esimo vettore 
 di apprendimento. 
-Il secondo registro è un singolo qubit ancilla, il cui 
-stato eccitato è in entanglement con il terzo registro 
+Il secondo registro $\ket{a}$ è formato da un singolo qubit ancilla, il cui 
+stato eccitato è in entanglement con il terzo registro $\ket{i}$
 che codifica l'$m$-esimo stato di apprendimento 
 $\ket{\psi_{t^m}} = \sum_{i=0}^{N-1} t_i^m \ket{i}$, 
 mentre il suo stato fondamentale è in entanglement con 

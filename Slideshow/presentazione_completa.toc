@@ -1,4 +1,4 @@
-\beamer@subsectionintoc {1}{1}{Classificazione di cluster}{12}{0}{0}
-\beamer@subsectionintoc {1}{2}{Data set Iris}{15}{0}{0}
-\beamer@sectionintoc {2}{Conclusione}{22}{0}{1}
-\beamer@sectionintoc {3}{Quantum computing}{28}{1}{2}
+\beamer@subsectionintoc {1}{1}{Classificazione di cluster}{13}{0}{0}
+\beamer@subsectionintoc {1}{2}{Data set Iris}{16}{0}{0}
+\beamer@sectionintoc {2}{Conclusione}{23}{0}{1}
+\beamer@sectionintoc {3}{Quantum computing}{29}{1}{2}

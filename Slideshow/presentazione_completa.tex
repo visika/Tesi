@@ -5,6 +5,7 @@
 \usepackage{braket}
 \usepackage{listing}
 \usepackage{verbatim}
+\usepackage{rotating}
 
 \definecolor{main}{RGB}{170, 85, 0}
 \definecolor{background}{RGB}{240, 247, 255}
@@ -98,48 +99,49 @@
     \end{frame}
     \end{comment}
 
-    \begin{frame}{Quantum machine learning}
+    \begin{frame}[t]{Quantum machine learning}
+        \vspace{-.5cm}
         \begin{columns}
-            \column{.3\linewidth}
+            \column{.33\textwidth}
             \begin{center}
                 \includegraphics[width=.8\columnwidth]{gfx/icons/icons8-machine-learning-480.png}                
             \end{center}
-            \column{.3\linewidth}
+            \column{.33\textwidth}
             \begin{center}
                 \includegraphics[width=.8\columnwidth]{gfx/icons/icons8-physics-480.png}                
             \end{center}
-            \column{.3\linewidth}
+            \column{.33\textwidth}
             \begin{center}
                 \includegraphics[width=.8\columnwidth]{gfx/icons/quantum-machine-learning-480.png}
             \end{center}
         \end{columns}
+        \vspace{-.2cm}
         \begin{columns}
-            \column{.33\linewidth}
+            \column{.33\textwidth}
             \begin{center}
-                ML
+                Machine Learning
             \end{center}
-            \column{.33\linewidth}
+            \column{.33\textwidth}
             \begin{center}
-                QC
+                Quantum Computing
             \end{center}
-            \column{.33\linewidth}
+            \column{.33\textwidth}
             \begin{center}
-                QML
+                Quantum Machine Learning
             \end{center}
         \end{columns}
-        \vspace{.1cm}
-        \begin{columns}
+        \begin{columns}[t]
             \column{.33\textwidth}
             \begin{center}
-                permette ai computer di apprendere dai dati: riconoscimento facciale, guida autonoma, etc.
+                Permette ai computer di apprendere dai dati: riconoscimento facciale, guida autonoma, etc.
             \end{center}
             \column{.33\textwidth}
             \begin{center}
-                impiega la meccanica quantistica per eseguire calcoli più velocemente ed in maniera inaccessibile ai computer classici            
+                Impiega la meccanica quantistica per eseguire calcoli più velocemente ed in maniera inaccessibile ai computer classici            
             \end{center}
             \column{.33\textwidth}
             \begin{center}
-                risolvere problemi difficili e sconosciuti impiegando la meccanica quantistica                
+                Risolvere problemi difficili e sconosciuti impiegando la meccanica quantistica                
             \end{center}
         \end{columns}
     \end{frame}
@@ -198,7 +200,7 @@
 
             \vspace{.5cm}
 
-            Sia $k$ un numero naturale 
+            $k$ è un numero naturale 
 
             \begin{center}
                 \includegraphics[width=.6\columnwidth]{gfx/KnnClassification.png}
@@ -206,7 +208,7 @@
 
             \column{0.6\textwidth}
 
-            Dato un insieme di vettori di training 
+            Dato un insieme di vettori di training: 
             \begin{equation*}
                 \begin{split}
                     &D = v_0,\ldots,v_{M-1}, \\
@@ -278,6 +280,29 @@
         (misura dell'ancilla nello stato $\ket{0}$). 
         Dipendendo questa solo dalla configurazione iniziale del sistema, si 
         dice che l'algoritmo ha un tempo di esecuzione costante. \cite{fingerhuth}
+    \end{frame}
+
+    \begin{frame}{Estendere l'implementazione}
+        \begin{columns}[t]
+            \column{.5\textwidth}
+            L'implementazione appena vista lavora con: 
+            \begin{itemize}
+                \item 2 vettori di training
+                \item 2 dimensioni
+                \item 2 classi
+            \end{itemize}
+            \vspace{.5cm}
+            \includegraphics[width=.8\columnwidth]{gfx/qknn_preparazione_stato.png}
+            \column{.5\textwidth}
+            L'obiettivo è generalizzarne il funzionamento a:
+        \begin{itemize}
+            \item M vettori di training
+            \item N dimensioni
+            \item più di due classi
+        \end{itemize}
+        \vspace{.5cm}
+        Per realizzare ciò si deve intervenire sulla procedura di preparazione dello stato iniziale. 
+        \end{columns}
     \end{frame}
 
     \begin{frame}{FF-QRAM}
@@ -384,8 +409,9 @@
             \includegraphics[width=\textwidth]{gfx/ibm_16}
             \column{.7\textwidth}
             L'ibmq\_16\_melbourne è il computer quantistico accessibile al pubblico 
-            a partire dal 2018 tramite interfaccia web. Le porte quantistiche di base 
-            sono u1, u2, u3, cx, id. I tempi di decoerenza sono dell'ordine di 
+            a partire dal 2018 tramite interfaccia web. 
+            % Le porte quantistiche di base sono u1, u2, u3, cx, id. 
+            I tempi di decoerenza sono dell'ordine di 
             $T1 \approx 25 \div 88 \mu s$, $T2 \approx 15 \div 105 \mu s$. 
         \end{columns}
 
@@ -396,6 +422,9 @@
             L'IBM Q System One è il primo computer quantistico a circuiti commerciale al mondo, 
             introdotto dall'IBM nel gennaio 2019. L'IBM Q System One possiede 20 qubit. 
         \end{columns}
+
+        \vspace{.5cm}
+        Il numero limitato di qubit ha posto vincoli sulla grandezza dei data set analizzabili. 
     \end{frame}
 
     \section*{Risultati}
@@ -403,19 +432,28 @@
 
     \begin{frame}{Classificazione di cluster}
         \begin{columns}
-            \column{.5\textwidth}
-            Per verificare il funzionamento base dell'algoritmo, è stato creato un insieme dati ad hoc formato da quattro raggruppamenti ben separati tra loro. 
-            \column{.5\textwidth}
-            \includegraphics[width=\columnwidth]{gfx/Clusters/cluster_numbered.png}
-    \end{columns}
+            \column{.4\textwidth}
+            Per verificare il funzionamento base dell'algoritmo, 
+            è stato creato un insieme dati ad hoc. 
 
-    \begin{columns}
-        \column{.5\textwidth}
-        Sono stati selezionati otto vettori di training 
-        e si è classificato un vettore d'input per ciascuna classe. 
-        \column{.5\textwidth}
-        \includegraphics[width=\columnwidth]{gfx/Clusters/random_numbered.png}            
-    \end{columns}
+            \vspace{.7cm}
+
+            Sono stati selezionati otto vettori di training 
+            e si è classificato un vettore d'input per ciascuna classe. 
+
+            \column{.1\textwidth}
+            \vspace{-.5cm}
+            {\tiny \begin{flushright}
+                (14 qubit)
+            \end{flushright}}
+            \begin{turn}{-45}
+            \includegraphics[width=\columnwidth]{gfx/icons/icons8-curved-arrow-480.png}
+            \end{turn}
+            \column{.4\textwidth}
+            \includegraphics[width=\columnwidth]{gfx/Clusters/cluster_numbered.png}
+
+            \includegraphics[width=\columnwidth]{gfx/Clusters/random_numbered.png}            
+        \end{columns}
     \end{frame}
 
     \begin{frame}{Classificazione di cluster (simulazione)}
@@ -551,7 +589,7 @@
             \begin{table}[h!]
                 \centering
                 \begin{tabular}{c c c c}
-                    classe & m=3 & $m=5$ & $m=7$ \\ 
+                    classe & $m=3$ & $m=5$ & $m=7$ \\ 
                     \hline
                     setosa & 100\% & 100\% & 100\%\\ 
                     versicolor & 30\% & 50\% & 80\%\\ 
@@ -562,8 +600,6 @@
 
             Risultati positivi per simulazione su Iris con $2^m$ vettori di training                
         \end{columns}
-        \vspace{.5cm}
-        Il tasso di errore stimato sul data set Iris per il classificatore KNN classico è del 4,67\%.\footnote{https://www.mathworks.com/help/bioinfo/ref/classperf.html}
     \end{frame}
 
     \section{Conclusione}
@@ -583,8 +619,9 @@
             \column{.7\linewidth}
             \begin{itemize}
                 \item Far girare gli algoritmi su computer con maggiori risorse, sia in termini di numero di qubit che di tempi di decoerenza
-                \item A tal proposito, sarebbe interessante l'esecuzione sul computer a 20 qubit annunciato quest'anno
-                \item Per mitigare gli errori di esecuzione reale, si potrebbe applicare un filtro sui risultati tramite la libreria qiskit-ignis
+                \item A tal proposito, sarebbe interessante l'esecuzione sul computer 
+                a 53 qubit annunciato quest'anno ($m = 22 \implies 2^m \approx 4 \times 10^6$)
+                \item Mitigare gli errori di esecuzione reale con i filtri di qiskit-ignis
                 \item Si attende lo sviluppo di corrispettivi quantistici per algoritmi di IA più complessi
             \end{itemize}
             \column{.3\linewidth}
