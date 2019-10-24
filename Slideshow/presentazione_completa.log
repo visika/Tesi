@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.21)  24 OCT 2019 15:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.21)  24 OCT 2019 23:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1471,13 +1471,13 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1006.
 Here is how much of TeX's memory you used:
  22805 strings out of 494428
  447254 string characters out of 6174303
- 500363 words of memory out of 5000000
+ 501363 words of memory out of 5000000
  25787 multiletter control sequences out of 15000+600000
  384838 words of font info for 103 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
  71i,23n,77p,856b,894s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_d4q673.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_iln36p.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_2mfh3o.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraMono-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf (46 pages, 10095328 bytes).
+Output written on /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf (46 pages, 10095339 bytes).
 PDF statistics:
  455 PDF objects out of 1000 (max. 8388607)
  318 compressed objects within 4 object streams
