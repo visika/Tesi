@@ -570,7 +570,7 @@
     \end{frame}
 
     \begin{frame}{Efficienza di classificazione}
-        \begin{columns}
+        \begin{columns}[t]
             \column{.4\textwidth}
             \begin{table}[h!]
                 \centering
@@ -584,6 +584,7 @@
                 \end{tabular}
             \end{table}
 
+            \centering
             Simulazione su cluster con otto vettori di training
             \column{.6\textwidth}
             \begin{table}[h!]
@@ -598,7 +599,22 @@
                 \label{table:misure}
             \end{table}
 
-            Risultati positivi per simulazione su Iris con $2^m$ vettori di training                
+            \centering
+            Risultati positivi per simulazione su Iris con $2^m$ vettori di training
+
+            \begin{table}
+                \centering
+                \begin{tabular}{c c}
+                    classe & esiti positivi\\
+                    \hline
+                    setosa & 81,8\%\\
+                    versicolor & 62,2\%\\
+                    virginica & 59,4\%
+                \end{tabular}
+            \end{table}
+
+            \centering
+            Risultati classici con pesi
         \end{columns}
     \end{frame}
 

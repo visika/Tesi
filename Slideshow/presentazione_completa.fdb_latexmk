@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex presentazione_completa"] 1571863940 "presentazione_completa.aux" "presentazione_completa.bbl" "presentazione_completa" 1571863963
+["bibtex presentazione_completa"] 1571925548 "presentazione_completa.aux" "presentazione_completa.bbl" "presentazione_completa" 1571925567
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "bibliography.bib" 1571128910 1014 afbfa13d7a9444cb8cfc24ba8b44de2d ""
-  "presentazione_completa.aux" 1571863962 10665 a47efa132f06949654a8ad74d1ec9769 "pdflatex"
+  "presentazione_completa.aux" 1571925567 10665 19cb4d2ff7e3463e10ff5183c3fd48ec "pdflatex"
   (generated)
-  "presentazione_completa.bbl"
   "presentazione_completa.blg"
-["pdflatex"] 1571863940 "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.tex" "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf" "presentazione_completa" 1571863963
+  "presentazione_completa.bbl"
+["pdflatex"] 1571925548 "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.tex" "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf" "presentazione_completa" 1571925567
   "/etc/texmf/web2c/texmf.cnf" 1570644669 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.aux" 1571863962 10665 a47efa132f06949654a8ad74d1ec9769 ""
-  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.tex" 1571863917 38987 45ae280eccac030ce7d9cede5fbd3a56 ""
+  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.aux" 1571925567 10665 19cb4d2ff7e3463e10ff5183c3fd48ec ""
+  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.tex" 1571925528 39423 76250ef832cbe4e2226c4b99322be209 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_2mfh3o.enc" 1559682857 3443 8329ab8e2757da1a12ca90661e84db90 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_d4q673.enc" 1559682857 2978 a739ea166e0bcb00f5eaf234fb45c37d ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_iln36p.enc" 1559682857 3071 442727fcad1bce2669d19f42172eb406 ""
@@ -297,16 +297,16 @@
   "gfx/setosa_reale_20190913:1716.png" 1571859695 30525 e02ad2dd970346c18fbe26bc86c07bab ""
   "gfx/setosa_simulato_multiclasse.png" 1571859667 29571 f601ecdb055abda4a8d3c17095e39694 ""
   "gfx/versicolor_reale_20191015_1506.png" 1571859784 29231 98bf795f91f18780abf197519097e64d ""
-  "presentazione_completa.aux" 1571863962 10665 a47efa132f06949654a8ad74d1ec9769 "pdflatex"
-  "presentazione_completa.bbl" 1571863940 790 3bd868dd6b769dedb1c383ab236d686d "bibtex presentazione_completa"
-  "presentazione_completa.nav" 1571863962 5712 c4b4cc61170e15d5554638bb18f271bf "pdflatex"
-  "presentazione_completa.tex" 1571863917 38987 45ae280eccac030ce7d9cede5fbd3a56 ""
+  "presentazione_completa.aux" 1571925567 10665 19cb4d2ff7e3463e10ff5183c3fd48ec "pdflatex"
+  "presentazione_completa.bbl" 1571925548 790 3bd868dd6b769dedb1c383ab236d686d "bibtex presentazione_completa"
+  "presentazione_completa.nav" 1571925567 5712 c4b4cc61170e15d5554638bb18f271bf "pdflatex"
+  "presentazione_completa.tex" 1571925528 39423 76250ef832cbe4e2226c4b99322be209 ""
   (generated)
+  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf"
+  "presentazione_completa.toc"
+  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.log"
   "presentazione_completa.nav"
+  "presentazione_completa.pdf"
+  "presentazione_completa.aux"
   "presentazione_completa.snm"
   "presentazione_completa.log"
-  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.log"
-  "/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf"
-  "presentazione_completa.aux"
-  "presentazione_completa.pdf"
-  "presentazione_completa.toc"

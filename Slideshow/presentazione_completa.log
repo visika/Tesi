@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.21)  23 OCT 2019 22:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.10.21)  24 OCT 2019 15:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1247,43 +1247,43 @@ Package pdftex.def Info: gfx/iris/irisscaled_separation.png  used on input line 
  </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_versicolor.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/multiclass_virginica.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/versicolor_reale_20191015_1506.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/iris/irisscaled_separation.png>] [22
 
 ]
-Overfull \vbox (18.59999pt too high) detected at line 605
+Overfull \vbox (18.59999pt too high) detected at line 621
  []
 
 [23
 
 ]
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <9> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 615.
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 631.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
-(Font)              scaled to size 9.0pt on input line 615.
+(Font)              scaled to size 9.0pt on input line 631.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <5> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 615.
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 631.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
-(Font)              scaled to size 5.0pt on input line 615.
+(Font)              scaled to size 5.0pt on input line 631.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <9> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 615.
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 631.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
-(Font)              scaled to size 9.0pt on input line 615.
+(Font)              scaled to size 9.0pt on input line 631.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <5> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 615.
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 631.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
-(Font)              scaled to size 5.0pt on input line 615.
+(Font)              scaled to size 5.0pt on input line 631.
  [24
 
 ]
 <gfx/quantum_computer.png, id=217, 476.78125pt x 642.4pt>
 File: gfx/quantum_computer.png Graphic file (type png)
 <use gfx/quantum_computer.png>
-Package pdftex.def Info: gfx/quantum_computer.png  used on input line 630.
+Package pdftex.def Info: gfx/quantum_computer.png  used on input line 646.
 (pdftex.def)             Requested size: 96.45586pt x 129.95786pt.
  [25
 
  </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/quantum_computer.png>]
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <20.74> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 634.
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 650.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
-(Font)              scaled to size 20.74pt on input line 634.
+(Font)              scaled to size 20.74pt on input line 650.
  [26
 
 ] (/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.bbl
@@ -1306,18 +1306,18 @@ LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/sc' in size <10> not available
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/sc' will be
 (Font)              scaled to size 10.0pt on input line 13.
 )
-LaTeX Font Info:    Try loading font information for T1+FiraMono-TOsF on input line 645.
+LaTeX Font Info:    Try loading font information for T1+FiraMono-TOsF on input line 661.
  (/usr/share/texlive/texmf-dist/tex/latex/fira/T1FiraMono-TOsF.fd
 File: T1FiraMono-TOsF.fd 2019/06/04 (autoinst) Font definitions for T1/FiraMono-TOsF.
 )
 LaTeX Font Info:    Font shape `T1/FiraMono-TOsF/regular/n' will be
-(Font)              scaled to size 10.95pt on input line 645.
+(Font)              scaled to size 10.95pt on input line 661.
  [27
 
  </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>] [28
 
 ]
-Overfull \vbox (18.59999pt too high) detected at line 655
+Overfull \vbox (18.59999pt too high) detected at line 671
  []
 
 [29
@@ -1326,10 +1326,10 @@ Overfull \vbox (18.59999pt too high) detected at line 655
 <gfx/MOSFET_Structure.png, id=256, 461.47406pt x 307.1475pt>
 File: gfx/MOSFET_Structure.png Graphic file (type png)
 <use gfx/MOSFET_Structure.png>
-Package pdftex.def Info: gfx/MOSFET_Structure.png  used on input line 668.
+Package pdftex.def Info: gfx/MOSFET_Structure.png  used on input line 684.
 (pdftex.def)             Requested size: 96.45586pt x 64.19824pt.
 
-Overfull \hbox (41.82877pt too wide) detected at line 668
+Overfull \hbox (41.82877pt too wide) detected at line 684
 [][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
@@ -1339,7 +1339,7 @@ Overfull \hbox (41.82877pt too wide) detected at line 668
 <gfx/qubit.jpg, id=262, 1001.7425pt x 1027.84pt>
 File: gfx/qubit.jpg Graphic file (type jpg)
 <use gfx/qubit.jpg>
-Package pdftex.def Info: gfx/qubit.jpg  used on input line 681.
+Package pdftex.def Info: gfx/qubit.jpg  used on input line 697.
 (pdftex.def)             Requested size: 96.45586pt x 98.96323pt.
  [31
 
@@ -1349,7 +1349,7 @@ Package pdftex.def Info: gfx/qubit.jpg  used on input line 681.
 <gfx/Bloch_sphere.png, id=275, 178.5069pt x 189.5883pt>
 File: gfx/Bloch_sphere.png Graphic file (type png)
 <use gfx/Bloch_sphere.png>
-Package pdftex.def Info: gfx/Bloch_sphere.png  used on input line 709.
+Package pdftex.def Info: gfx/Bloch_sphere.png  used on input line 725.
 (pdftex.def)             Requested size: 96.45586pt x 102.44557pt.
  [33
 
@@ -1357,59 +1357,59 @@ Package pdftex.def Info: gfx/Bloch_sphere.png  used on input line 709.
 
 ]
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <7> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 747.
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 763.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
-(Font)              scaled to size 7.0pt on input line 747.
+(Font)              scaled to size 7.0pt on input line 763.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <14.4> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 747.
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 763.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
-(Font)              scaled to size 14.4pt on input line 747.
+(Font)              scaled to size 14.4pt on input line 763.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/it' in size <7> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 747.
+(Font)              Font shape `T1/FiraSans-OsF/regular/it' tried instead on input line 763.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/it' will be
-(Font)              scaled to size 7.0pt on input line 747.
+(Font)              scaled to size 7.0pt on input line 763.
  [35
 
 ]
 <gfx/Hadamard_gate.png, id=293, 39.45943pt x 16.54984pt>
 File: gfx/Hadamard_gate.png Graphic file (type png)
 <use gfx/Hadamard_gate.png>
-Package pdftex.def Info: gfx/Hadamard_gate.png  used on input line 817.
+Package pdftex.def Info: gfx/Hadamard_gate.png  used on input line 833.
 (pdftex.def)             Requested size: 96.45586pt x 40.46106pt.
 <gfx/CNOT_gate.png, id=294, 32.01561pt x 19.65744pt>
 File: gfx/CNOT_gate.png Graphic file (type png)
 <use gfx/CNOT_gate.png>
-Package pdftex.def Info: gfx/CNOT_gate.png  used on input line 817.
+Package pdftex.def Info: gfx/CNOT_gate.png  used on input line 833.
 (pdftex.def)             Requested size: 96.45586pt x 59.23753pt.
 <gfx/Toffoli_gate.png, id=295, 32.01561pt x 27.60715pt>
 File: gfx/Toffoli_gate.png Graphic file (type png)
 <use gfx/Toffoli_gate.png>
-Package pdftex.def Info: gfx/Toffoli_gate.png  used on input line 817.
+Package pdftex.def Info: gfx/Toffoli_gate.png  used on input line 833.
 (pdftex.def)             Requested size: 96.45586pt x 83.19402pt.
  [36
 
  </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Hadamard_gate.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/CNOT_gate.png> </home/mariano/Documenti/Università/Tesi/Slideshow/gfx/Toffoli_gate.png>]
-Underfull \hbox (badness 1584) in paragraph at lines 834--834
+Underfull \hbox (badness 1584) in paragraph at lines 850--850
 []\T1/FiraSans-OsF/regular/n/10.95 # di
  []
 
 
-Overfull \hbox (4.44725pt too wide) in paragraph at lines 834--834
+Overfull \hbox (4.44725pt too wide) in paragraph at lines 850--850
 \T1/FiraSans-OsF/regular/n/10.95 qubit| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 834--834
+Underfull \hbox (badness 10000) in paragraph at lines 850--850
 []\T1/FiraSans-OsF/regular/n/10.95 numero di atomi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 834--834
+Underfull \hbox (badness 10000) in paragraph at lines 850--850
 \T1/FiraSans-OsF/regular/n/10.95 nell'universo os-serv-
  []
 
 
-Overfull \hbox (16.76547pt too wide) in paragraph at lines 834--834
+Overfull \hbox (16.76547pt too wide) in paragraph at lines 850--850
 [][]  
  []
 
@@ -1417,11 +1417,11 @@ Overfull \hbox (16.76547pt too wide) in paragraph at lines 834--834
 
 ]
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/m/n' in size <12> not available
-(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 855.
+(Font)              Font shape `T1/FiraSans-OsF/regular/n' tried instead on input line 871.
 LaTeX Font Info:    Font shape `T1/FiraSans-OsF/regular/n' will be
-(Font)              scaled to size 12.0pt on input line 855.
+(Font)              scaled to size 12.0pt on input line 871.
 
-Overfull \vbox (0.47523pt too high) detected at line 855
+Overfull \vbox (0.47523pt too high) detected at line 871
  []
 
 [38
@@ -1437,7 +1437,7 @@ Overfull \vbox (0.47523pt too high) detected at line 855
 ] [43
 
 ]
-Overfull \hbox (8.87637pt too wide) detected at line 974
+Overfull \hbox (8.87637pt too wide) detected at line 990
 [][] \OT1/cmss/m/n/10.95 = \OML/cmm/m/it/10.95  [] [] [][] \OT1/cmss/m/n/10.95 + \OML/cmm/m/it/10.95  [] [] [][] \OT1/cmss/m/n/10.95 + [] \OML/cmm/m/it/10.95  [] [] [][]
  []
 
@@ -1448,7 +1448,7 @@ Overfull \hbox (8.87637pt too wide) detected at line 974
 ]
 File: gfx/qram_qsvm.png Graphic file (type png)
 <use gfx/qram_qsvm.png>
-Package pdftex.def Info: gfx/qram_qsvm.png  used on input line 988.
+Package pdftex.def Info: gfx/qram_qsvm.png  used on input line 1004.
 (pdftex.def)             Requested size: 321.51625pt x 172.3151pt.
  [46
 
@@ -1462,11 +1462,11 @@ Package pdftex.def Info: gfx/qram_qsvm.png  used on input line 988.
 \tf@snm=\write7
 \openout7 = `presentazione_completa.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 990.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 990.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1006.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1006.
  (/home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 990.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 990.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1006.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1006.
  ) 
 Here is how much of TeX's memory you used:
  22805 strings out of 494428
@@ -1477,7 +1477,7 @@ Here is how much of TeX's memory you used:
  81 hyphenation exceptions out of 8191
  71i,23n,77p,856b,894s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_d4q673.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_iln36p.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/fira/fir_2mfh3o.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraMono-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/fira/FiraSans-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf (46 pages, 10095207 bytes).
+Output written on /home/mariano/Documenti/Università/Tesi/Slideshow/presentazione_completa.pdf (46 pages, 10095328 bytes).
 PDF statistics:
  455 PDF objects out of 1000 (max. 8388607)
  318 compressed objects within 4 object streams
