@@ -1,6 +1,8 @@
 # Tesi
 
-This repository contains most of the files I'm using to write my undergraduate thesis in physics at Federico II University in Naples. 
+This repository contains most of the files I'm using to write my undergraduate thesis in physics at Federico II University in Naples.
+
+Read the thesis here: https://raw.githubusercontent.com/visika/Tesi/master/Latex/Tesi.pdf
 
 This work is primarily based upon the following papers: 
 
